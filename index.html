@@ -21,864 +21,1590 @@
 
 <body>
 
-<header class="displayflex header">
-    <div class="container">
-        <div class="header-inner">
-            <div class="top-header">
-                <a href="#" class="logo" aria-label="JSBET — на головну">
-                    <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo">
-                </a>
-                <div class="search">
-                    <span class="search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input class="search-input" type="search" placeholder="Пошук гри..." aria-label="Пошук гри">
+    <header class="displayflex header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="top-header">
+                    <a href="#" class="logo" aria-label="JSBET — на головну">
+                        <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo">
+                    </a>
+                    <div class="search">
+                        <span class="search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input class="search-input" type="search" placeholder="Пошук гри..." aria-label="Пошук гри">
+                    </div>
+
+                    <div class="header-right">
+                        <button class="btn btn--ghost" type="button">Увійти</button>
+                        <button class="btn btn--primary" type="button">Реєстрація</button>
+                    </div>
+                </div>
+                <div class="bottom-header">
+                    <nav class="nav-tabs" aria-label="Головні розділи" id="main-nav">
+                        <button class="nav-tabs-item active" type="button" data-tab="igri">
+                            <span class="nav-tabs-icon"><i class="fa-solid fa-gamepad"></i></span> Ігри
+                        </button>
+                        <button class="nav-tabs-item" type="button" data-tab="turniry">
+                            <span class="nav-tabs-icon"><i class="fa-solid fa-trophy"></i></span> Турніри
+                        </button>
+                        <button class="nav-tabs-item" type="button" data-tab="profil">
+                            <span class="nav-tabs-icon"><i class="fa-solid fa-user"></i></span> Мій профіль
+                        </button>
+                    </nav>
                 </div>
 
-                <div class="header-right">
-                    <button class="btn btn--ghost" type="button">Увійти</button>
-                    <button class="btn btn--primary" type="button">Реєстрація</button>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ===== PAGE SECTION: ІГРИ ===== -->
+        <div class="page-section active" id="page-igri">
+
+            <section class="hero" aria-label="Вітальний банер">
+                <div class="container">
+                    <div class="hero-inner">
+
+                        <p class="hero-eyebrow">
+                            <i class="fa-solid fa-fire"></i> Понад 3000 ігор
+                        </p>
+
+                        <h1 class="hero-title">
+                            Грай. Вигравай.<br>
+                            <span class="accent">Відчувай азарт.</span>
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            Найкращі слоти, Live games та джекпоти від провідних провайдерів. Реєструйся та отримуй
+                            бонуси
+                            прямо зараз!
+                        </p>
+
+                        <div class="hero-actions">
+                            <button class="btn btn--primary" type="button">Почати грати</button>
+                            <button class="btn btn--ghost" type="button">Дізнатись більше</button>
+                        </div>
+
+                        <!-- Quick stats -->
+                        <div class="stats-bar" aria-label="Статистика ігор">
+                            <div class="stats-bar-item">
+                                <div class="stats-bar-value">3 000+</div>
+                                <div class="stats-bar-label">ігор</div>
+                            </div>
+                            <div class="stats-bar-item">
+                                <div class="stats-bar-value">50+</div>
+                                <div class="stats-bar-label">провайдерів</div>
+                            </div>
+                            <div class="stats-bar-item">
+                                <div class="stats-bar-value">24/7</div>
+                                <div class="stats-bar-label">підтримка</div>
+                            </div>
+                            <div class="stats-bar-item">
+                                <div class="stats-bar-value">₴1 000 000</div>
+                                <div class="stats-bar-label">виплачено сьогодні</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="container">
+                <div class="category-row" aria-label="Фільтр за тематикою">
+                    <ul class="category-row-list" role="list">
+                        <li>
+                            <button class="category-chip active" type="button">Всі</button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Фрукти.jpg" alt=""
+                                    loading="lazy">
+                                Фрукти
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Книги.jpg" alt=""
+                                    loading="lazy">
+                                Книги
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Монети.jpg" alt=""
+                                    loading="lazy">
+                                Монети
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Скарби.jpg" alt=""
+                                    loading="lazy">
+                                Скарби
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Єгипет.jpg" alt=""
+                                    loading="lazy">
+                                Єгипет
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Кристали.jpg" alt=""
+                                    loading="lazy">
+                                Кристали
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Тварини.jpg" alt=""
+                                    loading="lazy">
+                                Тварини
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Рибалка.jpg" alt=""
+                                    loading="lazy">
+                                Рибалка
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Вегас.jpg" alt=""
+                                    loading="lazy">
+                                Вегас
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Вікінги.jpg" alt=""
+                                    loading="lazy">
+                                Вікінги
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Ретро.jpg" alt=""
+                                    loading="lazy">
+                                Ретро
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Солодощі.jpg" alt=""
+                                    loading="lazy">
+                                Солодощі
+                            </button>
+                        </li>
+                        <li>
+                            <button class="category-chip" type="button">
+                                <img class="category-chip-thumb" src="index-files/categories/Класика.jpg" alt=""
+                                    loading="lazy">
+                                Класика
+                            </button>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="bottom-header">
-                <nav class="nav-tabs" aria-label="Розділи ігор">
-                    <button class="nav-tabs-item active" type="button">
-                        <span class="nav-tabs-icon"><i class="fa-solid fa-grid-2"></i></span> Всі ігри
-                    </button>
-                    <button class="nav-tabs-item" type="button">
-                        <span class="nav-tabs-icon"><i class="fa-solid fa-dice"></i></span> Слоти
-                    </button>
-                    <button class="nav-tabs-item" type="button">
-                        <span class="nav-tabs-icon nav-tabs-icon--live"><i
-                                class="fa-solid fa-tower-broadcast"></i></span> Live
-                    </button>
-                    <button class="nav-tabs-item" type="button">
-                        <span class="nav-tabs-icon"><i class="fa-solid fa-gem"></i></span> Джекпоти
-                    </button>
-                    <button class="nav-tabs-item" type="button">
-                        <span class="nav-tabs-icon"><i class="fa-solid fa-trophy"></i></span> Турніри
-                    </button>
+
+            <section class="section" aria-labelledby="popular-heading">
+                <div class="container">
+
+                    <div class="section-header">
+                        <h2 id="popular-heading" class="section-title">
+                            <span class="section-title-icon icon--fire"><i class="fa-solid fa-fire"></i></span>
+                            Популярні
+                            <span class="section-count">· 18 ігор</span>
+                        </h2>
+                        <a href="#" class="section-link">Усі ігри →</a>
+                    </div>
+
+                    <div class="games-grid" role="list">
+
+                        <article class="game-card" role="listitem" aria-label="Sweet Bonanza">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Sweet Bonanza.webp"
+                                    alt="Sweet Bonanza" loading="lazy">
+                                <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Sweet Bonanza</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Фрукти</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 3 241</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Big Bass Bonanza">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/BigBassBonanza.webp"
+                                    alt="Big Bass Bonanza" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Big Bass Bonanza</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 2 187</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="The Dog House">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/TheDogHouse.webp" alt="The Dog House"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">The Dog House</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Тварини</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 854</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Starlight Princess 1000">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Starlight Princess 1000.webp"
+                                    alt="Starlight Princess 1000" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Starlight Princess 1000</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Магія</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 4 012</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Madame Destiny Megaways">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/MadameDestinyMegaways.webp"
+                                    alt="Madame Destiny Megaways" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Madame Destiny Megaways</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Megaways · Містика</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 987</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Zeus vs Hades">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/zeus-vs-hades-gods-of-war-250.webp"
+                                    alt="Zeus vs Hades: Gods of War" loading="lazy">
+                                <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Zeus vs Hades</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Mythologie</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 2 650</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Gates of Olympus Super Scatter">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/imgi_24_GatesofOlympusSuperScatt.webp"
+                                    alt="Gates of Olympus Super Scatter" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Gates of Olympus SS</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Боги</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 3 108</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Snooop Dogg Dollars">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/SnoopDoggDollars.webp"
+                                    alt="Snoop Dogg Dollars" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Snoop Dogg Dollars</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Хіп-хоп</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 742</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Aztec Magic Bonanza">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/AztecMagicBonanza.webp"
+                                    alt="Aztec Magic Bonanza" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Aztec Magic Bonanza</p>
+                                <p class="game-card-provider">BGaming</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Ацтеки</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 230</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Sun of Egypt 3">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/SunOfEgypt3.webp" alt="Sun of Egypt 3"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Sun of Egypt 3</p>
+                                <p class="game-card-provider">Booongo</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Єгипет</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 895</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Wild Cash x9990">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/WildCashX9990.webp"
+                                    alt="Wild Cash x9990" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Wild Cash x9990</p>
+                                <p class="game-card-provider">Endorphina</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Класика</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 611</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Rainbow Reels">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/RainbowReels.webp" alt="Rainbow Reels"
+                                    loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Rainbow Reels</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Класика</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.3</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 528</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="new-heading">
+                <div class="container">
+
+                    <div class="section-header">
+                        <h2 id="new-heading" class="section-title">
+                            <span class="section-title-icon icon--star"><i class="fa-solid fa-star"></i></span>
+                            Нові ігри
+                            <span class="section-count">· 12 ігор</span>
+                        </h2>
+                        <a href="#" class="section-link">Усі нові →</a>
+                    </div>
+
+                    <div class="games-grid" role="list">
+
+                        <article class="game-card" role="listitem" aria-label="Big Bass Splash">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Big Bass Splash.webp"
+                                    alt="Big Bass Splash" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Big Bass Splash</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 543</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Coral Island">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/CoralIsland.webp" alt="Coral Island"
+                                    loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Coral Island</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Природа</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 876</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Army of Ares">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/ArmyofAres.webp" alt="Army of Ares"
+                                    loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Army of Ares</p>
+                                <p class="game-card-provider">Relax Gaming</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Воїни</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 102</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Fire Coins Hold and Win">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/FireCoinsHoldandWin.webp"
+                                    alt="Fire Coins Hold and Win" loading="lazy">
+                                <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Fire Coins Hold &amp; Win</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Hold&Win · Монети</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 2 310</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Joker Blaze">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/JokerBlaze.webp" alt="Joker Blaze"
+                                    loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Joker Blaze</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Класика</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 684</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Coin Spin Fever">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/CoinSpinFever.webp"
+                                    alt="Coin Spin Fever" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Coin Spin Fever</p>
+                                <p class="game-card-provider">3 Oaks</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Монети</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.3</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 449</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Queen of Greece">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/QueenOfGreece.webp"
+                                    alt="Queen of Greece" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Queen of Greece</p>
+                                <p class="game-card-provider">Amatic</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Антик</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 731</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Solar Queen">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/SolarQueen.webp" alt="Solar Queen"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Solar Queen</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Єгипет</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 918</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Poseidon Wild Wrath">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Poseidon Wild Wrath.webp"
+                                    alt="Poseidon Wild Wrath" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Poseidon Wild Wrath</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Боги</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 057</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Supercharged Clovers Hold and Win">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img"
+                                    src="index-files/games/SuperchargedCloversHoldandWin@513x767@x2.webp"
+                                    alt="Supercharged Clovers Hold and Win" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Supercharged Clovers H&amp;W</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Hold&Win · Конюшина</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 592</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Glowberry Blast">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/GlowBerryBlast.webp"
+                                    alt="Glowberry Blast" loading="lazy">
+                                <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Glowberry Blast</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Ягоди</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 803</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Serengeti Sunrise">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Serengeti Sunrise.webp"
+                                    alt="Serengeti Sunrise" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Serengeti Sunrise</p>
+                                <p class="game-card-provider">Spribe</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Тварини</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.3</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 367</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="jackpot-heading">
+                <div class="container">
+
+                    <div class="section-header">
+                        <h2 id="jackpot-heading" class="section-title">
+                            <span class="section-title-icon icon--gem"><i class="fa-solid fa-gem"></i></span>
+                            Джекпоти
+                            <span class="section-count">· 8 ігор</span>
+                        </h2>
+                        <a href="#" class="section-link">Усі джекпоти →</a>
+                    </div>
+
+                    <div class="games-grid" role="list">
+
+                        <article class="game-card" role="listitem" aria-label="3 Pots Riches Hold and Win">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/3PotsRichesHoldandWin@4x@x2.webp"
+                                    alt="3 Pots Riches Hold and Win" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">3 Pots Riches H&amp;W</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Hold&Win · Джекпот</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 891</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Thunder Coins Hold and Win">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img"
+                                    src="index-files/games/ThunderCoinsHoldandWin@513x767@x2.webp"
+                                    alt="Thunder Coins Hold and Win" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Thunder Coins Hold &amp; Win</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Hold&Win · Джекпот</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.6</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 340</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Book of Egyptian Marvel">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/BookOfEgyptianMarvel.webp"
+                                    alt="Book of Egyptian Marvel" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Book of Egyptian Marvel</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Єгипет</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 024</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Sweet Bonanza 1000">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Sweet Bonanza.webp"
+                                    alt="Sweet Bonanza 1000" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Sweet Bonanza 1000</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Фрукти</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 2 743</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Amazing Diamonds">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Amazing_Diamonds.webp"
+                                    alt="Amazing Diamonds" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Amazing Diamonds</p>
+                                <p class="game-card-provider">Amatic</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Класика</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 816</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Good Luck Good Fortune">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/GoodLuckGoodFortune.webp"
+                                    alt="Good Luck Good Fortune" loading="lazy">
+                                <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Good Luck Good Fortune</p>
+                                <p class="game-card-provider">Pragmatic Play</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Азія</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 178</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="fishing-heading">
+                <div class="container">
+
+                    <div class="section-header">
+                        <h2 id="fishing-heading" class="section-title">
+                            <span class="section-title-icon icon--fish"><i class="fa-solid fa-fish"></i></span>
+                            Рибалка
+                            <span class="section-count">· 8 ігор</span>
+                        </h2>
+                        <a href="#" class="section-link">Усі →</a>
+                    </div>
+
+                    <div class="games-grid" role="list">
+
+                        <article class="game-card" role="listitem" aria-label="Fishing Club">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/FishingClub.webp" alt="Fishing Club"
+                                    loading="lazy">
+                                <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Fishing Club</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 1 629</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Fishin Reels">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/FishinReels.webp" alt="Fishin Reels"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Fishin' Reels</p>
+                                <p class="game-card-provider">Iron Dog</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 723</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Marlin Masters The Big Haul">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/MarlinMastersTheBigHaul.webp"
+                                    alt="Marlin Masters" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Marlin Masters: Big Haul</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 547</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Fishin Bear">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/FishinBear.webp" alt="Fishin Bear"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Fishin' Bear</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.3</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 412</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Trouts Treasure Payday">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/TroutsTreasurePayday@513x767@x2.webp"
+                                    alt="Trout's Treasure: Payday" loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Trout's Treasure: Payday</p>
+                                <p class="game-card-provider">Playson</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.4</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 389</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="game-card" role="listitem" aria-label="Fish Day">
+                            <div class="game-card-thumb">
+                                <img class="game-card-img" src="index-files/games/Fish Day.webp" alt="Fish Day"
+                                    loading="lazy">
+                                <div class="game-card-overlay" aria-hidden="true">
+                                    <div class="game-card-play-btn">▶</div>
+                                </div>
+                            </div>
+                            <div class="game-card-info">
+                                <p class="game-card-name">Fish Day</p>
+                                <p class="game-card-provider">3 Oaks</p>
+                                <p class="game-card-genre"><i class="fa-solid fa-tag"></i> Слот · Рибалка</p>
+                                <div class="game-card-meta">
+                                    <span class="game-card-rating"><i class="fa-solid fa-star"></i> 4.2</span>
+                                    <span class="game-card-players"><i class="fa-solid fa-users"></i> 298</span>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- end page-igri -->
+
+
+        <!-- ===== PAGE SECTION: ТУРНІРИ ===== -->
+        <div class="page-section" id="page-turniry">
+            <section class="section" aria-labelledby="turniry-heading">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 id="turniry-heading" class="section-title">
+                            <span class="section-title-icon icon--trophy"><i class="fa-solid fa-trophy"></i></span>
+                            Турніри
+                            <span class="section-count">· 4 активних</span>
+                        </h2>
+                    </div>
+
+                    <div class="tournaments-grid">
+
+                        <!-- Tournament 1 -->
+                        <article class="tournament-card">
+                            <div class="tournament-card-header tournament-card-header--gold">
+                                <div class="tournament-status tournament-status--live">LIVE</div>
+                                <h3 class="tournament-name">Golden Slots Championship</h3>
+                                <p class="tournament-prize"><i class="fa-solid fa-coins"></i> Призовий фонд:
+                                    <strong>₴500 000</strong>
+                                </p>
+                            </div>
+                            <div class="tournament-card-body">
+                                <div class="tournament-info-row">
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-calendar"></i>
+                                            Дата</span>
+                                        <span class="tournament-info-value">04.03 – 10.03.2026</span>
+                                    </div>
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-users"></i>
+                                            Учасники</span>
+                                        <span class="tournament-info-value">1 248 / 2 000</span>
+                                    </div>
+                                </div>
+                                <div class="tournament-conditions">
+                                    <p class="tournament-conditions-title">Умови участі:</p>
+                                    <ul class="tournament-conditions-list">
+                                        <li>Мінімальна ставка: ₴10</li>
+                                        <li>Ігри: Sweet Bonanza, Gates of Olympus</li>
+                                        <li>Мінімум 50 спінів для кваліфікації</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary tournament-btn" type="button">Зареєструватись</button>
+                            </div>
+                        </article>
+
+                        <!-- Tournament 2 -->
+                        <article class="tournament-card">
+                            <div class="tournament-card-header tournament-card-header--blue">
+                                <div class="tournament-status tournament-status--upcoming">Незабаром</div>
+                                <h3 class="tournament-name">Fishing Frenzy Cup</h3>
+                                <p class="tournament-prize"><i class="fa-solid fa-coins"></i> Призовий фонд:
+                                    <strong>₴200 000</strong>
+                                </p>
+                            </div>
+                            <div class="tournament-card-body">
+                                <div class="tournament-info-row">
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-calendar"></i>
+                                            Дата</span>
+                                        <span class="tournament-info-value">12.03 – 14.03.2026</span>
+                                    </div>
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-users"></i>
+                                            Учасники</span>
+                                        <span class="tournament-info-value">384 / 1 000</span>
+                                    </div>
+                                </div>
+                                <div class="tournament-conditions">
+                                    <p class="tournament-conditions-title">Умови участі:</p>
+                                    <ul class="tournament-conditions-list">
+                                        <li>Мінімальна ставка: ₴5</li>
+                                        <li>Ігри: Big Bass Bonanza, Fishing Club</li>
+                                        <li>Рейтинг за загальну суму виграшів</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--ghost tournament-btn" type="button">Нагадати мені</button>
+                            </div>
+                        </article>
+
+                        <!-- Tournament 3 -->
+                        <article class="tournament-card">
+                            <div class="tournament-card-header tournament-card-header--purple">
+                                <div class="tournament-status tournament-status--live">LIVE</div>
+                                <h3 class="tournament-name">Jackpot Hunter Series</h3>
+                                <p class="tournament-prize"><i class="fa-solid fa-coins"></i> Призовий фонд: <strong>₴1
+                                        000 000</strong></p>
+                            </div>
+                            <div class="tournament-card-body">
+                                <div class="tournament-info-row">
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-calendar"></i>
+                                            Дата</span>
+                                        <span class="tournament-info-value">01.03 – 15.03.2026</span>
+                                    </div>
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-users"></i>
+                                            Учасники</span>
+                                        <span class="tournament-info-value">5 021 / 10 000</span>
+                                    </div>
+                                </div>
+                                <div class="tournament-conditions">
+                                    <p class="tournament-conditions-title">Умови участі:</p>
+                                    <ul class="tournament-conditions-list">
+                                        <li>Тільки для VIP-гравців та вище</li>
+                                        <li>Ігри: всі джекпот-слоти</li>
+                                        <li>Рейтинг за найбільший множник</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--primary tournament-btn" type="button">Зареєструватись</button>
+                            </div>
+                        </article>
+
+                        <!-- Tournament 4 -->
+                        <article class="tournament-card">
+                            <div class="tournament-card-header tournament-card-header--green">
+                                <div class="tournament-status tournament-status--upcoming">Незабаром</div>
+                                <h3 class="tournament-name">Weekend Blitz</h3>
+                                <p class="tournament-prize"><i class="fa-solid fa-coins"></i> Призовий фонд: <strong>₴50
+                                        000</strong></p>
+                            </div>
+                            <div class="tournament-card-body">
+                                <div class="tournament-info-row">
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-calendar"></i>
+                                            Дата</span>
+                                        <span class="tournament-info-value">08.03 – 09.03.2026</span>
+                                    </div>
+                                    <div class="tournament-info-item">
+                                        <span class="tournament-info-label"><i class="fa-solid fa-users"></i>
+                                            Учасники</span>
+                                        <span class="tournament-info-value">112 / 500</span>
+                                    </div>
+                                </div>
+                                <div class="tournament-conditions">
+                                    <p class="tournament-conditions-title">Умови участі:</p>
+                                    <ul class="tournament-conditions-list">
+                                        <li>Відкрито для всіх гравців</li>
+                                        <li>Будь-які слоти підходять</li>
+                                        <li>Мінімальна ставка: ₴2</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn--ghost tournament-btn" type="button">Нагадати мені</button>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </section>
+        </div><!-- end page-turniry -->
+
+
+        <!-- ===== PAGE SECTION: МІЙ ПРОФІЛЬ ===== -->
+        <div class="page-section" id="page-profil">
+            <section class="section" aria-labelledby="profil-heading">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 id="profil-heading" class="section-title">
+                            <span class="section-title-icon icon--user"><i class="fa-solid fa-user"></i></span>
+                            Мій профіль
+                        </h2>
+                    </div>
+
+                    <div class="profile-layout">
+
+                        <!-- Profile card -->
+                        <div class="profile-card">
+                            <div class="profile-avatar">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </div>
+                            <div class="profile-identity">
+                                <p class="profile-name">Гравець_7842</p>
+                                <span class="profile-level"><i class="fa-solid fa-gem"></i> VIP Silver</span>
+                            </div>
+                            <div class="profile-stats-row">
+                                <div class="profile-stat">
+                                    <span class="profile-stat-value">₴12 480</span>
+                                    <span class="profile-stat-label">Виграно</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="profile-stat-value">347</span>
+                                    <span class="profile-stat-label">Ігор зіграно</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="profile-stat-value">68%</span>
+                                    <span class="profile-stat-label">Winrate</span>
+                                </div>
+                                <div class="profile-stat">
+                                    <span class="profile-stat-value">x124</span>
+                                    <span class="profile-stat-label">Кращий множник</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right column -->
+                        <div class="profile-right">
+
+                            <!-- Personal data form -->
+                            <div class="profile-section-block">
+                                <h3 class="profile-block-title"><i class="fa-solid fa-id-card"></i> Персональні дані
+                                </h3>
+                                <form class="profile-form" id="profile-personal-form" novalidate>
+                                    <div class="profile-form-grid">
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="pf-firstname">Ім'я</label>
+                                            <input class="profile-form-input" type="text" id="pf-firstname"
+                                                name="firstname" placeholder="Введіть ім'я" autocomplete="given-name">
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="pf-lastname">Прізвище</label>
+                                            <input class="profile-form-input" type="text" id="pf-lastname"
+                                                name="lastname" placeholder="Введіть прізвище"
+                                                autocomplete="family-name">
+                                        </div>
+                                        <div class="profile-form-group profile-form-group--full">
+                                            <label class="profile-form-label" for="pf-email">Email</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-envelope profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="email"
+                                                    id="pf-email" name="email" placeholder="example@mail.com"
+                                                    autocomplete="email">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="pf-phone">Телефон</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-phone profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="tel"
+                                                    id="pf-phone" name="phone" placeholder="+380 XX XXX XX XX"
+                                                    autocomplete="tel">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="pf-dob">Дата народження</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-calendar-days profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="date"
+                                                    id="pf-dob" name="dob" autocomplete="bday">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="pf-country">Країна</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-globe profile-form-input-icon"></i>
+                                                <select
+                                                    class="profile-form-input profile-form-input--icon profile-form-select"
+                                                    id="pf-country" name="country" autocomplete="country">
+                                                    <option value="" disabled selected>Оберіть країну</option>
+                                                    <option value="UA">🇺🇦 Україна</option>
+                                                    <option value="PL">🇵🇱 Польща</option>
+                                                    <option value="DE">🇩🇪 Германія</option>
+                                                    <option value="GB">🇬🇧 Велика Британія</option>
+                                                    <option value="FR">🇫🇷 Франція</option>
+                                                    <option value="US">🇺🇸 США</option>
+                                                    <option value="OTHER">Інша</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-form-actions">
+                                        <button class="btn btn--primary profile-form-btn" type="submit"
+                                            id="pf-save-btn">
+                                            <i class="fa-solid fa-floppy-disk"></i> Зберегти зміни
+                                        </button>
+                                        <span class="profile-form-success" id="pf-success" aria-live="polite"></span>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Payment Card -->
+                            <div class="profile-section-block">
+                                <h3 class="profile-block-title"><i class="fa-solid fa-credit-card"></i> Моя картка</h3>
+
+                                <!-- Visual card preview -->
+                                <div class="card-preview" id="card-preview" aria-label="Попередній перегляд картки">
+                                    <div class="card-preview-inner">
+                                        <div class="card-preview-top">
+                                            <div class="card-chip" aria-hidden="true">
+                                                <i class="fa-solid fa-microchip"></i>
+                                            </div>
+                                            <div class="card-network" id="card-network-logo"
+                                                aria-label="Платіжна система">
+                                                <i class="fa-brands fa-cc-visa"></i>
+                                            </div>
+                                        </div>
+                                        <div class="card-number-display" id="card-number-display"
+                                            aria-label="Номер картки">
+                                            •••• •••• •••• ••••
+                                        </div>
+                                        <div class="card-preview-bottom">
+                                            <div class="card-holder-wrap">
+                                                <span class="card-field-label">Власник</span>
+                                                <span class="card-holder-display" id="card-holder-display">ВАШЕ
+                                                    ІМ'Я</span>
+                                            </div>
+                                            <div class="card-expiry-wrap">
+                                                <span class="card-field-label">Дійсна до</span>
+                                                <span class="card-expiry-display" id="card-expiry-display">MM/YY</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Card input form -->
+                                <form class="profile-form" id="card-form" novalidate style="margin-top:20px;">
+                                    <div class="profile-form-grid">
+                                        <div class="profile-form-group profile-form-group--full">
+                                            <label class="profile-form-label" for="cf-number">Номер картки</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-credit-card profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="text"
+                                                    id="cf-number" name="cardnumber" placeholder="0000 0000 0000 0000"
+                                                    maxlength="19" inputmode="numeric" autocomplete="cc-number">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group profile-form-group--full">
+                                            <label class="profile-form-label" for="cf-holder">Ім'я власника</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-user profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="text"
+                                                    id="cf-holder" name="cardholder"
+                                                    placeholder="Як на картці (латиницею)" autocomplete="cc-name">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="cf-expiry">Дійсна до</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-calendar profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon" type="text"
+                                                    id="cf-expiry" name="expiry" placeholder="MM/YY" maxlength="5"
+                                                    inputmode="numeric" autocomplete="cc-exp">
+                                            </div>
+                                        </div>
+                                        <div class="profile-form-group">
+                                            <label class="profile-form-label" for="cf-cvv">CVV / CVC</label>
+                                            <div class="profile-form-input-wrap">
+                                                <i class="fa-solid fa-lock profile-form-input-icon"></i>
+                                                <input class="profile-form-input profile-form-input--icon"
+                                                    type="password" id="cf-cvv" name="cvv" placeholder="•••"
+                                                    maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="profile-form-actions">
+                                        <button class="btn btn--primary profile-form-btn" type="submit"
+                                            id="cf-save-btn">
+                                            <i class="fa-solid fa-link"></i> Прив'язати картку
+                                        </button>
+                                        <span class="profile-form-success" id="cf-success" aria-live="polite"></span>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Rewards -->
+                            <div class="profile-section-block">
+                                <h3 class="profile-block-title"><i class="fa-solid fa-medal"></i> Персональні нагороди
+                                </h3>
+                                <div class="rewards-grid">
+                                    <div class="reward-item reward-item--gold">
+                                        <i class="fa-solid fa-trophy"></i>
+                                        <span>1-е місце</span>
+                                        <small>Weekend Blitz, лют. 2026</small>
+                                    </div>
+                                    <div class="reward-item reward-item--silver">
+                                        <i class="fa-solid fa-medal"></i>
+                                        <span>2-е місце</span>
+                                        <small>Fishing Frenzy, січ. 2026</small>
+                                    </div>
+                                    <div class="reward-item reward-item--bronze">
+                                        <i class="fa-solid fa-award"></i>
+                                        <span>3-є місце</span>
+                                        <small>Golden Slots, груд. 2025</small>
+                                    </div>
+                                    <div class="reward-item">
+                                        <i class="fa-solid fa-fire"></i>
+                                        <span>Серія 7 днів</span>
+                                        <small>Лояльність</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Game history -->
+                            <div class="profile-section-block">
+                                <h3 class="profile-block-title"><i class="fa-solid fa-clock-rotate-left"></i> Історія
+                                    ігор</h3>
+                                <div class="history-table">
+                                    <div class="history-row history-row--header">
+                                        <span>Гра</span>
+                                        <span>Ставка</span>
+                                        <span>Виграш</span>
+                                        <span>Дата</span>
+                                    </div>
+                                    <div class="history-row history-row--win">
+                                        <span>Sweet Bonanza</span>
+                                        <span>₴50</span>
+                                        <span class="win-amount">+₴1 200</span>
+                                        <span>04.03.2026</span>
+                                    </div>
+                                    <div class="history-row history-row--loss">
+                                        <span>Zeus vs Hades</span>
+                                        <span>₴100</span>
+                                        <span class="loss-amount">−₴100</span>
+                                        <span>03.03.2026</span>
+                                    </div>
+                                    <div class="history-row history-row--win">
+                                        <span>Big Bass Bonanza</span>
+                                        <span>₴25</span>
+                                        <span class="win-amount">+₴340</span>
+                                        <span>03.03.2026</span>
+                                    </div>
+                                    <div class="history-row history-row--loss">
+                                        <span>Fishing Club</span>
+                                        <span>₴20</span>
+                                        <span class="loss-amount">−₴20</span>
+                                        <span>02.03.2026</span>
+                                    </div>
+                                    <div class="history-row history-row--win">
+                                        <span>Starlight Princess 1000</span>
+                                        <span>₴200</span>
+                                        <span class="win-amount">+₴5 800</span>
+                                        <span>01.03.2026</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div><!-- end page-profil -->
+
+    </main>
+
+    <script>
+        (function () {
+            var navBtns = document.querySelectorAll('#main-nav .nav-tabs-item');
+            var pageSections = document.querySelectorAll('.page-section');
+
+            navBtns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var targetId = 'page-' + btn.getAttribute('data-tab');
+
+                    // Update active tab
+                    navBtns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    // Show/hide sections
+                    pageSections.forEach(function (sec) {
+                        if (sec.id === targetId) {
+                            sec.classList.add('active');
+                        } else {
+                            sec.classList.remove('active');
+                        }
+                    });
+
+                    // Scroll to top of main content
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // Personal data form — save feedback
+            var pfForm = document.getElementById('profile-personal-form');
+            if (pfForm) {
+                pfForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var successEl = document.getElementById('pf-success');
+                    successEl.textContent = '✓ Збережено!';
+                    successEl.classList.add('visible');
+                    setTimeout(function () {
+                        successEl.classList.remove('visible');
+                    }, 3000);
+                });
+            }
+
+            // ── Card live preview ──────────────────────────────────────
+            var cfNumber = document.getElementById('cf-number');
+            var cfHolder = document.getElementById('cf-holder');
+            var cfExpiry = document.getElementById('cf-expiry');
+            var numDisplay = document.getElementById('card-number-display');
+            var holDisplay = document.getElementById('card-holder-display');
+            var expDisplay = document.getElementById('card-expiry-display');
+            var netLogo = document.getElementById('card-network-logo');
+            var cfForm = document.getElementById('card-form');
+
+            function detectNetwork(num) {
+                if (/^4/.test(num)) return '<i class="fa-brands fa-cc-visa"></i>';
+                if (/^5[1-5]/.test(num)) return '<i class="fa-brands fa-cc-mastercard"></i>';
+                if (/^3[47]/.test(num)) return '<i class="fa-brands fa-cc-amex"></i>';
+                if (/^6/.test(num)) return '<i class="fa-brands fa-cc-discover"></i>';
+                return '<i class="fa-brands fa-cc-visa"></i>';
+            }
+
+            if (cfNumber) {
+                cfNumber.addEventListener('input', function () {
+                    // Keep only digits and format as groups of 4
+                    var digits = this.value.replace(/\D/g, '').slice(0, 16);
+                    var formatted = digits.replace(/(.{4})/g, '$1 ').trim();
+                    this.value = formatted;
+
+                    // Update display: replace missing digits with bullets
+                    var padded = digits.padEnd(16, '•');
+                    numDisplay.textContent =
+                        padded.slice(0, 4) + ' ' +
+                        padded.slice(4, 8) + ' ' +
+                        padded.slice(8, 12) + ' ' +
+                        padded.slice(12, 16);
+
+                    netLogo.innerHTML = detectNetwork(digits);
+                });
+            }
+
+            if (cfHolder) {
+                cfHolder.addEventListener('input', function () {
+                    var val = this.value.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
+                    holDisplay.textContent = val || "ВАШЕ ІМ'Я";
+                });
+            }
+
+            if (cfExpiry) {
+                cfExpiry.addEventListener('input', function () {
+                    var digits = this.value.replace(/\D/g, '').slice(0, 4);
+                    if (digits.length >= 3) {
+                        this.value = digits.slice(0, 2) + '/' + digits.slice(2);
+                    } else {
+                        this.value = digits;
+                    }
+                    expDisplay.textContent = this.value || 'MM/YY';
+                });
+            }
+
+            if (cfForm) {
+                cfForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var successEl = document.getElementById('cf-success');
+                    successEl.textContent = '✓ Картку прив\'язано!';
+                    successEl.classList.add('visible');
+                    setTimeout(function () {
+                        successEl.classList.remove('visible');
+                    }, 3000);
+                });
+            }
+            // ─────────────────────────────────────────────────────────
+        })();
+    </script>
+
+    <footer class="footer" aria-label="Підвал сайту">
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <!-- Brand column -->
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="JSBET — на головну">
+                        <img src="index-files/icons/unnamed-removebg-preview.png" alt="">
+                    </a>
+                    <p class="footer-description">
+                        Ліцензовані онлайн-ігри. Відповідальна гра — наш пріоритет.
+                        Грай відповідально, встановлюй ліміти.
+                    </p>
+                </div>
+
+                <nav aria-label="Ігри">
+                    <h3 class="footer-heading">Ігри</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Всі слоти</a></li>
+                        <li><a href="#" class="footer-link">Live games</a></li>
+                        <li><a href="#" class="footer-link">Джекпоти</a></li>
+                        <li><a href="#" class="footer-link">Нові ігри</a></li>
+                        <li><a href="#" class="footer-link">Популярні</a></li>
+                    </ul>
                 </nav>
+
+                <nav aria-label="Інформація">
+                    <h3 class="footer-heading">Інформація</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Про нас</a></li>
+                        <li><a href="#" class="footer-link">Бонуси</a></li>
+                        <li><a href="#" class="footer-link">Турніри</a></li>
+                        <li><a href="#" class="footer-link">VIP-клуб</a></li>
+                        <li><a href="#" class="footer-link">Новини</a></li>
+                    </ul>
+                </nav>
+
+                <nav aria-label="Підтримка">
+                    <h3 class="footer-heading">Підтримка</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Служба підтримки</a></li>
+                        <li><a href="#" class="footer-link">Умови використання</a></li>
+                        <li><a href="#" class="footer-link">Конфіденційність</a></li>
+                        <li><a href="#" class="footer-link">Відповідальна гра</a></li>
+                        <li><a href="#" class="footer-link">AML Політика</a></li>
+                    </ul>
+                </nav>
+
             </div>
+
+            <div class="footer-payments" aria-label="Методи оплати">
+                <img class="payment-icon" src="index-files/payments/visaColor.svg" alt="Visa" height="24">
+                <img class="payment-icon" src="index-files/payments/mastercard.svg" alt="Mastercard" height="24">
+                <img class="payment-icon" src="index-files/payments/googlepay.svg" alt="Google Pay" height="24">
+                <img class="payment-icon" src="index-files/payments/applepay.svg" alt="Apple Pay" height="24">
+            </div>
+
+            <p class="footer-bottom">
+                © 2025 JSBET. Усі права захищено. Сайт призначений для осіб старше 21 року.
+                Грайте відповідально. Якщо гра стає проблемою — зверніться по допомогу.
+            </p>
 
         </div>
-    </div>
-</header>
-
-
-<main>
-
-    <section class="hero" aria-label="Вітальний банер">
-        <div class="container">
-            <div class="hero-inner">
-
-                <p class="hero-eyebrow">
-                    <i class="fa-solid fa-fire"></i> Понад 3000 ігор
-                </p>
-
-                <h1 class="hero-title">
-                    Грай. Вигравай.<br>
-                    <span class="accent">Відчувай азарт.</span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    Найкращі слоти, Live games та джекпоти від провідних провайдерів. Реєструйся та отримуй бонуси
-                    прямо зараз!
-                </p>
-
-                <div class="hero-actions">
-                    <button class="btn btn--primary" type="button">Почати грати</button>
-                    <button class="btn btn--ghost" type="button">Дізнатись більше</button>
-                </div>
-
-                <!-- Quick stats -->
-                <div class="stats-bar" aria-label="Статистика ігор">
-                    <div class="stats-bar-item">
-                        <div class="stats-bar-value">3 000+</div>
-                        <div class="stats-bar-label">ігор</div>
-                    </div>
-                    <div class="stats-bar-item">
-                        <div class="stats-bar-value">50+</div>
-                        <div class="stats-bar-label">провайдерів</div>
-                    </div>
-                    <div class="stats-bar-item">
-                        <div class="stats-bar-value">24/7</div>
-                        <div class="stats-bar-label">підтримка</div>
-                    </div>
-                    <div class="stats-bar-item">
-                        <div class="stats-bar-value">₴1 000 000</div>
-                        <div class="stats-bar-label">виплачено сьогодні</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="container">
-        <div class="category-row" aria-label="Фільтр за тематикою">
-            <ul class="category-row-list" role="list">
-                <li>
-                    <button class="category-chip active" type="button">Всі</button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Фрукти.jpg" alt=""
-                             loading="lazy">
-                        Фрукти
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Книги.jpg" alt=""
-                             loading="lazy">
-                        Книги
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Монети.jpg" alt=""
-                             loading="lazy">
-                        Монети
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Скарби.jpg" alt=""
-                             loading="lazy">
-                        Скарби
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Єгипет.jpg" alt=""
-                             loading="lazy">
-                        Єгипет
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Кристали.jpg" alt=""
-                             loading="lazy">
-                        Кристали
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Тварини.jpg" alt=""
-                             loading="lazy">
-                        Тварини
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Рибалка.jpg" alt=""
-                             loading="lazy">
-                        Рибалка
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Вегас.jpg" alt=""
-                             loading="lazy">
-                        Вегас
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Вікінги.jpg" alt=""
-                             loading="lazy">
-                        Вікінги
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Ретро.jpg" alt=""
-                             loading="lazy">
-                        Ретро
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Солодощі.jpg" alt=""
-                             loading="lazy">
-                        Солодощі
-                    </button>
-                </li>
-                <li>
-                    <button class="category-chip" type="button">
-                        <img class="category-chip-thumb" src="index-files/categories/Класика.jpg" alt=""
-                             loading="lazy">
-                        Класика
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <section class="section" aria-labelledby="popular-heading">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 id="popular-heading" class="section-title">
-                    <span class="section-title-icon icon--fire"><i class="fa-solid fa-fire"></i></span>
-                    Популярні
-                    <span class="section-count">· 18 ігор</span>
-                </h2>
-                <a href="#" class="section-link">Усі ігри →</a>
-            </div>
-
-            <div class="games-grid" role="list">
-
-                <article class="game-card" role="listitem" aria-label="Sweet Bonanza">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Sweet Bonanza.webp" alt="Sweet Bonanza"
-                             loading="lazy">
-                        <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Sweet Bonanza</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Big Bass Bonanza">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/BigBassBonanza.webp"
-                             alt="Big Bass Bonanza" loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Big Bass Bonanza</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="The Dog House">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/TheDogHouse.webp" alt="The Dog House"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">The Dog House</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Starlight Princess 1000">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Starlight Princess 1000.webp"
-                             alt="Starlight Princess 1000" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Starlight Princess 1000</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Madame Destiny Megaways">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/MadameDestinyMegaways.webp"
-                             alt="Madame Destiny Megaways" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Madame Destiny Megaways</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Zeus vs Hades">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/zeus-vs-hades-gods-of-war-250.webp"
-                             alt="Zeus vs Hades: Gods of War" loading="lazy">
-                        <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Zeus vs Hades</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Gates of Olympus Super Scatter">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/imgi_24_GatesofOlympusSuperScatt.webp"
-                             alt="Gates of Olympus Super Scatter" loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Gates of Olympus SS</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Snooop Dogg Dollars">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/SnoopDoggDollars.webp"
-                             alt="Snoop Dogg Dollars" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Snoop Dogg Dollars</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Aztec Magic Bonanza">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/AztecMagicBonanza.webp"
-                             alt="Aztec Magic Bonanza" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Aztec Magic Bonanza</p>
-                        <p class="game-card-provider">BGaming</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Sun of Egypt 3">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/SunOfEgypt3.webp" alt="Sun of Egypt 3"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Sun of Egypt 3</p>
-                        <p class="game-card-provider">Booongo</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Wild Cash x9990">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/WildCashX9990.webp" alt="Wild Cash x9990"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Wild Cash x9990</p>
-                        <p class="game-card-provider">Endorphina</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Rainbow Reels">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/RainbowReels.webp" alt="Rainbow Reels"
-                             loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Rainbow Reels</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section" aria-labelledby="new-heading">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 id="new-heading" class="section-title">
-                    <span class="section-title-icon icon--star"><i class="fa-solid fa-star"></i></span>
-                    Нові ігри
-                    <span class="section-count">· 12 ігор</span>
-                </h2>
-                <a href="#" class="section-link">Усі нові →</a>
-            </div>
-
-            <div class="games-grid" role="list">
-
-                <article class="game-card" role="listitem" aria-label="Big Bass Splash">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Big Bass Splash.webp"
-                             alt="Big Bass Splash" loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Big Bass Splash</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Coral Island">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/CoralIsland.webp" alt="Coral Island"
-                             loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Coral Island</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Army of Ares">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/ArmyofAres.webp" alt="Army of Ares"
-                             loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Army of Ares</p>
-                        <p class="game-card-provider">Relax Gaming</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Fire Coins Hold and Win">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/FireCoinsHoldandWin.webp"
-                             alt="Fire Coins Hold and Win" loading="lazy">
-                        <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Fire Coins Hold &amp; Win</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Joker Blaze">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/JokerBlaze.webp" alt="Joker Blaze"
-                             loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Joker Blaze</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Coin Spin Fever">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/CoinSpinFever.webp" alt="Coin Spin Fever"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Coin Spin Fever</p>
-                        <p class="game-card-provider">3 Oaks</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Queen of Greece">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/QueenOfGreece.webp" alt="Queen of Greece"
-                             loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Queen of Greece</p>
-                        <p class="game-card-provider">Amatic</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Solar Queen">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/SolarQueen.webp" alt="Solar Queen"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Solar Queen</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Poseidon Wild Wrath">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Poseidon Wild Wrath.webp"
-                             alt="Poseidon Wild Wrath" loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Poseidon Wild Wrath</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Supercharged Clovers Hold and Win">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img"
-                             src="index-files/games/SuperchargedCloversHoldandWin@513x767@x2.webp"
-                             alt="Supercharged Clovers Hold and Win" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Supercharged Clovers H&amp;W</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Glowberry Blast">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/GlowBerryBlast.webp" alt="Glowberry Blast"
-                             loading="lazy">
-                        <span class="badge badge--new"><i class="fa-solid fa-star"></i> Новинка</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Glowberry Blast</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Serengeti Sunrise">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Serengeti Sunrise.webp"
-                             alt="Serengeti Sunrise" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Serengeti Sunrise</p>
-                        <p class="game-card-provider">Spribe</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section" aria-labelledby="jackpot-heading">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 id="jackpot-heading" class="section-title">
-                    <span class="section-title-icon icon--gem"><i class="fa-solid fa-gem"></i></span>
-                    Джекпоти
-                    <span class="section-count">· 8 ігор</span>
-                </h2>
-                <a href="#" class="section-link">Усі джекпоти →</a>
-            </div>
-
-            <div class="games-grid" role="list">
-
-                <article class="game-card" role="listitem" aria-label="3 Pots Riches Hold and Win">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/3PotsRichesHoldandWin@4x@x2.webp"
-                             alt="3 Pots Riches Hold and Win" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">3 Pots Riches H&amp;W</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Thunder Coins Hold and Win">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/ThunderCoinsHoldandWin@513x767@x2.webp"
-                             alt="Thunder Coins Hold and Win" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Thunder Coins Hold &amp; Win</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Book of Egyptian Marvel">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/BookOfEgyptianMarvel.webp"
-                             alt="Book of Egyptian Marvel" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Book of Egyptian Marvel</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Sweet Bonanza 1000">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Sweet Bonanza.webp"
-                             alt="Sweet Bonanza 1000" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Sweet Bonanza 1000</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Amazing Diamonds">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Amazing_Diamonds.webp"
-                             alt="Amazing Diamonds" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Amazing Diamonds</p>
-                        <p class="game-card-provider">Amatic</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Good Luck Good Fortune">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/GoodLuckGoodFortune.webp"
-                             alt="Good Luck Good Fortune" loading="lazy">
-                        <span class="badge badge--jackpot"><i class="fa-solid fa-gem"></i> Джекпот</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Good Luck Good Fortune</p>
-                        <p class="game-card-provider">Pragmatic Play</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section" aria-labelledby="fishing-heading">
-        <div class="container">
-
-            <div class="section-header">
-                <h2 id="fishing-heading" class="section-title">
-                    <span class="section-title-icon icon--fish"><i class="fa-solid fa-fish"></i></span>
-                    Рибалка
-                    <span class="section-count">· 8 ігор</span>
-                </h2>
-                <a href="#" class="section-link">Усі →</a>
-            </div>
-
-            <div class="games-grid" role="list">
-
-                <article class="game-card" role="listitem" aria-label="Fishing Club">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/FishingClub.webp" alt="Fishing Club"
-                             loading="lazy">
-                        <span class="badge badge--hot"><i class="fa-solid fa-fire"></i> Хіт</span>
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Fishing Club</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Fishin Reels">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/FishinReels.webp" alt="Fishin Reels"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Fishin' Reels</p>
-                        <p class="game-card-provider">Iron Dog</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Marlin Masters The Big Haul">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/MarlinMastersTheBigHaul.webp"
-                             alt="Marlin Masters" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Marlin Masters: Big Haul</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Fishin Bear">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/FishinBear.webp" alt="Fishin Bear"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Fishin' Bear</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Trouts Treasure Payday">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/TroutsTreasurePayday@513x767@x2.webp"
-                             alt="Trout's Treasure: Payday" loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Trout's Treasure: Payday</p>
-                        <p class="game-card-provider">Playson</p>
-                    </div>
-                </article>
-
-                <article class="game-card" role="listitem" aria-label="Fish Day">
-                    <div class="game-card-thumb">
-                        <img class="game-card-img" src="index-files/games/Fish Day.webp" alt="Fish Day"
-                             loading="lazy">
-                        <div class="game-card-overlay" aria-hidden="true">
-                            <div class="game-card-play-btn">▶</div>
-                        </div>
-                    </div>
-                    <div class="game-card-info">
-                        <p class="game-card-name">Fish Day</p>
-                        <p class="game-card-provider">3 Oaks</p>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer class="footer" aria-label="Підвал сайту">
-    <div class="container">
-
-        <div class="footer-inner">
-
-            <!-- Brand column -->
-            <div class="footer-brand">
-                <a href="#" class="logo" aria-label="JSBET — на головну">
-                    <img src="index-files/icons/unnamed-removebg-preview.png" alt="">
-                </a>
-                <p class="footer-description">
-                    Ліцензовані онлайн-ігри. Відповідальна гра — наш пріоритет.
-                    Грай відповідально, встановлюй ліміти.
-                </p>
-            </div>
-
-            <nav aria-label="Ігри">
-                <h3 class="footer-heading">Ігри</h3>
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Всі слоти</a></li>
-                    <li><a href="#" class="footer-link">Live games</a></li>
-                    <li><a href="#" class="footer-link">Джекпоти</a></li>
-                    <li><a href="#" class="footer-link">Нові ігри</a></li>
-                    <li><a href="#" class="footer-link">Популярні</a></li>
-                </ul>
-            </nav>
-
-            <nav aria-label="Інформація">
-                <h3 class="footer-heading">Інформація</h3>
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Про нас</a></li>
-                    <li><a href="#" class="footer-link">Бонуси</a></li>
-                    <li><a href="#" class="footer-link">Турніри</a></li>
-                    <li><a href="#" class="footer-link">VIP-клуб</a></li>
-                    <li><a href="#" class="footer-link">Новини</a></li>
-                </ul>
-            </nav>
-
-            <nav aria-label="Підтримка">
-                <h3 class="footer-heading">Підтримка</h3>
-                <ul class="footer-links">
-                    <li><a href="#" class="footer-link">Служба підтримки</a></li>
-                    <li><a href="#" class="footer-link">Умови використання</a></li>
-                    <li><a href="#" class="footer-link">Конфіденційність</a></li>
-                    <li><a href="#" class="footer-link">Відповідальна гра</a></li>
-                    <li><a href="#" class="footer-link">AML Політика</a></li>
-                </ul>
-            </nav>
-
-        </div>
-
-        <div class="footer-payments" aria-label="Методи оплати">
-            <img class="payment-icon" src="index-files/payments/visaColor.svg" alt="Visa" height="24">
-            <img class="payment-icon" src="index-files/payments/mastercard.svg" alt="Mastercard" height="24">
-            <img class="payment-icon" src="index-files/payments/googlepay.svg" alt="Google Pay" height="24">
-            <img class="payment-icon" src="index-files/payments/applepay.svg" alt="Apple Pay" height="24">
-        </div>
-
-        <p class="footer-bottom">
-            © 2025 JSBET. Усі права захищено. Сайт призначений для осіб старше 21 року.
-            Грайте відповідально. Якщо гра стає проблемою — зверніться по допомогу.
-        </p>
-
-    </div>
-</footer>
+    </footer>
 
 </body>
 
