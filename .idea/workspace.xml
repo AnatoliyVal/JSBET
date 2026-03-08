@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c2799b5d-8007-4dfa-b8af-ecb51ce6a5b6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Єгипет.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Єгипет.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Вегас.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Вегас.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Вікінги.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Вікінги.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Класика.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Класика.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Книги.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Книги.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Кристали.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Кристали.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Монети.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Монети.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Ретро.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Ретро.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Рибалка.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Рибалка.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Скарби.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Скарби.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Солодощі.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Солодощі.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Тварини.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Тварини.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Фрукти.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/categories/Фрукти.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/3PotsRichesHoldandWin@4x@x2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Amazing_Diamonds.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/ArmyofAres.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/AztecMagicBonanza.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Big Bass Splash.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/BigBassBonanza.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/BookOfEgyptianMarvel.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/CoinSpinFever.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/CoralIsland.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/FireCoinsHoldandWin.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Fish Day.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/FishinBear.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/FishinReels.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/FishingClub.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/GlowBerryBlast.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/GoodLuckGoodFortune.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/JokerBlaze.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/MadameDestinyMegaways.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/MarlinMastersTheBigHaul.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Poseidon Wild Wrath.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/QueenOfGreece.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/RainbowReels.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Serengeti Sunrise.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/SnoopDoggDollars.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/SolarQueen.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Starlight Princess 1000.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/SunOfEgypt3.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/SuperchargedCloversHoldandWin@513x767@x2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/Sweet Bonanza.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/TheDogHouse.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/ThunderCoinsHoldandWin@513x767@x2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/TroutsTreasurePayday@513x767@x2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/WildCashX9990.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/imgi_24_GatesofOlympusSuperScatt.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/games/zeus-vs-hades-gods-of-war-250.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/icons/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/icons/unnamed-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/icons/unnamed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/payments/applepay.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/payments/googlepay.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/payments/mastercard.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index-files/payments/visaColor.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style/style.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/AnatoliyVal/JSBET.git",
+    "accountId": "aa7ea2a0-106c-4242-9da6-34150f44bebf"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="3AOMLq2dE9kRI5qRVR0GWqpG3Pp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/політєх/2 курс/2 семестер/веб/1 лаба варіант 2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\політєх\2 курс\2 семестер\веб\1 лаба варіант 2\style" />
+      <recent name="D:\політєх\2 курс\2 семестер\веб\1 лаба варіант 2" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-WS-252.28539.21" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c2799b5d-8007-4dfa-b8af-ecb51ce6a5b6" name="Changes" comment="" />
+      <created>1772459110944</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1772459110944</updated>
+      <workItem from="1772459112229" duration="12281000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
