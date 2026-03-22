@@ -1,0 +1,73 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  @include scrollbar-hidden;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @include respond-to(xs) {
+    gap: 2px;
+    padding: 4px 0;
+  }
+}
+
+.nav-tabs-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: $radius-pill;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text-secondary;
+  white-space: nowrap;
+  transition: color $transition-fast, background $transition-fast;
+  cursor: pointer;
+  border: none;
+  background: none;
+
+  &:hover {
+    color: $color-text-primary;
+    background: $color-bg-nav;
+  }
+
+  &.active {
+    background: $color-bg-tab-active;
+    color: $color-text-dark;
+    font-weight: 700;
+
+    .nav-tabs-icon i {
+      color: $color-text-dark;
+    }
+  }
+
+  @include respond-to(xl) {
+    padding: 6px 10px;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  @include respond-to(xs) {
+    padding: 5px 8px;
+    font-size: 11px;
+    gap: 4px;
+  }
+}
+
+.nav-tabs-icon {
+  font-size: 16px;
+  line-height: 1;
+
+  i {
+    font-size: 13px;
+  }
+
+  &--live i {
+    color: $color-live;
+  }
+}

@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.category-row {
+  padding: 20px 0 0;
+  overflow-x: auto;
+  @include scrollbar-hidden;
+}
+
+.category-row-list {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: $radius-pill;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-text-secondary;
+  cursor: pointer;
+  transition: background $transition-fast, color $transition-fast, border-color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: $color-text-primary;
+  }
+
+  &.active {
+    background: $color-gold-dim;
+    border-color: $color-border-gold;
+    color: $color-gold;
+    font-weight: 600;
+    height: 100%;
+  }
+
+  @include respond-to(xs) {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+}
+
+.category-chip-thumb {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+
+  @include respond-to(xs) {
+    width: 24px;
+    height: 24px;
+  }
+}

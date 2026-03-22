@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.badge {
+  @include badge-base;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+
+  i {
+    font-size: 9px;
+  }
+
+  &--new {
+    background: rgba(34, 197, 93, 0.85);
+    color: #fff;
+  }
+
+  &--hot {
+    background: rgba(255, 61, 0, 0.9);
+    color: #fff;
+  }
+
+  &--jackpot {
+    background: rgba(255, 206, 0, 0.9);
+    color: $color-text-dark;
+  }
+
+  &--live {
+    background: rgba(255, 61, 0, 0.9);
+    color: #fff;
+    gap: 5px;
+
+    &::before {
+      @include live-dot;
+    }
+  }
+}

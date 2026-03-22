@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "sass": "^1.98.0"
+  },
+  "scripts": {
+    "sass:build": "node node_modules/sass/sass.js style/scss/main.scss style/style.css --style=expanded",
+    "sass:watch": "node node_modules/sass/sass.js style/scss/main.scss style/style.css --watch --style=expanded"
+  }
+}

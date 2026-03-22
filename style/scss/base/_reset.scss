@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as *;
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+:root {
+  --color-bg-site: #{$color-bg-site};
+  --color-bg-card: #{$color-bg-card};
+  --color-bg-card-hover: #{$color-bg-card-hover};
+  --color-bg-header: #{$color-bg-header};
+  --color-bg-input: #{$color-bg-input};
+  --color-bg-nav: #{$color-bg-nav};
+  --color-bg-tab-active: #{$color-bg-tab-active};
+  --color-bg-overlay: #{$color-bg-overlay};
+
+  --color-gold: #{$color-gold};
+  --color-gold-hover: #{$color-gold-hover};
+  --color-gold-dim: #{$color-gold-dim};
+  --color-green: #{$color-green};
+  --color-red: #{$color-red};
+  --color-live: #{$color-live};
+
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-text-gold: #{$color-text-gold};
+  --color-text-dark: #{$color-text-dark};
+
+  --color-border: #{$color-border};
+  --color-border-gold: #{$color-border-gold};
+
+  --header-height: #{$header-height};
+  --container-max: #{$container-max};
+
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-pill: #{$radius-pill};
+
+  --transition-fast: #{$transition-fast};
+  --transition-med: #{$transition-med};
+}
+
+main {
+  padding-top: var(--header-height);
+}

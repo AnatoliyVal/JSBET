@@ -1,0 +1,157 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 48px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse at center,
+            rgba(255, 206, 0, 0.08) 0%,
+            rgba(255, 206, 0, 0.03) 40%,
+            transparent 70%);
+    pointer-events: none;
+  }
+
+  @include respond-to(xl) {
+    padding: 32px 0 28px;
+  }
+
+  @include respond-to(xs) {
+    padding: 20px 0 18px;
+  }
+}
+
+.hero-inner {
+  position: relative;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: $color-gold-dim;
+  border: 1px solid $color-border-gold;
+  border-radius: $radius-pill;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $color-gold;
+  margin-bottom: 20px;
+
+  i {
+    color: $color-gold;
+  }
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+
+  .accent {
+    @include gold-text-gradient;
+  }
+
+  @include respond-to(xs) {
+    font-size: clamp(22px, 8vw, 36px);
+    line-height: 1.2;
+  }
+}
+
+.hero-subtitle {
+  font-size: 17px;
+  color: $color-text-secondary;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+
+  @include respond-to(xs) {
+    font-size: 13px;
+  }
+}
+
+.hero-actions {
+  @include flex-center;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  .btn {
+    height: 48px;
+    padding: 0 28px;
+    font-size: 15px;
+  }
+
+  @include respond-to(xs) {
+    flex-direction: column;
+    gap: 8px;
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+.stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 24px 0 0;
+  flex-wrap: wrap;
+
+  @include respond-to(xl) {
+    gap: 20px;
+  }
+
+  @include respond-to(xs) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}
+
+.stats-bar-item {
+  text-align: center;
+}
+
+.stats-bar-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: $color-gold;
+  line-height: 1;
+  margin-bottom: 4px;
+
+  @include respond-to(xl) {
+    font-size: 18px;
+  }
+
+  @include respond-to(xs) {
+    font-size: 16px;
+  }
+}
+
+.stats-bar-label {
+  font-size: 12px;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  @include respond-to(xs) {
+    font-size: 11px;
+  }
+}
