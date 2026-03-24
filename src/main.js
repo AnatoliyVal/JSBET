@@ -1,6 +1,6 @@
 (function () {
 
-    var GAMES_POOL = [
+    let GAMES_POOL = [
         {
             name: 'Sweet Bonanza',
             img: 'index-files/games/Sweet Bonanza.webp',
@@ -256,21 +256,21 @@
     }
 
     function generateRecommended() {
-        var grid = document.getElementById('recommended-grid');
+        let grid = document.getElementById('recommended-grid');
         if (!grid) return;
 
-        var pool = GAMES_POOL.slice();
-        var picked = [];
-        var count = 0;
+        let pool = GAMES_POOL.slice();
+        let picked = [];
+        let count = 0;
         while (count < 6 && pool.length > 0) {
-            var randIdx = Math.floor(Math.random() * pool.length);
+            let randIdx = Math.floor(Math.random() * pool.length);
             picked.push(pool[randIdx]);
             pool.splice(randIdx, 1);
             count++;
         }
 
-        var html = '';
-        for (var i = 0; i < picked.length; i++) {
+        let html = '';
+        for (let i = 0; i < picked.length; i++) {
             html += buildGameCardHTML(picked[i]);
         }
         grid.innerHTML = html;
@@ -280,7 +280,7 @@
 
     generateRecommended();
 
-    var refreshBtn = document.getElementById('refresh-recommended');
+    let refreshBtn = document.getElementById('refresh-recommended');
     if (refreshBtn) {
         refreshBtn.addEventListener('click', function () {
             refreshBtn.classList.add('spin');
@@ -298,8 +298,8 @@
             card.dataset.favBound = '1';
 
             card.addEventListener('dblclick', function () {
-                var isFav = card.classList.toggle('game-card--favourite');
-                var btn = card.querySelector('.game-card-fav-btn');
+                let isFav = card.classList.toggle('game-card--favourite');
+                let btn = card.querySelector('.game-card-fav-btn');
                 if (btn) {
                     btn.innerHTML = isFav
                         ? '<i class="fa-solid fa-heart"></i>'
@@ -311,9 +311,9 @@
     }
 
     document.querySelectorAll('.game-card').forEach(function (card) {
-        var thumb = card.querySelector('.game-card-thumb');
+        let thumb = card.querySelector('.game-card-thumb');
         if (thumb && !thumb.querySelector('.game-card-fav-btn')) {
-            var favBtn = document.createElement('button');
+            let favBtn = document.createElement('button');
             favBtn.className = 'game-card-fav-btn';
             favBtn.type = 'button';
             favBtn.title = 'Додати до улюблених';
@@ -326,12 +326,12 @@
     attachFavListeners(document.querySelectorAll('.game-card'));
 
 
-    var navBtns = document.querySelectorAll('#main-nav .nav-tabs-item');
-    var pageSections = document.querySelectorAll('.page-section');
+    let navBtns = document.querySelectorAll('#main-nav .nav-tabs-item');
+    let pageSections = document.querySelectorAll('.page-section');
 
     navBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
-            var targetId = 'page-' + btn.getAttribute('data-tab');
+            let targetId = 'page-' + btn.getAttribute('data-tab');
 
             navBtns.forEach(function (b) {
                 b.classList.remove('active');
@@ -355,14 +355,14 @@
     });
 
 
-    var REWARD_PLAYED = 347;
-    var REWARD_NEEDED = 500;
-    var REWARD_PCT = Math.round((REWARD_PLAYED / REWARD_NEEDED) * 100);
+    let REWARD_PLAYED = 347;
+    let REWARD_NEEDED = 500;
+    let REWARD_PCT = Math.round((REWARD_PLAYED / REWARD_NEEDED) * 100);
 
     function animateProgressBar() {
-        var fill = document.getElementById('reward-progress-fill');
-        var pctEl = document.getElementById('reward-progress-pct');
-        var track = fill && fill.parentElement;
+        let fill = document.getElementById('reward-progress-fill');
+        let pctEl = document.getElementById('reward-progress-pct');
+        let track = fill && fill.parentElement;
         if (!fill) return;
 
         fill.style.transition = 'none';
@@ -374,17 +374,17 @@
         fill.style.transition = 'width 1.4s cubic-bezier(0.4, 0, 0.2, 1)';
         fill.style.width = REWARD_PCT + '%';
 
-        var start = 0;
-        var end = REWARD_PCT;
-        var duration = 1400;
-        var startTime = null;
+        let start = 0;
+        let end = REWARD_PCT;
+        let duration = 1400;
+        let startTime = null;
 
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
-            var elapsed = timestamp - startTime;
-            var progress = Math.min(elapsed / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = Math.round(eased * end);
+            let elapsed = timestamp - startTime;
+            let progress = Math.min(elapsed / duration, 1);
+            let eased = 1 - Math.pow(1 - progress, 3);
+            let current = Math.round(eased * end);
             if (pctEl) pctEl.textContent = current + '%';
             if (track) track.setAttribute('aria-valuenow', Math.round(eased * REWARD_NEEDED));
             if (progress < 1) {
@@ -396,11 +396,11 @@
     }
 
 
-    var pfForm = document.getElementById('profile-personal-form');
+    let pfForm = document.getElementById('profile-personal-form');
     if (pfForm) {
         pfForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            var successEl = document.getElementById('pf-success');
+            let successEl = document.getElementById('pf-success');
             successEl.textContent = '✓ Збережено!';
             successEl.classList.add('visible');
             setTimeout(function () {
@@ -409,14 +409,14 @@
         });
     }
 
-    var cfNumber = document.getElementById('cf-number');
-    var cfHolder = document.getElementById('cf-holder');
-    var cfExpiry = document.getElementById('cf-expiry');
-    var numDisplay = document.getElementById('card-number-display');
-    var holDisplay = document.getElementById('card-holder-display');
-    var expDisplay = document.getElementById('card-expiry-display');
-    var netLogo = document.getElementById('card-network-logo');
-    var cfForm = document.getElementById('card-form');
+    let cfNumber = document.getElementById('cf-number');
+    let cfHolder = document.getElementById('cf-holder');
+    let cfExpiry = document.getElementById('cf-expiry');
+    let numDisplay = document.getElementById('card-number-display');
+    let holDisplay = document.getElementById('card-holder-display');
+    let expDisplay = document.getElementById('card-expiry-display');
+    let netLogo = document.getElementById('card-network-logo');
+    let cfForm = document.getElementById('card-form');
 
     function detectNetwork(num) {
         if (/^4/.test(num)) return '<i class="fa-brands fa-cc-visa"></i>';
@@ -428,10 +428,10 @@
 
     if (cfNumber) {
         cfNumber.addEventListener('input', function () {
-            var digits = this.value.replace(/\D/g, '').slice(0, 16);
-            var formatted = digits.replace(/(.{4})/g, '$1 ').trim();
+            let digits = this.value.replace(/\D/g, '').slice(0, 16);
+            let formatted = digits.replace(/(.{4})/g, '$1 ').trim();
             this.value = formatted;
-            var padded = digits.padEnd(16, '•');
+            let padded = digits.padEnd(16, '•');
             numDisplay.textContent =
                 padded.slice(0, 4) + ' ' +
                 padded.slice(4, 8) + ' ' +
@@ -443,14 +443,14 @@
 
     if (cfHolder) {
         cfHolder.addEventListener('input', function () {
-            var val = this.value.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
+            let val = this.value.replace(/[^a-zA-Z\s]/g, '').toUpperCase();
             holDisplay.textContent = val || "ВАШЕ ІМ'Я";
         });
     }
 
     if (cfExpiry) {
         cfExpiry.addEventListener('input', function () {
-            var digits = this.value.replace(/\D/g, '').slice(0, 4);
+            let digits = this.value.replace(/\D/g, '').slice(0, 4);
             if (digits.length >= 3) {
                 this.value = digits.slice(0, 2) + '/' + digits.slice(2);
             } else {
@@ -463,7 +463,7 @@
     if (cfForm) {
         cfForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            var successEl = document.getElementById('cf-success');
+            let successEl = document.getElementById('cf-success');
             successEl.textContent = '✓ Картку прив\'язано!';
             successEl.classList.add('visible');
             setTimeout(function () {
