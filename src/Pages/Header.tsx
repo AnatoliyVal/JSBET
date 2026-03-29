@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import AuthModal, { type AuthModalTab } from "../components/Auth/AuthModal";
 import Button from "../components/AllButtons/Button/Button";
 import { useAuthStore } from "../store/authStore";
+import SearchModal from "../components/Search/SearchModal";
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
     `nav-tabs-item${isActive ? " active" : ""}`;
@@ -13,6 +14,7 @@ const Header = () => {
 
     const [authOpen, setAuthOpen] = useState(false);
     const [authTab, setAuthTab] = useState<AuthModalTab>("login");
+    const [searchOpen, setSearchOpen] = useState(false);
 
     const openAuth = (tab: AuthModalTab) => {
         setAuthTab(tab);
@@ -34,7 +36,7 @@ const Header = () => {
                             <Link to="/" className="logo" aria-label="JSBET — на головну">
                                 <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo" />
                             </Link>
-                            <div className="search">
+                            <div className="search" onClick={() => setSearchOpen(true)} role="button" aria-label="Відкрити пошук" style={{ cursor: "pointer" }}>
                                 <span className="search-icon" aria-hidden="true">
                                     <i className="fa-solid fa-magnifying-glass"></i>
                                 </span>
@@ -43,6 +45,8 @@ const Header = () => {
                                     type="search"
                                     placeholder="Пошук гри..."
                                     aria-label="Пошук гри"
+                                    readOnly
+                                    onFocus={() => setSearchOpen(true)}
                                 />
                             </div>
 
@@ -99,6 +103,7 @@ const Header = () => {
             </header>
 
             <AuthModal open={authOpen} initialTab={authTab} onClose={() => setAuthOpen(false)} />
+            <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
         </>
     );
 };

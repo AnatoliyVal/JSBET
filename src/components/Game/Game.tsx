@@ -1,13 +1,14 @@
 import GameBadge from "./GameBadge";
 
-const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: {
-    GameName: string, GameOwner: string, CategoryName: string, rating: string, PlayerNow: string, badge?: string
+const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge, url }: {
+    GameName: string, GameOwner: string, CategoryName: string, rating: string, PlayerNow: string, badge?: string , url? : string
 }) => {
 
 
     return (
         <>
             <article className="game-card" role="listitem" aria-label={GameName}>
+                <a href={url}>
                 <div className="game-card-thumb">
                     <img className="game-card-img" src={`index-files/games/${GameName}.webp`}
                         alt={GameName} loading="lazy" />
@@ -27,6 +28,7 @@ const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: {
                         <span className="game-card-players"><i className="fa-solid fa-users"></i> {PlayerNow}</span>
                     </div>
                 </div>
+                </a>
             </article>
         </>
     );

@@ -10,8 +10,8 @@ export interface GameData {
     badge?: string;
 }
 
-// Список ігор, з яких ми будемо обирати випадкову
-const GAMES_DB: GameData[] = [
+// Список ігор, з яких ми будемо обирати випадкові
+export const GAMES_DB: GameData[] = [
     { GameName: "Sweet Bonanza", GameOwner: "Pragmatic Play", CategoryName: "Фрукти", rating: "4.9", PlayerNow: "3 241", badge: "Хіт" },
     { GameName: "Big Bass Bonanza", GameOwner: "Pragmatic Play", CategoryName: "Рибалка", rating: "4.8", PlayerNow: "2 187", badge: "Джекпот" },
     { GameName: "The Dog House", GameOwner: "Pragmatic Play", CategoryName: "Тварини", rating: "4.7", PlayerNow: "1 854", badge: "Новинка" },
@@ -48,26 +48,48 @@ const GAMES_DB: GameData[] = [
     { GameName: "Fishin Bear", GameOwner: "Playson", CategoryName: "Рибалка", rating: "4.3", PlayerNow: "412" },
     { GameName: "Trouts Treasure Payday", GameOwner: "Playson", CategoryName: "Рибалка", rating: "4.4", PlayerNow: "389" },
     { GameName: "Fish Day", GameOwner: "3 Oaks", CategoryName: "Рибалка", rating: "4.2", PlayerNow: "298" },
-    { GameName: "Sun of Egypt 3", GameOwner: "Booongo", CategoryName: "Єгипет", rating: "4.5", PlayerNow: "895" },
-    { GameName: "Wild Cash x9990", GameOwner: "Endorphina", CategoryName: "Класика", rating: "4.4", PlayerNow: "611" }
 ];
 
+// Перемішує масив (алгоритм Фішера-Єйтса) і повертає перші N унікальних елементів
+function pickUniqueGames(count: number): GameData[] {
+    const shuffled = [...GAMES_DB];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
+// Компонент для відображення N унікальних випадкових ігор без повторів
+export const RandomGameList = ({ count = 6 }: { count?: number }) => {
+    const [games, setGames] = useState<GameData[]>([]);
+
+    useEffect(() => {
+        setGames(pickUniqueGames(count));
+    }, [count]);
+
+    return (
+        <>
+            {games.map((game) => (
+                <Game key={game.GameName} {...game} />
+            ))}
+        </>
+    );
+};
+
+// Залишаємо старий компонент для сумісності (показує 1 випадкову гру)
 const RandomGame = () => {
     const [randomGame, setRandomGame] = useState<GameData | null>(null);
 
     useEffect(() => {
-        // Обираємо випадкову гру з нашого масиву
-        const pickedGame = GAMES_DB[Math.floor(Math.random() * GAMES_DB.length)];
-        setRandomGame(pickedGame);
+        const [picked] = pickUniqueGames(1);
+        setRandomGame(picked);
     }, []);
 
     if (!randomGame) {
-        // Показуємо порожній блок (або лоадер), поки гра ще не вибрана
         return <div className="game-card" style={{ visibility: "hidden" }}></div>;
     }
 
-    // Передаємо всі властивості (GameName, GameOwner, тощо) в готовий компонент Game!
-    // {...randomGame} - це те ж саме, що написати GameName={randomGame.GameName} і так далі
     return <Game {...randomGame} />;
 };
 

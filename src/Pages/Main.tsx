@@ -1,7 +1,7 @@
 import Game from "../components/Game/Game";
 import CategoryButton from "../components/AllButtons/CategoryButton/CategoryButton";
 import Button from "../components/AllButtons/Button/Button";
-import RandomGame from "../components/Game/RandomGame/RandomGame.tsx";
+import { RandomGameList } from "../components/Game/RandomGame/RandomGame.tsx";
 
 const GamesPage = () => {
     return (
@@ -88,12 +88,7 @@ const GamesPage = () => {
                                 </h2>
                             </div>
                             <div className="games-grid" role="list" id="recommended-grid">
-                                <RandomGame />
-                                <RandomGame />
-                                <RandomGame />
-                                <RandomGame />
-                                <RandomGame />
-                                <RandomGame />
+                                <RandomGameList count={6} />
                             </div>
                         </div>
                     </section>
@@ -109,7 +104,7 @@ const GamesPage = () => {
                             </div>
 
                             <div className="games-grid" role="list">
-                                <Game GameName="Sweet Bonanza" GameOwner="Pragmatic Play" CategoryName="Фрукти" rating="4.9" PlayerNow="3 241" badge="Хіт" />
+                                <Game GameName="Sweet Bonanza" GameOwner="Pragmatic Play" CategoryName="Фрукти" rating="4.9" PlayerNow="3 241" badge="Хіт" url="https://slotcity.ua/game/pragmaticplay-direct-sweet-bonanza"/>
                                 <Game GameName="Big Bass Bonanza" GameOwner="Pragmatic Play" CategoryName="Рибалка" rating="4.8" PlayerNow="2 187" badge="Джекпот" />
                                 <Game GameName="The Dog House" GameOwner="Pragmatic Play" CategoryName="Тварини" rating="4.7" PlayerNow="1 854" badge="Новинка" />
                                 <Game GameName="Starlight Princess 1000" GameOwner="Pragmatic Play" CategoryName="Магія" rating="4.9" PlayerNow="4 012" />
@@ -117,7 +112,7 @@ const GamesPage = () => {
                                 <Game GameName="Zeus vs Hades" GameOwner="Pragmatic Play" CategoryName="Mythologie" rating="4.8" PlayerNow="2 650" />
                                 <Game GameName="Gates of Olympus SS" GameOwner="Pragmatic Play" CategoryName="Боги" rating="4.7" PlayerNow="3 108" />
                                 <Game GameName="Snoop Dogg Dollars" GameOwner="Pragmatic Play" CategoryName="Хіп-хоп" rating="4.5" PlayerNow="742" />
-                                <Game GameName="Aztec Magic Bonanza" GameOwner="BGaming" CategoryName="Ацтеки" rating="4.6" PlayerNow="1 230" />
+                                <Game GameName="Aztec Magic Bonanza" GameOwner="BGaming" CategoryName="Ацтеки" rating="4.6" PlayerNow="1 230" badge="Новинка" />
                                 <Game GameName="Sun of Egypt 3" GameOwner="Booongo" CategoryName="Єгипет" rating="4.5" PlayerNow="895" />
                                 <Game GameName="Wild Cash x9990" GameOwner="Endorphina" CategoryName="Класика" rating="4.4" PlayerNow="611" />
                                 <Game GameName="Rainbow Reels" GameOwner="Playson" CategoryName="Класика" rating="4.3" PlayerNow="528" />
@@ -188,7 +183,7 @@ const GamesPage = () => {
                             </div>
 
                             <div className="games-grid" role="list">
-                                <Game GameName="Fishing Club" GameOwner="Playson" CategoryName="Рибалка" rating="4.7" PlayerNow="1 629" />
+                                <Game GameName="Fishing Club" GameOwner="Playson" CategoryName="Рибалка" rating="4.7" PlayerNow="1 629" badge= "Джекпот"/>
                                 <Game GameName="Fishin Reels" GameOwner="Iron Dog" CategoryName="Рибалка" rating="4.4" PlayerNow="723" />
                                 <Game GameName="Marlin Masters The Big Haul" GameOwner="Playson" CategoryName="Рибалка" rating="4.5" PlayerNow="547" />
                                 <Game GameName="Fishin Bear" GameOwner="Playson" CategoryName="Рибалка" rating="4.3" PlayerNow="412" />
