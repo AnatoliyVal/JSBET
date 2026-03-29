@@ -1,7 +1,5 @@
-
-
 const Menu = () => {
-
-
-    return ()
+    return null;
 }
+
+export default Menu;

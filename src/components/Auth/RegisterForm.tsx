@@ -38,7 +38,7 @@ const RegisterForm = ({ onSuccess }: Props) => {
         if (result.ok) {
             onSuccess();
         } else {
-            setError("root", { type: "server", message: result.message });
+            setError("root", { type: "server", message: "message" in result ? result.message : "Помилка реєстрації" });
         }
     };
 
