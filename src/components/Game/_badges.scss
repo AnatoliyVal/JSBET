@@ -1,7 +1,8 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
-.game-card-thumb .badge {
+.badge {
+  @include badge-base;
   position: absolute;
   top: 8px;
   left: 8px;
@@ -10,10 +11,6 @@
   i {
     font-size: 9px;
   }
-}
-
-.badge {
-  @include badge-base;
 
   &--new {
     background: rgba(34, 197, 93, 0.85);
@@ -25,8 +22,18 @@
     color: #fff;
   }
 
-  &--gold {
+  &--jackpot {
     background: rgba(255, 206, 0, 0.9);
     color: $color-text-dark;
+  }
+
+  &--live {
+    background: rgba(255, 61, 0, 0.9);
+    color: #fff;
+    gap: 5px;
+
+    &::before {
+      @include live-dot;
+    }
   }
 }

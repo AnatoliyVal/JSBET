@@ -2,23 +2,6 @@
 @use '../abstracts/mixins' as *;
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.2;
-  min-height: 44px;
-  padding: 0 20px;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  transition:
-    background $transition-fast,
-    color $transition-fast,
-    border-color $transition-fast,
-    transform $transition-fast;
 
   &:active {
     transform: scale(0.97);
@@ -65,27 +48,6 @@
       padding: 0 8px;
       font-size: 11px;
       height: 30px;
-    }
-  }
-
-  &--sm {
-    min-height: 36px;
-    padding: 0 16px;
-    font-size: 13px;
-  }
-
-  &--ghost-sm {
-    background: transparent;
-    color: $color-text-secondary;
-    border: 1px solid $color-border;
-    min-height: 32px;
-    padding: 0 12px;
-    font-size: 13px;
-    font-weight: 600;
-
-    &:hover {
-      color: $color-text-primary;
-      border-color: rgba(255, 255, 255, 0.18);
     }
   }
 }
