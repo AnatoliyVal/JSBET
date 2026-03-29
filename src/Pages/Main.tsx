@@ -2,8 +2,13 @@ import Game from "../components/Game/Game";
 import CategoryButton from "../components/AllButtons/CategoryButton/CategoryButton";
 import Button from "../components/AllButtons/Button/Button";
 import { RandomGameList } from "../components/Game/RandomGame/RandomGame.tsx";
+import { Link } from "react-router-dom";
+import { useAuthStore } from "../store/authStore";
 
 const GamesPage = () => {
+    const openAuthModal = useAuthStore((s) => s.openAuthModal);
+    const user = useAuthStore((s) => s.user);
+
     return (
         <main>
                 <div className="page-section active" id="page-igri">
@@ -29,8 +34,18 @@ const GamesPage = () => {
                                 </p>
 
                                 <div className="hero-actions">
-                                    <Button variant="primary">Почати грати</Button>
-                                    <Button variant="ghost">Дізнатись більше</Button>
+                                    {!user ? (
+                                        <Button variant="primary" onClick={() => openAuthModal("register")}>
+                                            Почати грати
+                                        </Button>
+                                    ) : (
+                                        <Link to="/tournaments">
+                                            <Button variant="primary">Перейти до турнірів</Button>
+                                        </Link>
+                                    )}
+                                    <Link to="/about">
+                                        <Button variant="ghost">Дізнатись більше</Button>
+                                    </Link>
                                 </div>
 
                                 <div className="stats-bar" aria-label="Статистика ігор">

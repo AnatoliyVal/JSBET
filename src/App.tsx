@@ -4,6 +4,7 @@ import Header from "./Pages/Header";
 import GamesPage from "./Pages/Main";
 import TournamentsPage from "./Pages/TournamentsPage";
 import ProfilePage from "./Pages/ProfilePage";
+import AboutPage from "./Pages/AboutPage";
 import Data from "./components/TimeData/TimeNow";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -15,6 +16,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<GamesPage />} />
+                <Route path="/about" element={<AboutPage />} />
                 <Route path="/tournaments" element={<TournamentsPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
             </Routes>

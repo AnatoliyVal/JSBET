@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { AuthModalTab } from "../components/Auth/AuthModal";
 
 export type AuthUser = {
     email: string;
@@ -29,6 +30,11 @@ export type AuthStore = {
         displayName: string
     ) => { ok: true } | { ok: false; message: string };
     logout: () => void;
+    // UI state for auth modal
+    authModalOpen: boolean;
+    authModalTab: AuthModalTab;
+    openAuthModal: (tab?: AuthModalTab) => void;
+    closeAuthModal: () => void;
 };
 
 export const useAuthStore = create<AuthStore>()(
@@ -37,6 +43,12 @@ export const useAuthStore = create<AuthStore>()(
             user: null,
             token: null,
             demoUsers: {},
+            
+            authModalOpen: false,
+            authModalTab: "login",
+
+            openAuthModal: (tab = "login") => set({ authModalOpen: true, authModalTab: tab }),
+            closeAuthModal: () => set({ authModalOpen: false }),
 
             login: (email, password) => {
                 const normalized = email.trim().toLowerCase();

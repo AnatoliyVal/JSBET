@@ -12,18 +12,16 @@ const Header = () => {
     const user = useAuthStore((s) => s.user);
     const logout = useAuthStore((s) => s.logout);
 
-    const [authOpen, setAuthOpen] = useState(false);
-    const [authTab, setAuthTab] = useState<AuthModalTab>("login");
-    const [searchOpen, setSearchOpen] = useState(false);
+    const openAuthModal = useAuthStore((s) => s.openAuthModal);
+    const authOpen = useAuthStore((s) => s.authModalOpen);
+    const authTab = useAuthStore((s) => s.authModalTab);
+    const closeAuthModal = useAuthStore((s) => s.closeAuthModal);
 
-    const openAuth = (tab: AuthModalTab) => {
-        setAuthTab(tab);
-        setAuthOpen(true);
-    };
+    const [searchOpen, setSearchOpen] = useState(false);
 
     const onNavProtected = () => {
         if (!user) {
-            openAuth("login");
+            openAuthModal("login");
         }
     };
 
@@ -62,10 +60,10 @@ const Header = () => {
                                     </div>
                                 ) : (
                                     <>
-                                        <Button type="button" variant="ghost" onClick={() => openAuth("login")}>
+                                        <Button type="button" variant="ghost" onClick={() => openAuthModal("login")}>
                                             Увійти
                                         </Button>
-                                        <Button type="button" variant="primary" onClick={() => openAuth("register")}>
+                                        <Button type="button" variant="primary" onClick={() => openAuthModal("register")}>
                                             Реєстрація
                                         </Button>
                                     </>
@@ -102,7 +100,7 @@ const Header = () => {
                 </div>
             </header>
 
-            <AuthModal open={authOpen} initialTab={authTab} onClose={() => setAuthOpen(false)} />
+            <AuthModal open={authOpen} initialTab={authTab} onClose={closeAuthModal} />
             <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
         </>
     );
