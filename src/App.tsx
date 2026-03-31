@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Footer from "./Pages/Footer/Footer";
 import Header from "./Pages/Header";
 import GamesPage from "./Pages/Main";
@@ -42,7 +42,7 @@ function App() {
     }, [user?.email, syncFromCloud]);
 
     return (
-        <BrowserRouter basename="/JSBET/">
+        <HashRouter>
             <ScrollToTop />
             <Data />
             <Header />
@@ -53,7 +53,7 @@ function App() {
                 <Route path="/profile" element={<ProfilePage />} />
             </Routes>
             <Footer />
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
