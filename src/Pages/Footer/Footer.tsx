@@ -1,4 +1,4 @@
-
+import FooterMenu from "../../components/FooterMenuComponents/FooterMenu";
 
 const Footer = () => {
     return (
@@ -20,33 +20,33 @@ const Footer = () => {
                         <nav aria-label="Ігри">
                             <h3 className="footer-heading">Ігри</h3>
                             <ul className="footer-links">
-                                <li><a href="#" className="footer-link">Всі слоти</a></li>
-                                <li><a href="#" className="footer-link">Live games</a></li>
-                                <li><a href="#" className="footer-link">Джекпоти</a></li>
-                                <li><a href="#" className="footer-link">Нові ігри</a></li>
-                                <li><a href="#" className="footer-link">Популярні</a></li>
+                                <FooterMenu url="/" text="Всі слоти" />
+                                <FooterMenu url="/" text="Live games" />
+                                <FooterMenu url="/" text="Джекпоти" />
+                                <FooterMenu url="/" text="Нові ігри" />
+                                <FooterMenu url="/" text="Популярні" />
                             </ul>
                         </nav>
 
                         <nav aria-label="Інформація">
                             <h3 className="footer-heading">Інформація</h3>
                             <ul className="footer-links">
-                                <li><a href="#" className="footer-link">Про нас</a></li>
-                                <li><a href="#" className="footer-link">Бонуси</a></li>
-                                <li><a href="#" className="footer-link">Турніри</a></li>
-                                <li><a href="#" className="footer-link">VIP-клуб</a></li>
-                                <li><a href="#" className="footer-link">Новини</a></li>
+                                <FooterMenu url="/about" text="Про нас" />
+                                <FooterMenu text="Бонуси" />
+                                <FooterMenu url="/tournaments" text="Турніри" />
+                                <FooterMenu url="/profile" text="VIP-клуб" />
+                                <FooterMenu text="Нові ігри" />
                             </ul>
                         </nav>
 
                         <nav aria-label="Підтримка">
                             <h3 className="footer-heading">Підтримка</h3>
                             <ul className="footer-links">
-                                <li><a href="#" className="footer-link">Служба підтримки</a></li>
-                                <li><a href="#" className="footer-link">Умови використання</a></li>
-                                <li><a href="#" className="footer-link">Конфіденційність</a></li>
-                                <li><a href="#" className="footer-link">Відповідальна гра</a></li>
-                                <li><a href="#" className="footer-link">AML Політика</a></li>
+                                <FooterMenu text="Служба підтримки" />
+                                <FooterMenu text="Умови використання" />
+                                <FooterMenu text="Конфіденційність" />
+                                <FooterMenu text="Відповідальна гра" />
+                                <FooterMenu text="AML Політика" />
                             </ul>
                         </nav>
 

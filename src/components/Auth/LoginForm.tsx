@@ -25,8 +25,8 @@ const LoginForm = ({ onSuccess }: Props) => {
         defaultValues: { email: "", password: "" },
     });
 
-    const onSubmit = (data: LoginFormValues) => {
-        const result = login(data.email, data.password);
+    const onSubmit = async (data: LoginFormValues) => {
+        const result = await login(data.email, data.password);
         if (result.ok) {
             onSuccess();
         } else {

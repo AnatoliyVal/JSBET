@@ -1,0 +1,417 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ── Overlay ───────────────────────────────────────────────────────────────────
+
+.gm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 8, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.15s ease;
+}
+
+// ── Modal — 2-column grid with 3 divs ─────────────────────────────────────────
+
+.gm {
+  position: relative;
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  width: 100%;
+  max-width: 860px;
+  max-height: 88vh;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  animation: slideDown 0.18s ease;
+
+  // On mobile – stack into single column
+  @include respond-to(xs) {
+    grid-template-columns: 1fr;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+}
+
+// ── Close button ──────────────────────────────────────────────────────────────
+
+.gm-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 10;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border;
+  color: $color-text-muted;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: color $transition-fast, border-color $transition-fast;
+
+  &:hover { color: $color-text-primary; border-color: rgba(255,255,255,0.2); }
+}
+
+// ── LEFT COLUMN (rows 1 + 2) ──────────────────────────────────────────────────
+
+.gm-left {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid $color-border;
+  overflow: hidden;
+
+  @include respond-to(xs) {
+    grid-column: 1;
+    grid-row: auto;
+    border-right: none;
+    border-bottom: 1px solid $color-border;
+  }
+}
+
+// ── DIV 1 — Image + Play ──────────────────────────────────────────────────────
+
+.gm-top {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.gm-thumb {
+  width: 80px;
+  height: 108px;
+  object-fit: cover;
+  border-radius: $radius-md;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.04);
+}
+
+.gm-play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  padding-right: 36px; // space for close btn
+}
+
+.gm-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: $color-text-primary;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.gm-provider {
+  font-size: 12px;
+  color: $color-text-muted;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gm-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.gm-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: $radius-pill;
+  background: rgba(255,255,255,0.05);
+  color: $color-text-muted;
+  border: 1px solid $color-border;
+
+  &.gold { color: $color-gold; border-color: $color-border-gold; background: $color-gold-dim; }
+  &.badge { color: #0a0d12; background: $color-gold; border-color: $color-gold; }
+}
+
+.gm-play-btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 18px;
+  background: $color-gold;
+  color: #0a0d12;
+  border: none;
+  border-radius: $radius-pill;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity $transition-fast;
+
+  &:hover { opacity: 0.85; }
+}
+
+// ── DIV 2 — Info, Rules, Rating ───────────────────────────────────────────────
+
+.gm-info {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.gm-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gm-info-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: $color-text-primary;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  i { color: $color-gold; font-size: 10px; }
+}
+
+.gm-info-text {
+  font-size: 13px;
+  color: $color-text-muted;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.gm-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gm-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.gm-star {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: color $transition-fast, transform $transition-fast;
+  line-height: 1;
+  padding: 0;
+
+  &.filled { color: $color-gold; }
+  &:not(.readonly):hover { transform: scale(1.2); color: $color-gold; }
+  &.readonly { cursor: default; pointer-events: none; }
+  &:disabled { cursor: default; }
+}
+
+.gm-avg {
+  font-size: 15px;
+  font-weight: 800;
+  color: $color-gold;
+}
+
+.gm-avg-count {
+  font-size: 11px;
+  font-weight: 400;
+  color: $color-text-muted;
+}
+
+.gm-avg-empty {
+  font-size: 12px;
+  color: $color-text-muted;
+}
+
+.gm-login-hint {
+  background: transparent;
+  border: none;
+  color: $color-gold;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 2px;
+  align-self: flex-start;
+
+  &:hover { opacity: 0.8; }
+}
+
+// ── DIV 3 — RIGHT COLUMN: Reviews ────────────────────────────────────────────
+
+.gm-reviews-col {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @include respond-to(xs) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+.gm-reviews-heading {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: $color-text-primary;
+  padding: 20px 20px 12px;
+  border-bottom: 1px solid $color-border;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-shrink: 0;
+
+  i { color: $color-gold; font-size: 11px; }
+}
+
+.gm-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.gm-review-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 8px 12px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color $transition-fast;
+
+  &::placeholder { color: $color-text-muted; }
+  &:focus { border-color: $color-border-gold; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.gm-review-submit {
+  align-self: flex-end;
+  height: 34px;
+  padding: 0 16px;
+  background: $color-gold;
+  color: #0a0d12;
+  border: none;
+  border-radius: $radius-pill;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity $transition-fast;
+
+  &:hover:not(:disabled) { opacity: 0.85; }
+  &:disabled { opacity: 0.45; cursor: default; }
+}
+
+.gm-reviews-list-wrap {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.gm-reviews-empty {
+  font-size: 13px;
+  color: $color-text-muted;
+  text-align: center;
+  padding: 30px 16px;
+}
+
+.gm-reviews-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gm-review-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 10px 12px;
+}
+
+.gm-review-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.gm-review-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid $color-border;
+  background: rgba(255,255,255,0.05);
+}
+
+.gm-review-author {
+  font-size: 12px;
+  font-weight: 700;
+  color: $color-gold;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  i { margin-right: 4px; }
+}
+
+.gm-review-date {
+  font-size: 10px;
+  color: $color-text-muted;
+}
+
+.gm-review-text {
+  font-size: 12px;
+  color: $color-text-muted;
+  line-height: 1.55;
+  margin: 0;
+  word-break: break-word;
+}

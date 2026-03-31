@@ -157,3 +157,58 @@
     }
   }
 }
+
+// ── Star Rating ───────────────────────────────────────────────────────────────
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.star-rating-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: color $transition-fast, transform $transition-fast;
+  line-height: 1;
+
+  &.filled {
+    color: $color-gold;
+  }
+
+  &:not(.readonly):hover {
+    transform: scale(1.2);
+    color: $color-gold;
+  }
+
+  &.readonly {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.star-rating-avg {
+  font-size: 11px;
+  font-weight: 700;
+  color: $color-gold;
+}
+
+.star-rating-count {
+  font-size: 10px;
+  font-weight: 400;
+  color: $color-text-muted;
+}

@@ -1,10 +1,20 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { AuthModalTab } from "../components/Auth/AuthModal";
+import { getProfile, saveProfile } from "../lib/profilesService";
 
 export type AuthUser = {
     email: string;
     displayName: string;
+    // Extended profile fields
+    phone: string;
+    dob: string;
+    country: string;
+    avatar: string; // base64 data URL
+    balance: number;
+    badges: string[];    // e.g. ["VIP", "CLOWN"]
+    isNewUntil?: number; // timestamp until which the user is considered "NEW"
+    lastSeen?: number;   // timestamp of last activity
 };
 
 type DemoUserRecord = {
@@ -15,21 +25,35 @@ type DemoUserRecord = {
 const makeToken = (email: string) =>
     `jsbet-${encodeURIComponent(email)}-${Date.now()}`;
 
+const defaultProfile = {
+    phone: "",
+    dob: "",
+    country: "ua",
+    avatar: "",
+    balance: 0,
+    badges: [],
+    isNewUntil: 0,
+};
+
 export type AuthStore = {
     user: AuthUser | null;
     token: string | null;
-    /**
-     * Демо-реєстрації (паролі в plain text — лише для навчального проєкту).
-     * У продакшені дані мають бути на сервері.
-     */
     demoUsers: Record<string, DemoUserRecord>;
-    login: (email: string, password: string) => { ok: true } | { ok: false; message: string };
+    login: (email: string, password: string) => Promise<{ ok: true } | { ok: false; message: string }>;
     register: (
         email: string,
         password: string,
         displayName: string
-    ) => { ok: true } | { ok: false; message: string };
+    ) => Promise<{ ok: true } | { ok: false; message: string }>;
     logout: () => void;
+    /** Update editable profile fields and sync to Cloud */
+    updateProfile: (fields: Partial<Pick<AuthUser, "phone" | "dob" | "country" | "avatar" | "displayName" | "balance">>) => void;
+    /** Silently update local store from cloud updates */
+    syncFromCloud: (profile: AuthUser) => void;
+    /** Activate VIP status */
+    activateVip: () => void;
+    /** Activate NEW badge for 2 days */
+    activateNewBadge: () => void;
     // UI state for auth modal
     authModalOpen: boolean;
     authModalTab: AuthModalTab;
@@ -43,51 +67,124 @@ export const useAuthStore = create<AuthStore>()(
             user: null,
             token: null,
             demoUsers: {},
-            
+
             authModalOpen: false,
             authModalTab: "login",
 
             openAuthModal: (tab = "login") => set({ authModalOpen: true, authModalTab: tab }),
             closeAuthModal: () => set({ authModalOpen: false }),
 
-            login: (email, password) => {
+            login: async (email, password) => {
                 const normalized = email.trim().toLowerCase();
                 const record = get().demoUsers[normalized];
-                if (!record || record.password !== password) {
+                
+                // Check cloud first if local is missing or just to get the profile data
+                const cloudResult = await getProfile(normalized);
+                const cloudProfile = cloudResult?.user;
+                const cloudPassword = cloudResult?.password;
+
+                if (record) {
+                    // Local check
+                    if (record.password !== password) {
+                        return { ok: false, message: "Невірний email або пароль" };
+                    }
+                } else if (cloudPassword) {
+                    // Cloud check
+                    if (cloudPassword !== password) {
+                        return { ok: false, message: "Невірний email або пароль" };
+                    }
+                    // Restore to local storage
+                    set(state => ({
+                        demoUsers: {
+                            ...state.demoUsers,
+                            [normalized]: { password, displayName: cloudProfile?.displayName || normalized.split("@")[0] }
+                        }
+                    }));
+                } else {
                     return { ok: false, message: "Невірний email або пароль" };
                 }
+                
                 const token = makeToken(normalized);
                 set({
-                    user: { email: normalized, displayName: record.displayName },
+                    user: cloudProfile ? cloudProfile : {
+                        email: normalized,
+                        displayName: record?.displayName || normalized.split("@")[0],
+                        ...defaultProfile,
+                    },
                     token,
                 });
                 return { ok: true };
             },
 
-            register: (email, password, displayName) => {
+            register: async (email, password, displayName) => {
                 const normalized = email.trim().toLowerCase();
                 if (get().demoUsers[normalized]) {
                     return { ok: false, message: "Користувач з таким email уже зареєстрований" };
                 }
                 const token = makeToken(normalized);
+                
+                const newUser = {
+                    email: normalized,
+                    displayName: displayName.trim() || normalized.split("@")[0],
+                    ...defaultProfile,
+                    isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000, // +2 days
+                };
+
+                // Sync to cloud WITH password
+                await saveProfile(normalized, newUser, password);
+
                 set((state) => ({
                     demoUsers: {
                         ...state.demoUsers,
                         [normalized]: {
                             password,
-                            displayName: displayName.trim() || normalized.split("@")[0],
+                            displayName: newUser.displayName,
                         },
                     },
-                    user: {
-                        email: normalized,
-                        displayName: displayName.trim() || normalized.split("@")[0],
-                    },
+                    user: newUser,
                     token,
                 }));
                 return { ok: true };
             },
 
             logout: () => set({ user: null, token: null }),
+
+            syncFromCloud: (profile) => {
+                set(state => ({
+                    user: state.user 
+                        ? { ...state.user, ...profile, badges: profile.badges || state.user.badges || [] } 
+                        : { ...profile, badges: profile.badges || [] }
+                }));
+            },
+
+            updateProfile: (fields) => {
+                const state = get();
+                if (!state.user) return;
+                const newUser = { ...state.user, ...fields };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            activateVip: () => {
+                const state = get();
+                if (!state.user) return;
+                // Add VIP to badges if not already there, safely handling undefined
+                const currentBadges = state.user.badges || [];
+                const newBadges = currentBadges.includes("VIP") 
+                    ? currentBadges 
+                    : [...currentBadges, "VIP"];
+                const newUser = { ...state.user, badges: newBadges };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            activateNewBadge: () => {
+                const state = get();
+                if (!state.user) return;
+                const newUser = { ...state.user, isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000 };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
         }),
         {
             name: "jsbet-auth",

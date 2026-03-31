@@ -1,10 +1,21 @@
 import { buttonStyle, imageStyle } from "./GameCategoryButtonStyle.ts";
 
-const CategoryButton = ({CategoryName}: {CategoryName: string}) => {
+interface CategoryButtonProps {
+    CategoryName: string;
+    isActive?: boolean;
+    onClick?: () => void;
+}
+
+const CategoryButton = ({ CategoryName, isActive, onClick }: CategoryButtonProps) => {
 
     return (
         <li>
-            <button style={buttonStyle} type="button">
+            <button 
+                className={`category-chip ${isActive ? "active" : ""}`}
+                style={isActive ? undefined : buttonStyle} 
+                type="button"
+                onClick={onClick}
+            >
                 <img style={imageStyle} src={`index-files/categories/${CategoryName}.jpg`} alt="" loading="lazy" />
                 {CategoryName}
             </button>
