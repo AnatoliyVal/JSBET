@@ -28,3 +28,6 @@ pnpm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Firebase Admin service account key (never commit this!)
+server/serviceAccount.json

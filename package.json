@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "devDependencies": {
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -10,11 +11,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "dev:server": "node server/index.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
     "firebase": "^12.11.0",
+    "firebase-admin": "^13.4.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.54.2",

@@ -1,17 +1,15 @@
 import {
     doc,
     getDoc,
-    setDoc,
-    collection,
-    query,
-    where,
-    getDocs,
-    serverTimestamp,
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+// The Express server base URL (set via VITE_API_URL env var)
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
+
 /**
  * Get the rating a specific user gave to a specific game.
+ * Reads directly from Firestore (simple single-doc read, no need for a server route).
  * Returns null if the user hasn't rated yet.
  */
 export async function getUserRating(userId: string, gameId: string): Promise<number | null> {
@@ -23,36 +21,32 @@ export async function getUserRating(userId: string, gameId: string): Promise<num
 
 /**
  * Save (or overwrite) the rating a user gave to a game.
+ * Calls the Express POST /api/ratings/:gameId endpoint.
  */
 export async function setUserRating(
     userId: string,
     gameId: string,
     rating: number
 ): Promise<void> {
-    const id = `${userId}_${gameId}`;
-    await setDoc(doc(db, "ratings", id), {
-        userId,
-        gameId,
-        rating,
-        timestamp: serverTimestamp(),
+    const res = await fetch(`${API_URL}/api/ratings/${encodeURIComponent(gameId)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, rating }),
     });
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error ?? "Failed to save rating");
+    }
 }
 
 /**
  * Calculate the average rating and total count for a game.
+ * Calls the Express GET /api/ratings/:gameId endpoint.
  */
 export async function getAverageRating(
     gameId: string
 ): Promise<{ avg: number; count: number }> {
-    const q = query(collection(db, "ratings"), where("gameId", "==", gameId));
-    const snap = await getDocs(q);
-    if (snap.empty) return { avg: 0, count: 0 };
-    let total = 0;
-    snap.forEach((d) => {
-        total += d.data().rating as number;
-    });
-    return {
-        avg: Math.round((total / snap.size) * 10) / 10,
-        count: snap.size,
-    };
+    const res = await fetch(`${API_URL}/api/ratings/${encodeURIComponent(gameId)}`);
+    if (!res.ok) return { avg: 0, count: 0 };
+    return res.json() as Promise<{ avg: number; count: number }>;
 }
