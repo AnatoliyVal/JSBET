@@ -1,4 +1,4 @@
-import { buttonStyle, imageStyle } from "./GameCategoryButtonStyle.ts";
+import { buttonStyle, imageStyle } from "./GameCategoryButtonStyle";
 
 interface CategoryButtonProps {
     CategoryName: string;

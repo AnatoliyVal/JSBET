@@ -68,7 +68,7 @@ const MOCK_BONUSES = [
 const BonusesTab = () => {
     const activateVip = useAuthStore((s) => s.activateVip);
     const activateNewBadge = useAuthStore((s) => s.activateNewBadge);
-    const isVip       = useAuthStore((s) => s.user?.isVip ?? false);
+    const isVip       = useAuthStore((s) => s.user?.badges?.includes("VIP") ?? false);
 
     const [activeTab, setActiveTab] = useState<"active" | "available">("available");
     const [selectedOpts, setSelectedOpts] = useState<Record<number, number>>({ 1: 1, 2: 1 });
