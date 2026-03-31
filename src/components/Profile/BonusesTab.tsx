@@ -82,6 +82,9 @@ const BonusesTab = () => {
         if (code === "JSBET") {
             activateVip();
             setPromoMsg({ type: "ok", text: "🎉 Вітаємо! Тебе підвищено до статусу VIP! Значок VIP тепер видно у твоїх відгуках." });
+        } else if (code === "RAINBOW") {
+            useAuthStore.getState().activateRainbow();
+            setPromoMsg({ type: "ok", text: "🌈 Магія! Твій нік тепер переливається всіма кольорами веселки! Перевір у профілі." });
         } else if (code === "NEW") {
             activateNewBadge();
             setPromoMsg({ type: "ok", text: "🔥 Промокод активовано! Ти отримав статус NEW на 2 дні!" });

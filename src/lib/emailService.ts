@@ -37,3 +37,28 @@ export async function sendVerificationCode(
         throw error;
     }
 }
+/** Send a notification about tournament registration/reminder */
+export async function sendTournamentReminder(
+    toEmail: string,
+    name: string,
+    tournamentName: string,
+    dateRange: string
+): Promise<void> {
+    try {
+        emailjs.init(PUBLIC_KEY);
+        await emailjs.send(
+            SERVICE_ID,
+            TEMPLATE_ID, // Reusing verification template or using it as a generic notification
+            {
+                to_email: toEmail,
+                name:     name,
+                passcode: "Турнір зареєстровано! 🏆", // Customizing passcode field for visual variety
+                time:     `${tournamentName} (${dateRange})`,
+            },
+            PUBLIC_KEY
+        );
+    } catch (error) {
+        console.error("EmailJS Failed:", error);
+        throw error;
+    }
+}

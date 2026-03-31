@@ -4,6 +4,7 @@ import { getUserRating, setUserRating, getAverageRating } from "../../lib/rating
 import { getReviews, addReview, type Review } from "../../lib/reviewsService";
 import { useAuthStore } from "../../store/authStore";
 import UserBadge from "../User/UserBadge";
+import UserDisplay from "../User/UserDisplay";
 
 const CATEGORY_INFO: Record<string, { description: string; rules: string }> = {
     "Фрукти":   { description: "Яскравий слот з класичними фруктовими символами.", rules: "Збери 3+ однакових символів на лінії. Scatter запускає фріспіни з множниками." },
@@ -79,14 +80,15 @@ const GameModal = ({ game, onClose }: Props) => {
         const text = reviewText.trim();
         if (!text || submitting) return;
         setSubmitting(true);
-        try {
+                                    try {
             await addReview(
                 game.GameName, 
                 user.email, 
                 user.displayName, 
                 text, 
                 user.badges || [], 
-                user.avatar || ""
+                user.avatar || "",
+                !!user.rainbowActive
             );
             setReviewText("");
             setReviews(await getReviews(game.GameName));
@@ -223,28 +225,17 @@ const GameModal = ({ game, onClose }: Props) => {
                         ) : (
                             <ul className="gm-reviews-list">
                                 {reviews.map((r) => {
-                                    // Use stored badges, but for current user's own reviews, show their live badges
-                                    const displayBadges = r.userId === user?.email ? (user?.badges || []) : (r.badges || []);
-                                    // For reviews, we consider "NEW" if it was NEW at the time (stored in badges) 
-                                    // or if the live user has it (for their own reviews)
-                                    const isLiveNew = r.userId === user?.email && (user?.isNewUntil ? Date.now() < user.isNewUntil : false);
-
-                                    // Avatar logic: Show live user avatar if it's their own review, else use stored avatar, else default
-                                    const userAvatar = r.userId === user?.email ? user?.avatar : null;
-                                    const avatarSrc = userAvatar || r.avatar || "index-files/icons/free-icon-profile-711769.png";
-
                                     return (
                                         <li key={r.id} className="gm-review-item">
                                             <div className="gm-review-header">
-                                                <img
-                                                    src={avatarSrc}
-                                                    alt={r.displayName}
-                                                    className="gm-review-avatar"
+                                                <UserDisplay 
+                                                    email={r.userId}
+                                                    displayName={r.displayName}
+                                                    avatar={r.avatar}
+                                                    badges={r.badges}
+                                                    rainbowActive={r.rainbowActive}
+                                                    size="sm"
                                                 />
-                                                <span className="gm-review-author">
-                                                    {r.displayName}
-                                                    <UserBadge badges={displayBadges} isNewUntil={isLiveNew ? Date.now() + 1000 : 0} />
-                                                </span>
                                                 <span className="gm-review-date">{fmt(r.timestamp)}</span>
                                             </div>
                                             <p className="gm-review-text">{r.text}</p>

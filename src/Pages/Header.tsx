@@ -5,6 +5,7 @@ import Button from "../components/AllButtons/Button/Button";
 import { useAuthStore } from "../store/authStore";
 import SearchModal from "../components/Search/SearchModal";
 import UserBadge from "../components/User/UserBadge";
+import UserDisplay from "../components/User/UserDisplay";
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
     `nav-tabs-item${isActive ? " active" : ""}`;
@@ -52,10 +53,11 @@ const Header = () => {
                             <div className="header-right">
                                 {user ? (
                                     <div className="header-auth-user">
-                                        <span className="header-auth-email" title={user.email}>
-                                            {user.displayName}
-                                            <UserBadge badges={user.badges} isNewUntil={user.isNewUntil} className="header-badges" />
-                                        </span>
+                                        <UserDisplay 
+                                            email={user.email} 
+                                            showAvatar={false} 
+                                            className="header-auth-name" 
+                                        />
                                         <Button type="button" variant="ghost" small onClick={() => logout()}>
                                             Вийти
                                         </Button>

@@ -18,6 +18,7 @@ export type Review = {
     timestamp: Date;
     badges?: string[];
     avatar?: string;
+    rainbowActive?: boolean;
 };
 
 /**
@@ -43,6 +44,7 @@ export async function getReviews(gameId: string): Promise<Review[]> {
                 ...(data.isClown ? ["CLOWN"] : [])
             ],
             avatar: (data.avatar as string) ?? "",
+            rainbowActive: !!data.rainbowActive,
         };
     });
     // Sort oldest first (top to bottom chronological)
@@ -58,7 +60,8 @@ export async function addReview(
     displayName: string,
     text: string,
     badges: string[] = [],
-    avatar = ""
+    avatar = "",
+    rainbowActive = false
 ): Promise<void> {
     await addDoc(collection(db, "reviews"), {
         gameId,
@@ -67,6 +70,8 @@ export async function addReview(
         text: text.trim(),
         badges,
         avatar,
+        rainbowActive,
         timestamp: serverTimestamp(),
     });
 }
+

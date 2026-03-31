@@ -5,8 +5,9 @@ import { useAuthStore } from "../store/authStore";
 import BonusesTab from "../components/Profile/BonusesTab";
 import UsersTab from "../components/Profile/UsersTab";
 import UserBadge from "../components/User/UserBadge";
+import UserDisplay from "../components/User/UserDisplay";
 
-type Tab = "settings" | "history" | "transactions" | "bonuses" | "users";
+type Tab = "settings" | "visuals" | "history" | "transactions" | "bonuses" | "users";
 
 const ProfilePage = () => {
     const user          = useAuthStore((s) => s.user);
@@ -62,6 +63,7 @@ const ProfilePage = () => {
 
     const navItems: { id: Tab; icon: string; label: string }[] = [
         { id: "settings",     icon: "fa-gear",                 label: "Налаштування" },
+        { id: "visuals",      icon: "fa-wand-magic-sparkles",  label: "Візуальні ефекти" },
         { id: "history",      icon: "fa-clock-rotate-left",    label: "Історія ігор" },
         { id: "transactions", icon: "fa-money-bill-transfer",  label: "Транзакції" },
         { id: "bonuses",      icon: "fa-gift",                 label: "Бонуси" },
@@ -81,21 +83,13 @@ const ProfilePage = () => {
                             {/* ── Sidebar ─────────────────────────────── */}
                             <aside className="profile-sidebar">
                                 {/* User card */}
-                                <div className="profile-user-card">
-                                    {/* Clickable avatar */}
-                                    <div
-                                        className="profile-avatar profile-avatar--clickable"
-                                        onClick={handleAvatarClick}
-                                        title="Натисни, щоб змінити фото"
-                                    >
-                                        {user.avatar ? (
-                                            <img src={user.avatar} alt="User Avatar" />
-                                        ) : (
-                                            <img src="index-files/icons/free-icon-profile-711769.png" alt="User Avatar" />
-                                        )}
-                                        <div className="profile-avatar-overlay">
-                                            <i className="fa-solid fa-camera"></i>
-                                        </div>
+                                    <div className="profile-user-card" onClick={handleAvatarClick} title="Натисни, щоб змінити фото" style={{ cursor: "pointer" }}>
+                                        <UserDisplay 
+                                            email={user.email} 
+                                            size="lg" 
+                                            avatarClassName="profile-avatar--clickable"
+                                        />
+                                        <p className="profile-id">ID: {(user.email || "").length + 489000}</p>
                                         <input
                                             ref={fileRef}
                                             type="file"
@@ -104,15 +98,6 @@ const ProfilePage = () => {
                                             onChange={handleAvatarChange}
                                         />
                                     </div>
-
-                                    <div className="profile-user-info">
-                                        <h3 className="profile-username">
-                                            {user.displayName}
-                                            <UserBadge badges={user.badges} isNewUntil={user.isNewUntil} />
-                                        </h3>
-                                        <p className="profile-id">ID: {(user.email || "").length + 489000}</p>
-                                    </div>
-                                </div>
 
                                 {/* Balance */}
                                 <div className="profile-balance-card">
@@ -287,6 +272,84 @@ const ProfilePage = () => {
                                             </form>
                                         </div>
                                     </>
+                                )}
+
+                                {/* ── VISUALS TAB ── */}
+                                {activeTab === "visuals" && (
+                                    <div className="profile-settings-block">
+                                        <h3 className="profile-settings-title">Візуальні ефекти</h3>
+                                        <p className="profile-settings-desc">Налаштуйте вигляд вашого профілю та нікнейму.</p>
+                                        
+                                        <div style={{ display: "flex", flexDirection: "column", gap: "24px", marginTop: "24px" }}>
+                                            <div style={{ background: "rgba(255,255,255,0.03)", padding: "20px", borderRadius: "12px", border: "1px solid var(--color-border)" }}>
+                                                <h4 style={{ fontSize: "16px", marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
+                                                    <i className="fa-solid fa-palette" style={{ color: "var(--color-gold)" }}></i> Переливання ніка
+                                                </h4>
+                                                <p style={{ fontSize: "13px", color: "var(--color-text-muted)", marginBottom: "16px" }}>
+                                                    Активуйте магічний ефект веселки для вашого нікнейму. Це бачитимуть всі користувачі у ваших відгуках та профілі.
+                                                </p>
+                                                <label style={{ display: "flex", alignItems: "center", gap: "10px", cursor: "pointer", width: "fit-content" }}>
+                                                    <input 
+                                                        type="checkbox" 
+                                                        checked={user.rainbowActive} 
+                                                        onChange={(e) => e.target.checked ? useAuthStore.getState().activateRainbow() : useAuthStore.getState().deactivateRainbow()}
+                                                        style={{ width: "18px", height: "18px" }}
+                                                    />
+                                                    <span style={{ fontSize: "14px", fontWeight: "500" }}>Увімкнути ефект Rainbow</span>
+                                                </label>
+                                            </div>
+
+                                            {((user.badges && user.badges.length > 0) || (user.isNewUntil && Date.now() < user.isNewUntil)) && (
+                                                <div style={{ background: "rgba(255,255,255,0.03)", padding: "20px", borderRadius: "12px", border: "1px solid var(--color-border)" }}>
+                                                    <h4 style={{ fontSize: "16px", marginBottom: "8px", display: "flex", alignItems: "center", gap: "8px" }}>
+                                                        <i className="fa-solid fa-eye" style={{ color: "var(--color-gold)" }}></i> Видимість плашок
+                                                    </h4>
+                                                    <p style={{ fontSize: "13px", color: "var(--color-text-muted)", marginBottom: "16px" }}>
+                                                        Виберіть, які статуси та емблеми будуть відображатися поруч із вашим іменем.
+                                                    </p>
+                                                    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+                                                        {user.badges?.map(b => (
+                                                            <button 
+                                                                key={b}
+                                                                onClick={() => useAuthStore.getState().toggleBadgeVisibility(b)}
+                                                                style={{ 
+                                                                    padding: "8px 16px", 
+                                                                    borderRadius: "8px", 
+                                                                    fontSize: "13px",
+                                                                    border: "1px solid var(--color-border)",
+                                                                    background: user.hiddenBadges?.includes(b) ? "transparent" : "rgba(255,255,255,0.1)",
+                                                                    color: user.hiddenBadges?.includes(b) ? "var(--color-text-muted)" : "white",
+                                                                    cursor: "pointer",
+                                                                    transition: "all 0.2s ease"
+                                                                }}
+                                                            >
+                                                                {user.hiddenBadges?.includes(b) ? <i className="fa-solid fa-eye-slash" style={{ marginRight: "6px" }}></i> : <i className="fa-solid fa-eye" style={{ marginRight: "6px" }}></i>}
+                                                                {b}
+                                                            </button>
+                                                        ))}
+                                                        {user.isNewUntil && Date.now() < user.isNewUntil && (
+                                                            <button 
+                                                                onClick={() => useAuthStore.getState().toggleBadgeVisibility("NEW")}
+                                                                style={{ 
+                                                                    padding: "8px 16px", 
+                                                                    borderRadius: "8px", 
+                                                                    fontSize: "13px",
+                                                                    border: "1px solid var(--color-border)",
+                                                                    background: user.hiddenBadges?.includes("NEW") ? "transparent" : "rgba(255,255,255,0.1)",
+                                                                    color: user.hiddenBadges?.includes("NEW") ? "var(--color-text-muted)" : "white",
+                                                                    cursor: "pointer",
+                                                                    transition: "all 0.2s ease"
+                                                                }}
+                                                            >
+                                                                {user.hiddenBadges?.includes("NEW") ? <i className="fa-solid fa-eye-slash" style={{ marginRight: "6px" }}></i> : <i className="fa-solid fa-eye" style={{ marginRight: "6px" }}></i>}
+                                                                NEW
+                                                            </button>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 )}
 
                                 {activeTab === "history" && (

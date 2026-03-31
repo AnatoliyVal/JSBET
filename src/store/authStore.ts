@@ -15,6 +15,8 @@ export type AuthUser = {
     badges: string[];    // e.g. ["VIP", "CLOWN"]
     isNewUntil?: number; // timestamp until which the user is considered "NEW"
     lastSeen?: number;   // timestamp of last activity
+    rainbowActive?: boolean;
+    hiddenBadges?: string[];
 };
 
 type DemoUserRecord = {
@@ -33,6 +35,8 @@ const defaultProfile = {
     balance: 0,
     badges: [],
     isNewUntil: 0,
+    rainbowActive: false,
+    hiddenBadges: [],
 };
 
 export type AuthStore = {
@@ -47,13 +51,17 @@ export type AuthStore = {
     ) => Promise<{ ok: true } | { ok: false; message: string }>;
     logout: () => void;
     /** Update editable profile fields and sync to Cloud */
-    updateProfile: (fields: Partial<Pick<AuthUser, "phone" | "dob" | "country" | "avatar" | "displayName" | "balance">>) => void;
+    updateProfile: (fields: Partial<Pick<AuthUser, "phone" | "dob" | "country" | "avatar" | "displayName" | "balance" | "rainbowActive" | "hiddenBadges">>) => void;
     /** Silently update local store from cloud updates */
     syncFromCloud: (profile: AuthUser) => void;
     /** Activate VIP status */
     activateVip: () => void;
     /** Activate NEW badge for 2 days */
     activateNewBadge: () => void;
+    /** Rainbow nickname effect */
+    activateRainbow: () => void;
+    deactivateRainbow: () => void;
+    toggleBadgeVisibility: (badgeName: string) => void;
     // UI state for auth modal
     authModalOpen: boolean;
     authModalTab: AuthModalTab;
@@ -168,7 +176,6 @@ export const useAuthStore = create<AuthStore>()(
             activateVip: () => {
                 const state = get();
                 if (!state.user) return;
-                // Add VIP to badges if not already there, safely handling undefined
                 const currentBadges = state.user.badges || [];
                 const newBadges = currentBadges.includes("VIP") 
                     ? currentBadges 
@@ -182,6 +189,35 @@ export const useAuthStore = create<AuthStore>()(
                 const state = get();
                 if (!state.user) return;
                 const newUser = { ...state.user, isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000 };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            activateRainbow: () => {
+                const state = get();
+                if (!state.user) return;
+                const newUser = { ...state.user, rainbowActive: true };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            deactivateRainbow: () => {
+                const state = get();
+                if (!state.user) return;
+                const newUser = { ...state.user, rainbowActive: false };
+                set({ user: newUser });
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            toggleBadgeVisibility: (badgeName: string) => {
+                const state = get();
+                if (!state.user) return;
+                const normalized = badgeName.toUpperCase();
+                const currentHidden = state.user.hiddenBadges || [];
+                const newHidden = currentHidden.includes(normalized)
+                    ? currentHidden.filter(b => b !== normalized)
+                    : [...currentHidden, normalized];
+                const newUser = { ...state.user, hiddenBadges: newHidden };
                 set({ user: newUser });
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
