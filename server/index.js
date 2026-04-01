@@ -1,8 +1,9 @@
 import express from "express";
 import cors from "cors";
+import { existsSync } from "fs";
+import { dirname, join, resolve } from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import { dirname, join } from "path";
 
 // Load environment variables from .env
 dotenv.config();
@@ -10,6 +11,13 @@ dotenv.config();
 import { db } from "./firebaseAdmin.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// On Render/Linux, process.cwd() is the project root where 'dist' lives.
+// Locally on Windows, it depends on where you run the command (usually the root).
+const distPath = existsSync(join(process.cwd(), "dist")) 
+    ? join(process.cwd(), "dist") 
+    : resolve(__dirname, "../dist");
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -18,7 +26,7 @@ app.use(cors());
 app.use(express.json());
 
 // ── 1. Serve static files (built React app) ───────────────────────────────
-app.use(express.static(join(__dirname, "../dist")));
+app.use(express.static(distPath));
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 async function computeAverage(gameId) {
@@ -89,10 +97,16 @@ app.post("/api/ratings/:gameId", async (req, res) => {
 
 // ── Fallback: SPA routing (serve index.html for unknown routes) ───────────
 app.use((_req, res) => {
-    res.sendFile(join(__dirname, "../dist/index.html"));
+    res.sendFile(join(distPath, "index.html"));
 });
 
 // ── Start ──────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
     console.log(`✅  JSBET server running on http://localhost:${PORT}`);
+    console.log(`📂  Serving static files from: ${distPath}`);
+    if (!existsSync(distPath)) {
+        console.error(`❌  CRITICAL: Static folder not found at ${distPath}! Check build step.`);
+    } else {
+        console.log(`📋  Content of static folder: ${existsSync(join(distPath, "index.html")) ? "index.html found" : "index.html MISSING!"}`);
+    }
 });
