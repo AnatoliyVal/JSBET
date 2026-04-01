@@ -1,7 +1,12 @@
 import express from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+
+// Load environment variables from .env
+dotenv.config();
+
 import { db } from "./firebaseAdmin.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -38,6 +43,10 @@ async function computeAverage(gameId) {
 // ── 3. GET /api/ratings/:gameId  — середній рейтинг гри ───────────────────
 app.get("/api/ratings/:gameId", async (req, res) => {
     try {
+        if (!db) {
+            console.warn("⚠️  Attempting to get ratings but Database is not initialized.");
+            return res.status(503).json({ error: "Database not initialized" });
+        }
         const { gameId } = req.params;
         const result = await computeAverage(gameId);
         res.json(result);
@@ -50,6 +59,10 @@ app.get("/api/ratings/:gameId", async (req, res) => {
 // ── 4. POST /api/ratings/:gameId  — оновлення рейтингу ────────────────────
 app.post("/api/ratings/:gameId", async (req, res) => {
     try {
+        if (!db) {
+            console.warn("⚠️  Attempting to save rating but Database is not initialized.");
+            return res.status(503).json({ error: "Database not initialized" });
+        }
         const { gameId } = req.params;
         const { userId, rating } = req.body;
 
@@ -75,7 +88,7 @@ app.post("/api/ratings/:gameId", async (req, res) => {
 });
 
 // ── Fallback: SPA routing (serve index.html for unknown routes) ───────────
-app.get("*", (_req, res) => {
+app.use((_req, res) => {
     res.sendFile(join(__dirname, "../dist/index.html"));
 });
 

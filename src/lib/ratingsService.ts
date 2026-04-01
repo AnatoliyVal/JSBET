@@ -34,8 +34,11 @@ export async function setUserRating(
         body: JSON.stringify({ userId, rating }),
     });
     if (!res.ok) {
+        const status = res.status;
         const err = await res.json().catch(() => ({}));
-        throw new Error(err.error ?? "Failed to save rating");
+        const msg = err.error ?? `Failed to save rating (Status: ${status})`;
+        console.error(`❌ Rating save failed for game ${gameId}:`, msg);
+        throw new Error(msg);
     }
 }
 
@@ -47,6 +50,9 @@ export async function getAverageRating(
     gameId: string
 ): Promise<{ avg: number; count: number }> {
     const res = await fetch(`${API_URL}/api/ratings/${encodeURIComponent(gameId)}`);
-    if (!res.ok) return { avg: 0, count: 0 };
+    if (!res.ok) {
+        console.warn(`⚠️  Failed to fetch average rating for game ${gameId} (Status: ${res.status})`);
+        return { avg: 0, count: 0 };
+    }
     return res.json() as Promise<{ avg: number; count: number }>;
 }
