@@ -14,8 +14,6 @@ function initFirebase() {
     }
 
     try {
-        // On Render.com: set FIREBASE_SERVICE_ACCOUNT env var to the JSON string
-        // Locally: place serviceAccount.json in server/ directory
         if (process.env.FIREBASE_SERVICE_ACCOUNT) {
             const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
             admin.initializeApp({

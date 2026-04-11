@@ -1,35 +1,36 @@
+import { useState } from "react";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { btnPrimary, btnGhost, btnGhostSm, btnSm } from "./ButtonStyle";
 
 export type ButtonVariant = "primary" | "ghost" | "ghost-sm";
 
 export type ButtonProps = {
     children: ReactNode;
     variant?: ButtonVariant;
-    /** Додаткові класи: tournament-btn, section-link тощо */
-    className?: string;
-    /** Менша кнопка (профіль тощо) */
     small?: boolean;
-} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className" | "children">;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">;
 
-const variantClass: Record<ButtonVariant, string> = {
-    primary: "btn btn--primary",
-    ghost: "btn btn--ghost",
-    "ghost-sm": "btn btn--ghost-sm",
-};
+const Button = ({ children, variant = "primary", small = false, type = "button", style: extraStyle, ...rest }: ButtonProps) => {
+    const [hover, setHover] = useState(false);
 
-const Button = ({
-    children,
-    variant = "primary",
-    className = "",
-    small = false,
-    type = "button",
-    ...rest
-}: ButtonProps) => {
-    const sizeClass = small && variant !== "ghost-sm" ? "btn--sm" : "";
-    const combined = [variantClass[variant], sizeClass, className].filter(Boolean).join(" ");
+    const varStyle = variant === "primary"
+        ? btnPrimary(hover)
+        : variant === "ghost-sm"
+            ? btnGhostSm(hover)
+            : btnGhost(hover);
+
+    const combined = small && variant !== "ghost-sm"
+        ? { ...varStyle, ...btnSm, ...extraStyle }
+        : { ...varStyle, ...extraStyle };
 
     return (
-        <button type={type} className={combined} {...rest}>
+        <button
+            type={type}
+            style={combined}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            {...rest}
+        >
             {children}
         </button>
     );

@@ -1,9 +1,7 @@
 import { useRef, useState, KeyboardEvent, ClipboardEvent } from "react";
+import { S } from "./AuthStyle";
 
-type Props = {
-    onComplete: (code: string) => void;
-    disabled?: boolean;
-};
+type Props = { onComplete: (code: string) => void; disabled?: boolean; };
 
 const VerifyCodeForm = ({ onComplete, disabled }: Props) => {
     const [digits, setDigits] = useState<string[]>(Array(6).fill(""));
@@ -11,20 +9,14 @@ const VerifyCodeForm = ({ onComplete, disabled }: Props) => {
 
     const updateDigit = (index: number, value: string) => {
         const d = value.replace(/\D/g, "").slice(-1);
-        const next = [...digits];
-        next[index] = d;
-        setDigits(next);
-
+        const next = [...digits]; next[index] = d; setDigits(next);
         if (d && index < 5) inputs.current[index + 1]?.focus();
-
         const full = next.join("");
         if (full.length === 6 && !next.includes("")) onComplete(full);
     };
 
     const handleKey = (index: number, e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Backspace" && !digits[index] && index > 0) {
-            inputs.current[index - 1]?.focus();
-        }
+        if (e.key === "Backspace" && !digits[index] && index > 0) inputs.current[index - 1]?.focus();
     };
 
     const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
@@ -38,22 +30,11 @@ const VerifyCodeForm = ({ onComplete, disabled }: Props) => {
     };
 
     return (
-        <div className="verify-code-inputs">
+        <div style={S.verifyInputs}>
             {digits.map((d, i) => (
-                <input
-                    key={i}
-                    ref={(el) => { inputs.current[i] = el; }}
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={1}
-                    value={d}
-                    className={`verify-code-box${d ? " filled" : ""}`}
-                    disabled={disabled}
-                    onChange={(e) => updateDigit(i, e.target.value)}
-                    onKeyDown={(e) => handleKey(i, e)}
-                    onPaste={handlePaste}
-                    aria-label={`Цифра ${i + 1} з 6`}
-                />
+                <input key={i} ref={(el) => { inputs.current[i] = el; }} type="text" inputMode="numeric"
+                    maxLength={1} value={d} style={S.verifyBox(!!d)} disabled={disabled}
+                    onChange={(e) => updateDigit(i, e.target.value)} onKeyDown={(e) => handleKey(i, e)} onPaste={handlePaste} aria-label={`Цифра ${i + 1} з 6`} />
             ))}
         </div>
     );

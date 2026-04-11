@@ -5,15 +5,12 @@ import { dirname, join, resolve } from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 
-// Load environment variables from .env
 dotenv.config();
 
 import { db } from "./firebaseAdmin.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// On Render/Linux, process.cwd() is the project root where 'dist' lives.
-// Locally on Windows, it depends on where you run the command (usually the root).
 const distPath = existsSync(join(process.cwd(), "dist")) 
     ? join(process.cwd(), "dist") 
     : resolve(__dirname, "../dist");
@@ -21,14 +18,11 @@ const distPath = existsSync(join(process.cwd(), "dist"))
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// ── Middleware ─────────────────────────────────────────────────────────────
 app.use(cors());
 app.use(express.json());
 
-// ── 1. Serve static files (built React app) ───────────────────────────────
 app.use(express.static(distPath));
 
-// ── Helpers ────────────────────────────────────────────────────────────────
 async function computeAverage(gameId) {
     const snap = await db
         .collection("ratings")
@@ -48,7 +42,6 @@ async function computeAverage(gameId) {
     };
 }
 
-// ── 3. GET /api/ratings/:gameId  — середній рейтинг гри ───────────────────
 app.get("/api/ratings/:gameId", async (req, res) => {
     try {
         if (!db) {
@@ -64,7 +57,6 @@ app.get("/api/ratings/:gameId", async (req, res) => {
     }
 });
 
-// ── 4. POST /api/ratings/:gameId  — оновлення рейтингу ────────────────────
 app.post("/api/ratings/:gameId", async (req, res) => {
     try {
         if (!db) {
@@ -86,7 +78,6 @@ app.post("/api/ratings/:gameId", async (req, res) => {
             timestamp: new Date().toISOString(),
         });
 
-        // Return updated average so the client can refresh immediately
         const result = await computeAverage(gameId);
         res.json(result);
     } catch (err) {
@@ -95,12 +86,29 @@ app.post("/api/ratings/:gameId", async (req, res) => {
     }
 });
 
-// ── Fallback: SPA routing (serve index.html for unknown routes) ───────────
+app.get("/api/ratings/:gameId/user/:userId", async (req, res) => {
+    try {
+        if (!db) {
+            return res.status(503).json({ error: "Database not initialized" });
+        }
+        const { gameId, userId } = req.params;
+        const docId = `${userId}_${gameId}`;
+        const snap = await db.collection("ratings").doc(docId).get();
+        if (!snap.exists) {
+            return res.json({ rating: null });
+        }
+        res.json({ rating: snap.data().rating ?? null });
+    } catch (err) {
+        console.error("GET /api/ratings/user error:", err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+
 app.use((_req, res) => {
     res.sendFile(join(distPath, "index.html"));
 });
 
-// ── Start ──────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
     console.log(`✅  JSBET server running on http://localhost:${PORT}`);
     console.log(`📂  Serving static files from: ${distPath}`);

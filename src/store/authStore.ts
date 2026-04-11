@@ -6,15 +6,14 @@ import { getProfile, saveProfile } from "../lib/profilesService";
 export type AuthUser = {
     email: string;
     displayName: string;
-    // Extended profile fields
     phone: string;
     dob: string;
     country: string;
-    avatar: string; // base64 data URL
+    avatar: string;
     balance: number;
-    badges: string[];    // e.g. ["VIP", "CLOWN"]
-    isNewUntil?: number; // timestamp until which the user is considered "NEW"
-    lastSeen?: number;   // timestamp of last activity
+    badges: string[];
+    isNewUntil?: number;
+    lastSeen?: number;
     rainbowActive?: boolean;
     hiddenBadges?: string[];
 };
@@ -50,19 +49,13 @@ export type AuthStore = {
         displayName: string
     ) => Promise<{ ok: true } | { ok: false; message: string }>;
     logout: () => void;
-    /** Update editable profile fields and sync to Cloud */
     updateProfile: (fields: Partial<Pick<AuthUser, "phone" | "dob" | "country" | "avatar" | "displayName" | "balance" | "rainbowActive" | "hiddenBadges">>) => void;
-    /** Silently update local store from cloud updates */
     syncFromCloud: (profile: AuthUser) => void;
-    /** Activate VIP status */
     activateVip: () => void;
-    /** Activate NEW badge for 2 days */
     activateNewBadge: () => void;
-    /** Rainbow nickname effect */
     activateRainbow: () => void;
     deactivateRainbow: () => void;
     toggleBadgeVisibility: (badgeName: string) => void;
-    // UI state for auth modal
     authModalOpen: boolean;
     authModalTab: AuthModalTab;
     openAuthModal: (tab?: AuthModalTab) => void;
@@ -86,22 +79,18 @@ export const useAuthStore = create<AuthStore>()(
                 const normalized = email.trim().toLowerCase();
                 const record = get().demoUsers[normalized];
                 
-                // Check cloud first if local is missing or just to get the profile data
                 const cloudResult = await getProfile(normalized);
                 const cloudProfile = cloudResult?.user;
                 const cloudPassword = cloudResult?.password;
 
                 if (record) {
-                    // Local check
                     if (record.password !== password) {
                         return { ok: false, message: "Невірний email або пароль" };
                     }
                 } else if (cloudPassword) {
-                    // Cloud check
                     if (cloudPassword !== password) {
                         return { ok: false, message: "Невірний email або пароль" };
                     }
-                    // Restore to local storage
                     set(state => ({
                         demoUsers: {
                             ...state.demoUsers,
@@ -135,10 +124,9 @@ export const useAuthStore = create<AuthStore>()(
                     email: normalized,
                     displayName: displayName.trim() || normalized.split("@")[0],
                     ...defaultProfile,
-                    isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000, // +2 days
+                    isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000,
                 };
 
-                // Sync to cloud WITH password
                 await saveProfile(normalized, newUser, password);
 
                 set((state) => ({

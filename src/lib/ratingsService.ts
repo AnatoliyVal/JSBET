@@ -1,75 +1,38 @@
-import {
-    doc,
-    getDoc,
-    setDoc,
-    collection,
-    query,
-    where,
-    getDocs
-} from "firebase/firestore";
-import { db } from "./firebase";
+const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001";
 
-/**
- * Get the rating a specific user gave to a specific game.
- * Reads directly from Firestore.
- * Returns null if the user hasn't rated yet.
- */
 export async function getUserRating(userId: string, gameId: string): Promise<number | null> {
-    const id = `${userId}_${gameId}`;
-    const snap = await getDoc(doc(db, "ratings", id));
-    if (!snap.exists()) return null;
-    return (snap.data().rating as number) ?? null;
+    const res = await fetch(
+        `${API_URL}/api/ratings/${encodeURIComponent(gameId)}/user/${encodeURIComponent(userId)}`
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.rating ?? null;
 }
 
-/**
- * Save (or overwrite) the rating a user gave to a game.
- * Writes directly to Firestore, bypassing the need for an Express backend.
- */
 export async function setUserRating(
     userId: string,
     gameId: string,
     rating: number
 ): Promise<void> {
-    try {
-        const id = `${userId}_${gameId}`;
-        await setDoc(doc(db, "ratings", id), {
-            userId,
-            gameId,
-            rating,
-            timestamp: new Date().toISOString(),
-        });
-    } catch (err) {
-        console.error(`❌ Rating save failed for game ${gameId}:`, err);
-        throw new Error("Failed to save rating to Firestore");
+    const res = await fetch(`${API_URL}/api/ratings/${encodeURIComponent(gameId)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, rating }),
+    });
+    if (!res.ok) {
+        const status = res.status;
+        const err = await res.json().catch(() => ({}));
+        const msg = err.error ?? `Failed to save rating (Status: ${status})`;
+        throw new Error(msg);
     }
 }
 
-/**
- * Calculate the average rating and total count for a game.
- * Reads directly from Firestore, bypassing the Express backend.
- */
 export async function getAverageRating(
     gameId: string
 ): Promise<{ avg: number; count: number }> {
-    try {
-        const q = query(collection(db, "ratings"), where("gameId", "==", gameId));
-        const querySnapshot = await getDocs(q);
-        
-        if (querySnapshot.empty) {
-            return { avg: 0, count: 0 };
-        }
-        
-        let total = 0;
-        querySnapshot.forEach((docSnap) => {
-            total += docSnap.data().rating;
-        });
-        
-        return {
-            avg: Math.round((total / querySnapshot.size) * 10) / 10,
-            count: querySnapshot.size,
-        };
-    } catch (err) {
-        console.warn(`⚠️  Failed to fetch average rating for game ${gameId}`, err);
+    const res = await fetch(`${API_URL}/api/ratings/${encodeURIComponent(gameId)}`);
+    if (!res.ok) {
         return { avg: 0, count: 0 };
     }
+    return res.json() as Promise<{ avg: number; count: number }>;
 }

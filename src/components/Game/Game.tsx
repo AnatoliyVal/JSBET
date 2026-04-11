@@ -2,34 +2,43 @@ import { useState } from "react";
 import GameBadge from "./GameBadge";
 import GameModal from "./GameModal";
 import type { GameData } from "./RandomGame/RandomGame";
+import { S } from "./GameStyle";
 
 const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: GameData) => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [hovered, setHovered] = useState(false);
 
     return (
         <>
             <article
-                className="game-card"
+                style={{
+                    ...S.card,
+                    transform: hovered ? "translateY(-4px)" : "none",
+                    boxShadow: hovered
+                        ? "0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,206,0,0.25)"
+                        : "none",
+                }}
                 role="listitem"
                 aria-label={GameName}
                 onClick={() => setModalOpen(true)}
-                style={{ cursor: "pointer" }}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
             >
-                <div className="game-card-thumb">
+                <div style={S.thumb}>
                     <img
-                        className="game-card-img"
+                        style={{ ...S.img, transform: hovered ? "scale(1.05)" : "scale(1)" }}
                         src={`index-files/games/${GameName}.webp`}
                         alt={GameName}
                         loading="lazy"
                     />
                     <GameBadge badge={badge} />
-                    <div className="game-card-overlay" aria-hidden="true">
-                        <div className="game-card-play-btn">▶</div>
+                    <div style={{ ...S.overlay, opacity: hovered ? 1 : 0 }} aria-hidden="true">
+                        <div style={S.playBtn}>▶</div>
                     </div>
                 </div>
-                <div className="game-card-info">
-                    <p className="game-card-name">{GameName}</p>
-                    <p className="game-card-provider">{GameOwner}</p>
+                <div style={S.info}>
+                    <p style={S.name}>{GameName}</p>
+                    <p style={S.provider}>{GameOwner}</p>
                 </div>
             </article>
 

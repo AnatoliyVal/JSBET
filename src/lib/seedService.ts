@@ -123,7 +123,6 @@ const TOURNAMENTS_DATA = [
 ];
 
 export async function seedDatabase(): Promise<{ games: number; tournaments: number }> {
-    // Check if already seeded
     const existingSnap = await getDocs(collection(db, "games"));
     if (!existingSnap.empty) {
         return { games: existingSnap.size, tournaments: 0 };

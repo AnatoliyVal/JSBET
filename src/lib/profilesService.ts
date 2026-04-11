@@ -1,10 +1,7 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase";
 import type { AuthUser } from "../store/authStore";
 
-/**
- * Persist user profile data to Firestore.
- */
 export async function saveProfile(email: string, data: AuthUser, password?: string): Promise<void> {
     const docRef = doc(db, "profiles", email.toLowerCase());
     const payload: any = {
@@ -15,9 +12,6 @@ export async function saveProfile(email: string, data: AuthUser, password?: stri
     await setDoc(docRef, payload, { merge: true });
 }
 
-/**
- * Retrieve user profile data and credentials from Firestore.
- */
 export async function getProfile(email: string): Promise<{ user: AuthUser; password?: string } | null> {
     const docRef = doc(db, "profiles", email.toLowerCase());
     const snap = await getDoc(docRef);
@@ -28,14 +22,6 @@ export async function getProfile(email: string): Promise<{ user: AuthUser; passw
     }
     return null;
 }
-
-/**
- * Retrieve all user profiles from Firestore.
- */
-/**
- * Subscribe to profile changes in real-time.
- */
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
 
 export function subscribeToProfile(email: string, onUpdate: (data: AuthUser) => void): () => void {
     const docRef = doc(db, "profiles", email.toLowerCase());
@@ -56,9 +42,6 @@ export async function getAllProfiles(): Promise<AuthUser[]> {
     });
 }
 
-/**
- * Update the user's last seen timestamp.
- */
 export async function updateHeartbeat(email: string): Promise<void> {
     const docRef = doc(db, "profiles", email.toLowerCase());
     await setDoc(docRef, { lastSeen: Date.now() }, { merge: true });

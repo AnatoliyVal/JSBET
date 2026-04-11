@@ -2,79 +2,47 @@ import React, { useState } from "react";
 import Button from "../AllButtons/Button/Button";
 import UserDisplay from "../User/UserDisplay";
 import { useAuthStore } from "../../store/authStore";
+import { S } from "./TournamentStyle";
 
-type TournamentRegistrationModalProps = {
-    tournamentName: string;
-    onConfirm: (emailReminder: boolean) => void;
-    onClose: () => void;
-    isSubmitting: boolean;
-};
+type Props = { tournamentName: string; onConfirm: (emailReminder: boolean) => void; onClose: () => void; isSubmitting: boolean; };
 
-const TournamentRegistrationModal: React.FC<TournamentRegistrationModalProps> = ({
-    tournamentName,
-    onConfirm,
-    onClose,
-    isSubmitting
-}) => {
+const TournamentRegistrationModal: React.FC<Props> = ({ tournamentName, onConfirm, onClose, isSubmitting }) => {
     const user = useAuthStore(s => s.user);
     const [emailReminder, setEmailReminder] = useState(true);
 
     if (!user) return null;
 
     return (
-        <div className="gm-overlay" onClick={onClose}>
-            <div className="tournament-reg-modal" onClick={e => e.stopPropagation()}>
-                <button className="gm-close" onClick={onClose} aria-label="Закрити">
-                    <i className="fa-solid fa-xmark"></i>
-                </button>
+        <div style={S.overlay} onClick={onClose}>
+            <div style={S.modal} onClick={e => e.stopPropagation()}>
+                <button style={S.close} onClick={onClose} aria-label="Закрити"><i className="fa-solid fa-xmark" /></button>
 
-                <div className="trm-header">
-                    <div className="trm-icon-box">
-                        <i className="fa-solid fa-trophy"></i>
-                    </div>
-                    <h3 className="trm-title">Реєстрація на турнір</h3>
+                <div style={S.header}>
+                    <div style={S.iconBox}><i className="fa-solid fa-trophy" /></div>
+                    <h3 style={S.title}>Реєстрація на турнір</h3>
                 </div>
 
-                <div className="trm-content">
-                    <p className="trm-text">
-                        Ви впевнені, що хочете зареєструватись на <br />
-                        <span className="trm-tour-name">"{tournamentName}"</span>?
-                    </p>
-
-                    <div className="trm-user-section">
-                        <span className="trm-label">Реєстрація для:</span>
+                <div style={S.content}>
+                    <p style={S.text}>Ви впевнені, що хочете зареєструватись на <br /><span style={S.tourName}>"{tournamentName}"</span>?</p>
+                    <div style={S.userSection}>
+                        <span style={S.label}>Реєстрація для:</span>
                         <UserDisplay email={user.email} size="sm" />
                     </div>
-
-                    <div className={`trm-reminder-box ${emailReminder ? 'active' : ''}`} onClick={() => setEmailReminder(!emailReminder)}>
-                        <div className="trm-checkbox">
-                            {emailReminder && <i className="fa-solid fa-check"></i>}
+                    <div style={S.reminderBox(emailReminder)} onClick={() => setEmailReminder(!emailReminder)}>
+                        <div style={S.checkbox(emailReminder)}>{emailReminder && <i className="fa-solid fa-check" />}</div>
+                        <div style={S.reminderInfo}>
+                            <span style={S.reminderTitle}>Нагадування на пошту</span>
+                            <span style={S.reminderDesc}>Ми надішлемо вам деталі турніру</span>
                         </div>
-                        <div className="trm-reminder-info">
-                            <span className="trm-reminder-title">Нагадування на пошту</span>
-                            <span className="trm-reminder-desc">Ми надішлемо вам деталі турніру</span>
-                        </div>
-                        <i className="fa-solid fa-envelope trm-mail-icon"></i>
+                        <i className="fa-solid fa-envelope" style={S.mailIcon} />
                     </div>
                 </div>
 
-                <div className="trm-actions">
-                    <Button 
-                        variant="primary" 
-                        onClick={() => onConfirm(emailReminder)}
-                        disabled={isSubmitting}
-                        className="trm-btn-confirm"
-                    >
-                        {isSubmitting ? (
-                            <>
-                                <i className="fa-solid fa-spinner fa-spin" style={{ marginRight: "8px" }}></i>
-                                Реєстрація...
-                            </>
-                        ) : "Так, зареєструватись"}
+                <div style={S.actions}>
+                    <Button variant="primary" onClick={() => onConfirm(emailReminder)} disabled={isSubmitting}>
+                        {isSubmitting ? <><i className="fa-solid fa-spinner fa-spin" style={{ marginRight: 8 }} />Реєстрація...</> : "Так, зареєструватись"}
                     </Button>
-                    <Button variant="ghost" onClick={onClose} className="trm-btn-cancel">
-                        Скасувати
-                    </Button>
+                    <Button variant="ghost" onClick={onClose}>Скасувати</Button>
                 </div>
             </div>
         </div>

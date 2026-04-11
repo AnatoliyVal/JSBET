@@ -10,7 +10,6 @@ export interface GameData {
     badge?: string;
 }
 
-// Список ігор, з яких ми будемо обирати випадкові
 export const GAMES_DB: GameData[] = [
     { GameName: "Sweet Bonanza", GameOwner: "Pragmatic Play", CategoryName: "Фрукти", rating: "4.9", PlayerNow: "3 241", badge: "Хіт" },
     { GameName: "Big Bass Bonanza", GameOwner: "Pragmatic Play", CategoryName: "Рибалка", rating: "4.8", PlayerNow: "2 187", badge: "Джекпот" },
@@ -50,7 +49,6 @@ export const GAMES_DB: GameData[] = [
     { GameName: "Fish Day", GameOwner: "3 Oaks", CategoryName: "Рибалка", rating: "4.2", PlayerNow: "298" },
 ];
 
-// Перемішує масив (алгоритм Фішера-Єйтса) і повертає перші N унікальних елементів
 function pickUniqueGames(count: number): GameData[] {
     const shuffled = [...GAMES_DB];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -60,7 +58,6 @@ function pickUniqueGames(count: number): GameData[] {
     return shuffled.slice(0, Math.min(count, shuffled.length));
 }
 
-// Компонент для відображення N унікальних випадкових ігор без повторів
 export const RandomGameList = ({ count = 6 }: { count?: number }) => {
     const [games, setGames] = useState<GameData[]>([]);
 
@@ -77,7 +74,6 @@ export const RandomGameList = ({ count = 6 }: { count?: number }) => {
     );
 };
 
-// Залишаємо старий компонент для сумісності (показує 1 випадкову гру)
 const RandomGame = () => {
     const [randomGame, setRandomGame] = useState<GameData | null>(null);
 

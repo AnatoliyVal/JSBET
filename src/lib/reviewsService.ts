@@ -21,9 +21,6 @@ export type Review = {
     rainbowActive?: boolean;
 };
 
-/**
- * Fetch all reviews for a game, sorted by newest first.
- */
 export async function getReviews(gameId: string): Promise<Review[]> {
     const q = query(
         collection(db, "reviews"),
@@ -47,13 +44,9 @@ export async function getReviews(gameId: string): Promise<Review[]> {
             rainbowActive: !!data.rainbowActive,
         };
     });
-    // Sort oldest first (top to bottom chronological)
     return reviews.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
 }
 
-/**
- * Submit a new review for a game.
- */
 export async function addReview(
     gameId: string,
     userId: string,

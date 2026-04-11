@@ -20,20 +20,17 @@ function App() {
         seedDatabase().catch(console.error);
     }, []);
 
-    // Real-time sync & heartbeat for logged-in user
     useEffect(() => {
         if (!user?.email) return;
         
-        // Subscribe to cloud profile
         const unsub = subscribeToProfile(user.email, (cloudData) => {
             syncFromCloud(cloudData);
         });
 
-        // Heartbeat logic
         updateHeartbeat(user.email).catch(console.error);
         const interval = setInterval(() => {
             updateHeartbeat(user.email).catch(console.error);
-        }, 60000); // 1 minute
+        }, 60000);
 
         return () => {
             unsub();

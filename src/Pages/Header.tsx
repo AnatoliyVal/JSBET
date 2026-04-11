@@ -1,47 +1,39 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import AuthModal, { type AuthModalTab } from "../components/Auth/AuthModal";
+import AuthModal from "../components/Auth/AuthModal";
 import Button from "../components/AllButtons/Button/Button";
 import { useAuthStore } from "../store/authStore";
 import SearchModal from "../components/Search/SearchModal";
-import UserBadge from "../components/User/UserBadge";
 import UserDisplay from "../components/User/UserDisplay";
-
-const navClass = ({ isActive }: { isActive: boolean }) =>
-    `nav-tabs-item${isActive ? " active" : ""}`;
+import { S } from "./HeaderStyle";
 
 const Header = () => {
     const user = useAuthStore((s) => s.user);
     const logout = useAuthStore((s) => s.logout);
-
     const openAuthModal = useAuthStore((s) => s.openAuthModal);
     const authOpen = useAuthStore((s) => s.authModalOpen);
     const authTab = useAuthStore((s) => s.authModalTab);
     const closeAuthModal = useAuthStore((s) => s.closeAuthModal);
-
     const [searchOpen, setSearchOpen] = useState(false);
 
-    const onNavProtected = () => {
-        if (!user) {
-            openAuthModal("login");
-        }
-    };
+    const onNavProtected = () => { if (!user) openAuthModal("login"); };
 
     return (
         <>
-            <header className="displayflex header">
-                <div className="container">
-                    <div className="header-inner">
-                        <div className="top-header">
-                            <Link to="/" className="logo" aria-label="JSBET — на головну">
-                                <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo" />
+            <header style={S.header}>
+                <div style={S.container}>
+                    <div style={S.headerInner}>
+                        <div style={S.topHeader}>
+                            <Link to="/" style={S.logo} aria-label="JSBET — на головну">
+                                <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo" style={S.logoImg} />
                             </Link>
-                            <div className="search" onClick={() => setSearchOpen(true)} role="button" aria-label="Відкрити пошук" style={{ cursor: "pointer" }}>
-                                <span className="search-icon" aria-hidden="true">
-                                    <i className="fa-solid fa-magnifying-glass"></i>
+
+                            <div style={S.searchWrap} onClick={() => setSearchOpen(true)} role="button" aria-label="Відкрити пошук">
+                                <span style={S.searchIcon} aria-hidden="true">
+                                    <i className="fa-solid fa-magnifying-glass" />
                                 </span>
                                 <input
-                                    className="search-input"
+                                    style={S.searchInput}
                                     type="search"
                                     placeholder="Пошук гри..."
                                     aria-label="Пошук гри"
@@ -50,53 +42,31 @@ const Header = () => {
                                 />
                             </div>
 
-                            <div className="header-right">
+                            <div style={S.headerRight}>
                                 {user ? (
-                                    <div className="header-auth-user">
-                                        <UserDisplay 
-                                            email={user.email} 
-                                            showAvatar={false} 
-                                            className="header-auth-name" 
-                                        />
-                                        <Button type="button" variant="ghost" small onClick={() => logout()}>
-                                            Вийти
-                                        </Button>
+                                    <div style={S.headerAuthUser}>
+                                        <UserDisplay email={user.email} showAvatar={false} />
+                                        <Button type="button" variant="ghost" small onClick={() => logout()}>Вийти</Button>
                                     </div>
                                 ) : (
                                     <>
-                                        <Button type="button" variant="ghost" onClick={() => openAuthModal("login")}>
-                                            Увійти
-                                        </Button>
-                                        <Button type="button" variant="primary" onClick={() => openAuthModal("register")}>
-                                            Реєстрація
-                                        </Button>
+                                        <Button type="button" variant="ghost" onClick={() => openAuthModal("login")}>Увійти</Button>
+                                        <Button type="button" variant="primary" onClick={() => openAuthModal("register")}>Реєстрація</Button>
                                     </>
                                 )}
                             </div>
                         </div>
-                        <div className="bottom-header">
-                            <nav className="nav-tabs" aria-label="Головні розділи" id="main-nav">
-                                <NavLink to="/" end className={navClass}>
-                                    <span className="nav-tabs-icon">
-                                        <i className="fa-solid fa-gamepad"></i>
-                                    </span>{" "}
-                                    Ігри
+
+                        <div style={S.bottomHeader}>
+                            <nav style={S.nav} aria-label="Головні розділи" id="main-nav">
+                                <NavLink to="/" end style={({ isActive }) => S.navItem(isActive)}>
+                                    <i className="fa-solid fa-gamepad" style={S.navIcon} /> Ігри
                                 </NavLink>
-                                <NavLink
-                                    to="/tournaments"
-                                    className={navClass}
-                                    onClick={onNavProtected}
-                                >
-                                    <span className="nav-tabs-icon">
-                                        <i className="fa-solid fa-trophy"></i>
-                                    </span>{" "}
-                                    Турніри
+                                <NavLink to="/tournaments" style={({ isActive }) => S.navItem(isActive)} onClick={onNavProtected}>
+                                    <i className="fa-solid fa-trophy" style={S.navIcon} /> Турніри
                                 </NavLink>
-                                <NavLink to="/profile" className={navClass} onClick={onNavProtected}>
-                                    <span className="nav-tabs-icon">
-                                        <i className="fa-solid fa-user"></i>
-                                    </span>{" "}
-                                    Мій профіль
+                                <NavLink to="/profile" style={({ isActive }) => S.navItem(isActive)} onClick={onNavProtected}>
+                                    <i className="fa-solid fa-user" style={S.navIcon} /> Мій профіль
                                 </NavLink>
                             </nav>
                         </div>
