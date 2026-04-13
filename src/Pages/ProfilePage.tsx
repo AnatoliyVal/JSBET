@@ -1,12 +1,12 @@
 import {useNavigate} from "react-router-dom";
 import {useRef, useState, useEffect} from "react";
-import Button from "../components/AllButtons/Button/Button";
+import Button from "../components/AllButtons/Button";
 import {useAuthStore} from "../store/authStore";
-import BonusesTab from "../components/Profile/BonusesTab";
-import UsersTab from "../components/Profile/UsersTab";
+import BonusesTab from "../components/BonusesTab/BonusesTab";
+import UsersTab from "../components/BonusesTab/UserTab";
 import UserDisplay from "../components/User/UserDisplay";
 import {S} from "./ProfileStyle";
-import AccauntTopUpModal from "./ModulePage/AccauntTopUp";
+import AccauntTopUpModal from "./ModulePage";
 
 type Tab = "settings" | "visuals" | "history" | "transactions" | "bonuses" | "users";
 

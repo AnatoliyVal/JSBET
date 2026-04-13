@@ -1,6 +1,6 @@
 import {collection, writeBatch, doc, getDocs} from "firebase/firestore";
 import {db} from "./firebase";
-import {GAMES_DB} from "../components/Game/RandomGame/RandomGame";
+import {GAMES_DB} from "../components/Game/RandomGame";
 import {Tournament} from "../interfaces/tournament";
 
 const TOURNAMENTS_DATA = [

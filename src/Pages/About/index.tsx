@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import Button from "../../components/AllButtons/Button/Button.tsx";
+import Button from "../../components/AllButtons/Button";
 import {Link} from "react-router-dom";
 import {S} from "./styles.ts";
 

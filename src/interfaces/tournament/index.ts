@@ -3,3 +3,4 @@ export type Tournament = {
     dateRange: string; participants: string; maxParticipants: string; minBet: string;
     games: string; condition: string;
 };
+

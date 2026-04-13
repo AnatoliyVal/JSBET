@@ -1,12 +1,12 @@
 import {HashRouter, Route, Routes} from "react-router-dom";
-import Footer from "./components/Footer/Footer";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import GamesPage from "./Pages/Main";
 import TournamentsPage from "./Pages/TournamentsPage";
 import ProfilePage from "./Pages/ProfilePage";
 import AboutPage from "./Pages/About";
-import Data from "./components/TimeData/TimeNow";
-import ScrollToTop from "./components/ScrollToTop";
+import Data from "./components/TimeData";
+import ScrollToTop from "./components/User/ScrollToTop";
 import {useEffect} from "react";
 import {seedDatabase} from "./lib/seedService";
 import {useAuthStore} from "./store/authStore";

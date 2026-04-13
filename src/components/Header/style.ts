@@ -1,17 +1,18 @@
 import type {CSSProperties} from "react";
 
 export const S = {
-    header: {
+    header: (isMobile: boolean): CSSProperties => ({
         position: "fixed",
         top: 0, left: 0, right: 0,
         zIndex: 100,
-        height: "var(--header-height)",
+        height: isMobile ? "auto" : "var(--header-height)",
+        paddingBottom: isMobile ? "8px" : "0",
         background: "var(--color-bg-header)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         borderBottom: "1px solid var(--color-border)",
         display: "flex",
-    } satisfies CSSProperties,
+    }),
 
     container: {
         width: "100%",
@@ -27,12 +28,13 @@ export const S = {
         justifyContent: "center",
     } satisfies CSSProperties,
 
-    topHeader: {
+    topHeader: (isMobile: boolean): CSSProperties => ({
         display: "flex",
+        flexDirection: isMobile ? "column" : "row",
         alignItems: "center",
-        gap: 16,
+        gap: isMobile ? 12 : 16,
         padding: "10px 0 8px",
-    } satisfies CSSProperties,
+    }),
 
     logo: {
         display: "flex",
@@ -83,13 +85,13 @@ export const S = {
         pointerEvents: "none",
     } satisfies CSSProperties,
 
-    headerRight: {
-        marginLeft: "auto",
+    headerRight: (isMobile: boolean): CSSProperties => ({
+        marginLeft: isMobile ? 0 : "auto",
         display: "flex",
         alignItems: "center",
         gap: 12,
         flexShrink: 0,
-    } satisfies CSSProperties,
+    }),
 
     headerAuthUser: {
         display: "flex",
@@ -132,5 +134,24 @@ export const S = {
     navIcon: {
         fontSize: 13,
         lineHeight: 1,
+    } satisfies CSSProperties,
+
+    floatingSearchBtn: {
+        position: 'fixed',
+        bottom: 24,
+        right: 24,
+        width: 56,
+        height: 56,
+        borderRadius: '50%',
+        backgroundColor: 'var(--color-bg-tab-active)', // Or an eye-catching color
+        color: 'var(--color-text-dark)', // Icon color
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
+        zIndex: 1000,
+        cursor: 'pointer',
+        border: 'none',
+        fontSize: 20,
     } satisfies CSSProperties,
 };

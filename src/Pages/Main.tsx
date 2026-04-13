@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react";
-import Game from "../components/Game/Game";
-import CategoryButton from "../components/AllButtons/CategoryButton/CategoryButton";
-import Button from "../components/AllButtons/Button/Button";
-import {RandomGameList, GAMES_DB} from "../components/Game/RandomGame/RandomGame.tsx";
+import Game from "../components/Game/GameTotal";
+import CategoryButton from "../components/AllButtons/CategoryButton";
+import Button from "../components/AllButtons/Button";
+import {RandomGameList, GAMES_DB} from "../components/Game/RandomGame";
 import {Link} from "react-router-dom";
 import {useAuthStore} from "../store/authStore";
 import {S} from "./MainStyle";

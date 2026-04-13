@@ -1,10 +1,10 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {Link, NavLink} from "react-router-dom";
-import AuthModal from "../Auth/AuthModal.tsx";
-import Button from "../AllButtons/Button/Button.tsx";
+import AuthModal from "../Auth/AuthModal";
+import Button from "../AllButtons/Button";
 import {useAuthStore} from "../../store/authStore.ts";
-import SearchModal from "../Search/SearchModal.tsx";
-import UserDisplay from "../User/UserDisplay.tsx";
+import SearchModal from "../Search";
+import UserDisplay from "../User/UserDisplay";
 import {S} from "./style.ts";
 
 const Header = () => {
@@ -15,40 +15,51 @@ const Header = () => {
     const authTab = useAuthStore((s) => s.authModalTab);
     const closeAuthModal = useAuthStore((s) => s.closeAuthModal);
     const [searchOpen, setSearchOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
 
-    const onNavProtected = () => {
-        if (!user) openAuthModal("login");
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 600);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const onNavProtected = (e: React.MouseEvent) => {
+        if (!user) {
+            e.preventDefault();
+            openAuthModal("login");
+        }
     };
 
 
 
     return (
         <>
-            <header style={S.header}>
+            <header style={S.header(isMobile)}>
                 <div style={S.container}>
                     <div style={S.headerInner}>
-                        <div style={S.topHeader}>
+                        <div style={S.topHeader(isMobile)}>
                             <Link to="/" style={S.logo} aria-label="JSBET — на головну">
                                 <img src="index-files/icons/unnamed-removebg-preview.png" alt="JSBET Logo"
                                      style={S.logoImg}/>
                             </Link>
 
-                            <div style={S.searchWrap} onClick={() => setSearchOpen(true)} role="button"
-                                 aria-label="Відкрити пошук">
-                                <span style={S.searchIcon} aria-hidden="true">
-                                    <i className="fa-solid fa-magnifying-glass"/>
-                                </span>
-                                <input
-                                    style={S.searchInput}
-                                    type="search"
-                                    placeholder="Пошук гри..."
-                                    aria-label="Пошук гри"
-                                    readOnly
-                                    onFocus={() => setSearchOpen(true)}
-                                />
-                            </div>
+                                {!isMobile && (
+                                    <div style={S.searchWrap} onClick={() => setSearchOpen(true)} role="button"
+                                         aria-label="Відкрити пошук">
+                                        <span style={S.searchIcon} aria-hidden="true">
+                                            <i className="fa-solid fa-magnifying-glass"/>
+                                        </span>
+                                        <input
+                                            style={S.searchInput}
+                                            type="search"
+                                            placeholder="Пошук гри..."
+                                            aria-label="Пошук гри"
+                                            readOnly
+                                        />
+                                    </div>
+                                )}
 
-                            <div style={S.headerRight}>
+                            <div style={S.headerRight(isMobile)}>
                                 {user ? (
                                     <div style={S.headerAuthUser}>
                                         <UserDisplay email={user.email} showAvatar={false}/>
@@ -87,6 +98,12 @@ const Header = () => {
 
             <AuthModal open={authOpen} initialTab={authTab} onClose={closeAuthModal}/>
             <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)}/>
+            
+            {isMobile && (
+                <button style={S.floatingSearchBtn} onClick={() => setSearchOpen(true)} aria-label="Відкрити пошук">
+                    <i className="fa-solid fa-magnifying-glass"/>
+                </button>
+            )}
         </>
     );
 };

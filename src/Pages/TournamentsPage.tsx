@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
+import {Navigate} from "react-router-dom";
 import {fetchTournamentsFromDB} from "../lib/seedService";
 import {useAuthStore} from "../store/authStore";
 import {registerForTournament, getUserRegistrations} from "../lib/tournamentService";
 import {sendTournamentReminder} from "../lib/emailService";
-import TournamentRegistrationModal from "../components/Tournaments/TournamentRegistrationModal";
+import TournamentRegistrationModal from "../components/Tournaments";
 import {S} from "./TournamentsStyle";
 import {Tournament} from "../interfaces/tournament";
 
@@ -57,6 +58,10 @@ const TournamentsPage = () => {
             setSendingEmail(false);
         }
     };
+
+    if (!user) {
+        return <Navigate to="/" replace />;
+    }
 
     if (loading) {
         return (
