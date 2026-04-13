@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 export const S = {
     overlay: {
@@ -97,7 +97,7 @@ export const S = {
         borderRadius: 6, objectFit: "cover", flexShrink: 0,
     } satisfies CSSProperties,
 
-    resultInfo: { flex: 1, minWidth: 0 } satisfies CSSProperties,
+    resultInfo: {flex: 1, minWidth: 0} satisfies CSSProperties,
 
     resultName: {
         fontSize: 14, fontWeight: 600,

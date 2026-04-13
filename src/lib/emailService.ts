@@ -1,8 +1,8 @@
 import emailjs from "@emailjs/browser";
 
-const SERVICE_ID  = "service_jsbet";
+const SERVICE_ID = "service_jsbet";
 const TEMPLATE_ID = "template_aj3wnif";
-const PUBLIC_KEY  = "y-bJJAhwgzPJJXaJE";
+const PUBLIC_KEY = "y-bJJAhwgzPJJXaJE";
 
 /** Generate a random 6-digit numeric code */
 export function generateCode(): string {
@@ -16,7 +16,7 @@ export async function sendVerificationCode(
     code: string
 ): Promise<void> {
     const expiry = new Date(Date.now() + 5 * 60 * 1000);
-    const timeStr = expiry.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" });
+    const timeStr = expiry.toLocaleTimeString("uk-UA", {hour: "2-digit", minute: "2-digit"});
 
     try {
         emailjs.init(PUBLIC_KEY);
@@ -25,10 +25,10 @@ export async function sendVerificationCode(
             TEMPLATE_ID,
             {
                 to_email: toEmail,
-                email:    toEmail,
-                name:     name,
+                email: toEmail,
+                name: name,
                 passcode: code,
-                time:     timeStr,
+                time: timeStr,
             },
             PUBLIC_KEY
         );
@@ -37,6 +37,7 @@ export async function sendVerificationCode(
         throw error;
     }
 }
+
 /** Send a notification about tournament registration/reminder */
 export async function sendTournamentReminder(
     toEmail: string,
@@ -51,9 +52,9 @@ export async function sendTournamentReminder(
             TEMPLATE_ID, // Reusing verification template or using it as a generic notification
             {
                 to_email: toEmail,
-                name:     name,
+                name: name,
                 passcode: "Турнір зареєстровано! 🏆", // Customizing passcode field for visual variety
-                time:     `${tournamentName} (${dateRange})`,
+                time: `${tournamentName} (${dateRange})`,
             },
             PUBLIC_KEY
         );

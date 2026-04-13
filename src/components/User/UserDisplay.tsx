@@ -1,8 +1,8 @@
 import React from "react";
 import UserBadge from "./UserBadge";
-import { useUserProfile } from "../../hooks/useUserProfile";
-import { useAuthStore } from "../../store/authStore";
-import { S } from "./UserStyle";
+import {useUserProfile} from "../../hooks/useUserProfile";
+import {useAuthStore} from "../../store/authStore";
+import {S} from "./UserStyle";
 
 type UserDisplayProps = {
     email?: string;
@@ -16,13 +16,13 @@ type UserDisplayProps = {
 };
 
 const UserDisplay: React.FC<UserDisplayProps> = ({
-    email, displayName: initialName, avatar: initialAvatar,
-    badges: initialBadges, rainbowActive: initialRainbow,
-    isNewUntil: initialNewUntil, size = "md", showAvatar = true,
-}) => {
+                                                     email, displayName: initialName, avatar: initialAvatar,
+                                                     badges: initialBadges, rainbowActive: initialRainbow,
+                                                     isNewUntil: initialNewUntil, size = "md", showAvatar = true,
+                                                 }) => {
     const currentUser = useAuthStore(s => s.user);
     const isSelf = email && currentUser?.email === email;
-    const { profile } = useUserProfile(email, {
+    const {profile} = useUserProfile(email, {
         displayName: initialName, avatar: initialAvatar,
         badges: initialBadges, rainbowActive: initialRainbow, isNewUntil: initialNewUntil,
     });
@@ -51,7 +51,7 @@ const UserDisplay: React.FC<UserDisplayProps> = ({
         }}>
             {showAvatar && (
                 <div style={avatarSize}>
-                    <img src={avatar} alt={name} style={S.avatarImg(isSmall)} />
+                    <img src={avatar} alt={name} style={S.avatarImg(isSmall)}/>
                 </div>
             )}
             <div style={{
@@ -70,7 +70,7 @@ const UserDisplay: React.FC<UserDisplayProps> = ({
                 }}>
                     {name}
                 </span>
-                <UserBadge badges={badges} isNewUntil={isNewTime} />
+                <UserBadge badges={badges} isNewUntil={isNewTime}/>
             </div>
         </div>
     );

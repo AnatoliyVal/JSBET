@@ -1,10 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
 import GameBadge from "./GameBadge";
 import GameModal from "./GameModal";
-import type { GameData } from "./RandomGame/RandomGame";
-import { S } from "./GameStyle";
+import type {GameData} from "./RandomGame/RandomGame";
+import {S} from "./GameStyle";
 
-const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: GameData) => {
+const Game = ({GameName, GameOwner, CategoryName, rating, PlayerNow, badge}: GameData) => {
     const [modalOpen, setModalOpen] = useState(false);
     const [hovered, setHovered] = useState(false);
 
@@ -26,13 +26,13 @@ const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: G
             >
                 <div style={S.thumb}>
                     <img
-                        style={{ ...S.img, transform: hovered ? "scale(1.05)" : "scale(1)" }}
+                        style={{...S.img, transform: hovered ? "scale(1.05)" : "scale(1)"}}
                         src={`index-files/games/${GameName}.webp`}
                         alt={GameName}
                         loading="lazy"
                     />
-                    <GameBadge badge={badge} />
-                    <div style={{ ...S.overlay, opacity: hovered ? 1 : 0 }} aria-hidden="true">
+                    <GameBadge badge={badge}/>
+                    <div style={{...S.overlay, opacity: hovered ? 1 : 0}} aria-hidden="true">
                         <div style={S.playBtn}>▶</div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ const Game = ({ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }: G
 
             {modalOpen && (
                 <GameModal
-                    game={{ GameName, GameOwner, CategoryName, rating, PlayerNow, badge }}
+                    game={{GameName, GameOwner, CategoryName, rating, PlayerNow, badge}}
                     onClose={() => setModalOpen(false)}
                 />
             )}

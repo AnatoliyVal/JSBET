@@ -1,10 +1,10 @@
 import React from "react";
-import { useAuthStore } from "../../store/authStore";
-import { S } from "./UserStyle";
+import {useAuthStore} from "../../store/authStore";
+import {S} from "./UserStyle";
 
 type UserBadgeProps = { badges?: string[]; isNewUntil?: number; };
 
-const UserBadge: React.FC<UserBadgeProps> = ({ badges = [], isNewUntil }) => {
+const UserBadge: React.FC<UserBadgeProps> = ({badges = [], isNewUntil}) => {
     const user = useAuthStore((s) => s.user);
     const hiddenBadges = user?.hiddenBadges || [];
     const isNew = isNewUntil && Date.now() < isNewUntil;
@@ -21,7 +21,7 @@ const UserBadge: React.FC<UserBadgeProps> = ({ badges = [], isNewUntil }) => {
                 if (badge === "VIP") return <span key={b} style={S.vipBadge} aria-label="VIP статус">VIP</span>;
                 if (badge === "CLOWN") return (
                     <span key={b} style={S.clownBadge} aria-label="CLOWN статус">
-                        <span style={{ marginRight: 4 }}>🤡</span> CLOWN
+                         CLOWN
                     </span>
                 );
                 if (badge === "NEW") return <span key={b} style={S.newBadge} aria-label="NEW статус">NEW</span>;

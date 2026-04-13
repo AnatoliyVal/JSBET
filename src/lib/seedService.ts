@@ -1,6 +1,7 @@
-import { collection, writeBatch, doc, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
-import { GAMES_DB } from "../components/Game/RandomGame/RandomGame";
+import {collection, writeBatch, doc, getDocs} from "firebase/firestore";
+import {db} from "./firebase";
+import {GAMES_DB} from "../components/Game/RandomGame/RandomGame";
+import {Tournament} from "../interfaces/tournament";
 
 const TOURNAMENTS_DATA = [
     {
@@ -125,7 +126,7 @@ const TOURNAMENTS_DATA = [
 export async function seedDatabase(): Promise<{ games: number; tournaments: number }> {
     const existingSnap = await getDocs(collection(db, "games"));
     if (!existingSnap.empty) {
-        return { games: existingSnap.size, tournaments: 0 };
+        return {games: existingSnap.size, tournaments: 0};
     }
 
     const batch = writeBatch(db);
@@ -135,7 +136,7 @@ export async function seedDatabase(): Promise<{ games: number; tournaments: numb
     // Seed games
     for (const game of GAMES_DB) {
         const ref = doc(collection(db, "games"));
-        batch.set(ref, { ...game, id: game.GameName });
+        batch.set(ref, {...game, id: game.GameName});
         gameCount++;
     }
 
@@ -147,10 +148,10 @@ export async function seedDatabase(): Promise<{ games: number; tournaments: numb
     }
 
     await batch.commit();
-    return { games: gameCount, tournaments: tournamentCount };
+    return {games: gameCount, tournaments: tournamentCount};
 }
 
 export async function fetchTournamentsFromDB() {
     const snap = await getDocs(collection(db, "tournaments"));
-    return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+    return snap.docs.map((d) => ({id: d.id, ...d.data()})) as Tournament[];
 }

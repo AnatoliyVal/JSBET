@@ -1,4 +1,4 @@
-import { chip, thumb } from "./GameCategoryButtonStyle";
+import {chip, thumb} from "./GameCategoryButtonStyle";
 
 interface CategoryButtonProps {
     CategoryName: string;
@@ -6,10 +6,10 @@ interface CategoryButtonProps {
     onClick?: () => void;
 }
 
-const CategoryButton = ({ CategoryName, isActive = false, onClick }: CategoryButtonProps) => (
+const CategoryButton = ({CategoryName, isActive = false, onClick}: CategoryButtonProps) => (
     <li>
         <button style={chip(isActive)} type="button" onClick={onClick}>
-            <img style={thumb} src={`index-files/categories/${CategoryName}.jpg`} alt="" loading="lazy" />
+            <img style={thumb} src={`index-files/categories/${CategoryName}.jpg`} alt="" loading="lazy"/>
             {CategoryName}
         </button>
     </li>

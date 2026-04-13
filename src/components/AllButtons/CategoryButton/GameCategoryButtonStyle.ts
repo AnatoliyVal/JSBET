@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 export const chip = (active: boolean): CSSProperties => ({
     height: "100%",

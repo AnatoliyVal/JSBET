@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { subscribeToProfile } from "../lib/profilesService";
-import type { AuthUser } from "../store/authStore";
+import {useEffect, useState} from "react";
+import {subscribeToProfile} from "../lib/profilesService";
+import type {AuthUser} from "../store/authStore";
 
 export function useUserProfile(email?: string, initialData?: Partial<AuthUser>) {
     const [profile, setProfile] = useState<AuthUser | null>(null);

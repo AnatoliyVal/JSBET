@@ -9,7 +9,7 @@ import {
     where,
     serverTimestamp,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import {db} from "./firebase";
 
 
 export async function registerForTournament(userId: string, tournamentId: string): Promise<void> {

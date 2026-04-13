@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from "react";
-import { createPortal } from "react-dom";
-import { GAMES_DB } from "../Game/RandomGame/RandomGame";
-import type { GameData } from "../Game/RandomGame/RandomGame";
+import {useState, useEffect, useRef} from "react";
+import {createPortal} from "react-dom";
+import {GAMES_DB} from "../Game/RandomGame/RandomGame";
+import type {GameData} from "../Game/RandomGame/RandomGame";
 import GameModal from "../Game/GameModal";
-import { S } from "./SearchStyle";
+import {S} from "./SearchStyle";
 
 type SortOrder = "none" | "asc" | "desc";
 type Props = { open: boolean; onClose: () => void };
 
-const SearchModal = ({ open, onClose }: Props) => {
+const SearchModal = ({open, onClose}: Props) => {
     const [query, setQuery] = useState("");
     const [sort, setSort] = useState<SortOrder>("none");
     const [selectedGame, setSelectedGame] = useState<GameData | null>(null);
@@ -16,22 +16,33 @@ const SearchModal = ({ open, onClose }: Props) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (open) { setTimeout(() => inputRef.current?.focus(), 50); }
-        else { setQuery(""); setSort("none"); }
+        if (open) {
+            setTimeout(() => inputRef.current?.focus(), 50);
+        } else {
+            setQuery("");
+            setSort("none");
+        }
     }, [open]);
 
     useEffect(() => {
-        const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
         document.addEventListener("keydown", onKey);
         return () => document.removeEventListener("keydown", onKey);
     }, [onClose]);
 
     useEffect(() => {
         document.body.style.overflow = open || selectedGame ? "hidden" : "";
-        return () => { document.body.style.overflow = ""; };
+        return () => {
+            document.body.style.overflow = "";
+        };
     }, [open, selectedGame]);
 
-    const handleGameClick = (game: GameData) => { setSelectedGame(game); onClose(); };
+    const handleGameClick = (game: GameData) => {
+        setSelectedGame(game);
+        onClose();
+    };
 
     const filtered: GameData[] = GAMES_DB
         .filter((g) => g.GameName.toLowerCase().includes(query.toLowerCase()))
@@ -51,7 +62,7 @@ const SearchModal = ({ open, onClose }: Props) => {
                     <div style={S.modal} onClick={(e) => e.stopPropagation()}>
                         <div style={S.header}>
                             <div style={S.fieldWrap}>
-                                <i className="fa-solid fa-magnifying-glass" style={S.icon} />
+                                <i className="fa-solid fa-magnifying-glass" style={S.icon}/>
                                 <input
                                     ref={inputRef}
                                     style={S.input}
@@ -63,15 +74,15 @@ const SearchModal = ({ open, onClose }: Props) => {
                                 />
                                 {query && (
                                     <button style={S.clearBtn} onClick={() => setQuery("")} aria-label="Очистити">
-                                        <i className="fa-solid fa-xmark" />
+                                        <i className="fa-solid fa-xmark"/>
                                     </button>
                                 )}
                             </div>
                             <button style={S.sortBtn(sort !== "none")} onClick={cycleSort}>
-                                <i className="fa-solid fa-star" /> {sortLabel}
+                                <i className="fa-solid fa-star"/> {sortLabel}
                             </button>
                             <button style={S.closeBtn} onClick={onClose} aria-label="Закрити пошук">
-                                <i className="fa-solid fa-xmark" />
+                                <i className="fa-solid fa-xmark"/>
                             </button>
                         </div>
 
@@ -95,14 +106,17 @@ const SearchModal = ({ open, onClose }: Props) => {
                                                 onMouseEnter={() => setHovered(game.GameName)}
                                                 onMouseLeave={() => setHovered(null)}
                                             >
-                                                <img style={S.resultImg} src={`index-files/games/${game.GameName}.webp`} alt={game.GameName}
-                                                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }} />
+                                                <img style={S.resultImg} src={`index-files/games/${game.GameName}.webp`}
+                                                     alt={game.GameName}
+                                                     onError={(e) => {
+                                                         (e.currentTarget as HTMLImageElement).style.display = "none";
+                                                     }}/>
                                                 <div style={S.resultInfo}>
                                                     <p style={S.resultName}>{game.GameName}</p>
                                                     <p style={S.resultProvider}>{game.GameOwner} · {game.CategoryName}</p>
                                                 </div>
                                                 <div style={S.resultRating}>
-                                                    <i className="fa-solid fa-star" /> {game.rating}
+                                                    <i className="fa-solid fa-star"/> {game.rating}
                                                 </div>
                                                 {game.badge && (
                                                     <span style={game.badge === "Новинка" ? S.badgeNew : S.badgeGold}>
@@ -120,7 +134,7 @@ const SearchModal = ({ open, onClose }: Props) => {
             )}
 
             {selectedGame && createPortal(
-                <GameModal game={selectedGame} onClose={() => setSelectedGame(null)} />,
+                <GameModal game={selectedGame} onClose={() => setSelectedGame(null)}/>,
                 document.body
             )}
         </>

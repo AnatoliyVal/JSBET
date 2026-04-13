@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
-import { getUserRating, setUserRating, getAverageRating } from "../../lib/ratingsService";
-import { useAuthStore } from "../../store/authStore";
+import {useState, useEffect} from "react";
+import {getUserRating, setUserRating, getAverageRating} from "../../lib/ratingsService";
+import {useAuthStore} from "../../store/authStore";
 
 type Props = {
     gameId: string;
 };
 
-const StarRating = ({ gameId }: Props) => {
+const StarRating = ({gameId}: Props) => {
     const user = useAuthStore((s) => s.user);
     const [hover, setHover] = useState(0);
     const [userRating, setUserRatingState] = useState<number | null>(null);

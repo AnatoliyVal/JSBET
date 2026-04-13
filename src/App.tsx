@@ -1,16 +1,16 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
-import Footer from "./Pages/Footer/Footer";
-import Header from "./Pages/Header";
+import {HashRouter, Route, Routes} from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header";
 import GamesPage from "./Pages/Main";
 import TournamentsPage from "./Pages/TournamentsPage";
 import ProfilePage from "./Pages/ProfilePage";
-import AboutPage from "./Pages/AboutPage";
+import AboutPage from "./Pages/About";
 import Data from "./components/TimeData/TimeNow";
 import ScrollToTop from "./components/ScrollToTop";
-import { useEffect } from "react";
-import { seedDatabase } from "./lib/seedService";
-import { useAuthStore } from "./store/authStore";
-import { subscribeToProfile, updateHeartbeat } from "./lib/profilesService";
+import {useEffect} from "react";
+import {seedDatabase} from "./lib/seedService";
+import {useAuthStore} from "./store/authStore";
+import {subscribeToProfile, updateHeartbeat} from "./lib/profilesService";
 
 function App() {
     const user = useAuthStore(s => s.user);
@@ -22,7 +22,7 @@ function App() {
 
     useEffect(() => {
         if (!user?.email) return;
-        
+
         const unsub = subscribeToProfile(user.email, (cloudData) => {
             syncFromCloud(cloudData);
         });
@@ -40,16 +40,16 @@ function App() {
 
     return (
         <HashRouter>
-            <ScrollToTop />
-            <Data />
-            <Header />
+            <ScrollToTop/>
+            <Data/>
+            <Header/>
             <Routes>
-                <Route path="/" element={<GamesPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/tournaments" element={<TournamentsPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/" element={<GamesPage/>}/>
+                <Route path="/about" element={<AboutPage/>}/>
+                <Route path="/tournaments" element={<TournamentsPage/>}/>
+                <Route path="/profile" element={<ProfilePage/>}/>
             </Routes>
-            <Footer />
+            <Footer/>
         </HashRouter>
     );
 }

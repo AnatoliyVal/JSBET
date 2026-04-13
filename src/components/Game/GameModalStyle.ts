@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 export const S = {
     overlay: {
@@ -121,7 +121,7 @@ export const S = {
         display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap",
     } satisfies CSSProperties,
 
-    stars: { display: "flex", gap: 3 } satisfies CSSProperties,
+    stars: {display: "flex", gap: 3} satisfies CSSProperties,
 
     star: (filled: boolean, disabled: boolean): CSSProperties => ({
         background: "none", border: "none", padding: 0,

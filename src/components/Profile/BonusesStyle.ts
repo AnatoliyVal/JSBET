@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 export const S = {
     tabWrap: {
@@ -70,22 +70,22 @@ export const S = {
         flexShrink: 0,
     } satisfies CSSProperties,
 
-    icon: { fontSize: 32, marginBottom: 4 } satisfies CSSProperties,
+    icon: {fontSize: 32, marginBottom: 4} satisfies CSSProperties,
     badgeFs: {
         fontSize: 12, fontWeight: 800, color: "var(--color-gold)",
         letterSpacing: 1,
     } satisfies CSSProperties,
 
-    body: { flex: 1, minWidth: 0 } satisfies CSSProperties,
+    body: {flex: 1, minWidth: 0} satisfies CSSProperties,
 
-    bodyTop: { display: "flex", alignItems: "center", gap: 12, marginBottom: 8 } satisfies CSSProperties,
+    bodyTop: {display: "flex", alignItems: "center", gap: 12, marginBottom: 8} satisfies CSSProperties,
 
     tag: {
         fontSize: 11, fontWeight: 700, color: "var(--color-green)",
         background: "rgba(34,197,93,0.1)", padding: "4px 10px", borderRadius: "9999px",
     } satisfies CSSProperties,
 
-    deposit: { fontSize: 12, color: "var(--color-text-muted)" } satisfies CSSProperties,
+    deposit: {fontSize: 12, color: "var(--color-text-muted)"} satisfies CSSProperties,
 
     name: {
         fontSize: 18, fontWeight: 700, color: "var(--color-text-primary)", marginBottom: 16,
@@ -102,8 +102,8 @@ export const S = {
         cursor: "pointer", transition: "border-color 0.18s",
     }),
 
-    optionLabel: { fontSize: 13, fontWeight: 600, color: "var(--color-text-primary)" } satisfies CSSProperties,
-    optionSub: { fontSize: 12, color: "var(--color-text-muted)" } satisfies CSSProperties,
+    optionLabel: {fontSize: 13, fontWeight: 600, color: "var(--color-text-primary)"} satisfies CSSProperties,
+    optionSub: {fontSize: 12, color: "var(--color-text-muted)"} satisfies CSSProperties,
 
     actions: {
         display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-end", flexShrink: 0,
@@ -121,7 +121,12 @@ export const S = {
     } satisfies CSSProperties,
 
     promoLabel: {
-        fontSize: 14, fontWeight: 600, color: "var(--color-text-primary)", display: "flex", alignItems: "center", gap: 8,
+        fontSize: 14,
+        fontWeight: 600,
+        color: "var(--color-text-primary)",
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
     } satisfies CSSProperties,
 
     promoWrap: {

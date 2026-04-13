@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 const base: CSSProperties = {
     display: "inline-flex",
@@ -41,4 +41,4 @@ export const btnGhostSm = (hover: boolean): CSSProperties => ({
     fontSize: 13,
 });
 
-export const btnSm: CSSProperties = { minHeight: 36, padding: "0 16px", fontSize: 13 };
+export const btnSm: CSSProperties = {minHeight: 36, padding: "0 16px", fontSize: 13};

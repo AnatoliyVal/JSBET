@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 interface FooterMenuProps {
     text: string;
     url?: string;
 }
 
-const FooterMenu = ({ text, url }: FooterMenuProps) => {
+const FooterMenu = ({text, url}: FooterMenuProps) => {
     return (
         <li>
             {url ? (

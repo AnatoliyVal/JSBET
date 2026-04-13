@@ -1,23 +1,18 @@
-import { useEffect, useState } from "react";
-import { fetchTournamentsFromDB } from "../lib/seedService";
-import { useAuthStore } from "../store/authStore";
-import { registerForTournament, getUserRegistrations } from "../lib/tournamentService";
-import { sendTournamentReminder } from "../lib/emailService";
+import {useEffect, useState} from "react";
+import {fetchTournamentsFromDB} from "../lib/seedService";
+import {useAuthStore} from "../store/authStore";
+import {registerForTournament, getUserRegistrations} from "../lib/tournamentService";
+import {sendTournamentReminder} from "../lib/emailService";
 import TournamentRegistrationModal from "../components/Tournaments/TournamentRegistrationModal";
-import { S } from "./TournamentsStyle";
+import {S} from "./TournamentsStyle";
+import {Tournament} from "../interfaces/tournament";
 
-type Tournament = {
-    id: string; name: string; prize: string; status: string; theme: string;
-    dateRange: string; participants: string; maxParticipants: string; minBet: string;
-    games: string; condition: string;
-};
-
-const statusLabel: Record<string, string> = { live: "LIVE", upcoming: "Незабаром", finished: "Завершено" };
+const statusLabel: Record<string, string> = {live: "LIVE", upcoming: "Незабаром", finished: "Завершено"};
 
 const TournamentsPage = () => {
     const user = useAuthStore((s) => s.user);
     const openAuthModal = useAuthStore((s) => s.openAuthModal);
-    
+
     const [tournaments, setTournaments] = useState<Tournament[]>([]);
     const [loading, setLoading] = useState(true);
     const [registrations, setRegistrations] = useState<string[]>([]);
@@ -32,7 +27,7 @@ const TournamentsPage = () => {
     }, []);
 
     useEffect(() => {
-        fetchTournamentsFromDB().then((data) => setTournaments(data as Tournament[])).finally(() => setLoading(false));
+        fetchTournamentsFromDB().then((data) => setTournaments(data)).finally(() => setLoading(false));
     }, []);
 
     useEffect(() => {
@@ -40,7 +35,10 @@ const TournamentsPage = () => {
     }, [user]);
 
     const handleRegister = async (t: Tournament, emailReminder: boolean) => {
-        if (!user) { openAuthModal("login"); return; }
+        if (!user) {
+            openAuthModal("login");
+            return;
+        }
         try {
             setSendingEmail(true);
             await registerForTournament(user.email, t.id);
@@ -48,18 +46,25 @@ const TournamentsPage = () => {
             if (emailReminder) {
                 await sendTournamentReminder(user.email, user.displayName, t.name, t.dateRange);
                 alert("Ви успішно зареєстровані! Нагадування надіслано на пошту.");
-            } else { alert("Ви успішно зареєстровані!"); }
+            } else {
+                alert("Ви успішно зареєстровані!");
+            }
             setRegId(null);
-        } catch (err) { console.error(err); alert("Помилка при реєстрації."); } finally { setSendingEmail(false); }
+        } catch (err) {
+            console.error(err);
+            alert("Помилка при реєстрації.");
+        } finally {
+            setSendingEmail(false);
+        }
     };
 
     if (loading) {
         return (
             <main>
-                <div style={{ display: "block" }}>
+                <div style={{display: "block"}}>
                     <div className="container" style={S.loading}>
-                        <i className="fa-solid fa-spinner fa-spin" style={{ fontSize: 32 }} />
-                        <p style={{ marginTop: 16 }}>Завантаження турнірів…</p>
+                        <i className="fa-solid fa-spinner fa-spin" style={{fontSize: 32}}/>
+                        <p style={{marginTop: 16}}>Завантаження турнірів…</p>
                     </div>
                 </div>
             </main>
@@ -68,12 +73,18 @@ const TournamentsPage = () => {
 
     return (
         <main>
-            <div style={{ display: "block" }}>
-                <section style={{ padding: "40px 0" }}>
+            <div style={{display: "block"}}>
+                <section style={{padding: "40px 0"}}>
                     <div className="container">
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 32 }}>
+                        <div style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "flex-end",
+                            marginBottom: 32
+                        }}>
                             <h2 style={S.title}>
-                                Турніри <span style={S.count}>· {tournaments.filter(t => t.status === "live").length} активних</span>
+                                Турніри <span
+                                style={S.count}>· {tournaments.filter(t => t.status === "live").length} активних</span>
                             </h2>
                         </div>
 
@@ -86,17 +97,19 @@ const TournamentsPage = () => {
                                         <div style={S.header(t.theme)}>
                                             <div style={S.status(t.status)}>{statusLabel[t.status] ?? t.status}</div>
                                             <h3 style={S.name}>{t.name}</h3>
-                                            <p style={S.prize}><i className="fa-solid fa-coins" /> Призовий фонд: <strong>{t.prize}</strong></p>
+                                            <p style={S.prize}><i className="fa-solid fa-coins"/> Призовий
+                                                фонд: <strong>{t.prize}</strong></p>
                                         </div>
                                         <div style={S.body}>
                                             <div style={S.infoRow}>
                                                 <div style={S.infoItem}>
-                                                    <span style={S.infoLabel}><i className="fa-solid fa-calendar" /> Дата</span>
+                                                    <span style={S.infoLabel}><i className="fa-solid fa-calendar"/> Дата</span>
                                                     <span style={S.infoValue}>{t.dateRange}</span>
                                                 </div>
                                                 <div style={S.infoItem}>
-                                                    <span style={S.infoLabel}><i className="fa-solid fa-users" /> Учасники</span>
-                                                    <span style={S.infoValue}>{t.participants} / {t.maxParticipants}</span>
+                                                    <span style={S.infoLabel}><i className="fa-solid fa-users"/> Учасники</span>
+                                                    <span
+                                                        style={S.infoValue}>{t.participants} / {t.maxParticipants}</span>
                                                 </div>
                                             </div>
                                             <div style={S.conditions}>
@@ -110,7 +123,9 @@ const TournamentsPage = () => {
                                             <button
                                                 style={S.btn(isFinished || isRegistered)}
                                                 disabled={isRegistered || isFinished}
-                                                onClick={() => { if (!isFinished) setRegId(t.id); }}
+                                                onClick={() => {
+                                                    if (!isFinished) setRegId(t.id);
+                                                }}
                                             >
                                                 {isFinished ? "Результати" : isRegistered ? "Ви зареєстровані ✓" : t.status === "upcoming" ? "Нагадати мені" : "Зареєструватись"}
                                             </button>
@@ -124,7 +139,7 @@ const TournamentsPage = () => {
             </div>
 
             {regId && (
-                <TournamentRegistrationModal 
+                <TournamentRegistrationModal
                     tournamentName={tournaments.find(t => t.id === regId)?.name || ""}
                     onClose={() => setRegId(null)}
                     isSubmitting={sendingEmail}

@@ -1,5 +1,5 @@
-import { collection, doc, getDoc, setDoc, query, where, getDocs, serverTimestamp } from "firebase/firestore";
-import { db } from "./firebase";
+import {collection, doc, getDoc, setDoc, query, where, getDocs, serverTimestamp} from "firebase/firestore";
+import {db} from "./firebase";
 
 export async function getUserRating(userId: string, gameId: string): Promise<number | null> {
     try {
@@ -19,7 +19,7 @@ export async function setUserRating(
     rating: number
 ): Promise<void> {
     if (rating < 1 || rating > 5) throw new Error("Rating must be between 1 and 5");
-    
+
     const docId = `${userId}_${gameId}`;
     await setDoc(doc(db, "ratings", docId), {
         userId,
@@ -35,20 +35,20 @@ export async function getAverageRating(
     try {
         const q = query(collection(db, "ratings"), where("gameId", "==", gameId));
         const snap = await getDocs(q);
-        
-        if (snap.empty) return { avg: 0, count: 0 };
-        
+
+        if (snap.empty) return {avg: 0, count: 0};
+
         let total = 0;
         snap.forEach((d) => {
             total += d.data().rating || 0;
         });
-        
+
         return {
             avg: Math.round((total / snap.size) * 10) / 10,
             count: snap.size,
         };
     } catch (e) {
         console.error("Error fetching average rating:", e);
-        return { avg: 0, count: 0 };
+        return {avg: 0, count: 0};
     }
 }

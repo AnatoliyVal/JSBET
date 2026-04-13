@@ -7,7 +7,7 @@ import {
     serverTimestamp,
     Timestamp,
 } from "firebase/firestore";
-import { db } from "./firebase";
+import {db} from "./firebase";
 
 export type Review = {
     id: string;

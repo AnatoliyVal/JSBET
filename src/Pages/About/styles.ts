@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 export const S = {
     hero: {
@@ -38,7 +38,7 @@ export const S = {
         maxWidth: 800, margin: "0 auto 30px", lineHeight: 1.6,
     } satisfies CSSProperties,
 
-    section: { padding: "40px 0" } satisfies CSSProperties,
+    section: {padding: "40px 0"} satisfies CSSProperties,
 
     content: {
         display: "flex", flexDirection: "column", gap: 40,
@@ -59,7 +59,7 @@ export const S = {
         marginBottom: 16,
     } satisfies CSSProperties,
 
-    icon: { color: "var(--color-gold)", fontSize: 20 } satisfies CSSProperties,
+    icon: {color: "var(--color-gold)", fontSize: 20} satisfies CSSProperties,
 
     text: {
         fontSize: 15, color: "var(--color-text-secondary)",

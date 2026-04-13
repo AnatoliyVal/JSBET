@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type {CSSProperties} from "react";
 
 const container: CSSProperties = {
     width: "100%",
@@ -7,7 +7,7 @@ const container: CSSProperties = {
     paddingInline: "max(12px, 3vw)",
 };
 
-const section: CSSProperties = { padding: "40px 0" };
+const section: CSSProperties = {padding: "40px 0"};
 
 const sectionHeader: CSSProperties = {
     display: "flex",
@@ -114,7 +114,7 @@ const statsBar: CSSProperties = {
     flexWrap: "wrap",
 };
 
-const statsBarItem: CSSProperties = { textAlign: "center" };
+const statsBarItem: CSSProperties = {textAlign: "center"};
 
 const statsBarValue: CSSProperties = {
     fontSize: 24,

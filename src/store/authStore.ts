@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import type { AuthModalTab } from "../components/Auth/AuthModal";
-import { getProfile, saveProfile } from "../lib/profilesService";
+import {create} from "zustand";
+import {persist} from "zustand/middleware";
+import type {AuthModalTab} from "../components/Auth/AuthModal";
+import {getProfile, saveProfile} from "../lib/profilesService";
 
 export type AuthUser = {
     email: string;
@@ -72,35 +72,35 @@ export const useAuthStore = create<AuthStore>()(
             authModalOpen: false,
             authModalTab: "login",
 
-            openAuthModal: (tab = "login") => set({ authModalOpen: true, authModalTab: tab }),
-            closeAuthModal: () => set({ authModalOpen: false }),
+            openAuthModal: (tab = "login") => set({authModalOpen: true, authModalTab: tab}),
+            closeAuthModal: () => set({authModalOpen: false}),
 
             login: async (email, password) => {
                 const normalized = email.trim().toLowerCase();
                 const record = get().demoUsers[normalized];
-                
+
                 const cloudResult = await getProfile(normalized);
                 const cloudProfile = cloudResult?.user;
                 const cloudPassword = cloudResult?.password;
 
                 if (record) {
                     if (record.password !== password) {
-                        return { ok: false, message: "Невірний email або пароль" };
+                        return {ok: false, message: "Невірний email або пароль"};
                     }
                 } else if (cloudPassword) {
                     if (cloudPassword !== password) {
-                        return { ok: false, message: "Невірний email або пароль" };
+                        return {ok: false, message: "Невірний email або пароль"};
                     }
                     set(state => ({
                         demoUsers: {
                             ...state.demoUsers,
-                            [normalized]: { password, displayName: cloudProfile?.displayName || normalized.split("@")[0] }
+                            [normalized]: {password, displayName: cloudProfile?.displayName || normalized.split("@")[0]}
                         }
                     }));
                 } else {
-                    return { ok: false, message: "Невірний email або пароль" };
+                    return {ok: false, message: "Невірний email або пароль"};
                 }
-                
+
                 const token = makeToken(normalized);
                 set({
                     user: cloudProfile ? cloudProfile : {
@@ -110,16 +110,16 @@ export const useAuthStore = create<AuthStore>()(
                     },
                     token,
                 });
-                return { ok: true };
+                return {ok: true};
             },
 
             register: async (email, password, displayName) => {
                 const normalized = email.trim().toLowerCase();
                 if (get().demoUsers[normalized]) {
-                    return { ok: false, message: "Користувач з таким email уже зареєстрований" };
+                    return {ok: false, message: "Користувач з таким email уже зареєстрований"};
                 }
                 const token = makeToken(normalized);
-                
+
                 const newUser = {
                     email: normalized,
                     displayName: displayName.trim() || normalized.split("@")[0],
@@ -140,24 +140,24 @@ export const useAuthStore = create<AuthStore>()(
                     user: newUser,
                     token,
                 }));
-                return { ok: true };
+                return {ok: true};
             },
 
-            logout: () => set({ user: null, token: null }),
+            logout: () => set({user: null, token: null}),
 
             syncFromCloud: (profile) => {
                 set(state => ({
-                    user: state.user 
-                        ? { ...state.user, ...profile, badges: profile.badges || state.user.badges || [] } 
-                        : { ...profile, badges: profile.badges || [] }
+                    user: state.user
+                        ? {...state.user, ...profile, badges: profile.badges || state.user.badges || []}
+                        : {...profile, badges: profile.badges || []}
                 }));
             },
 
             updateProfile: (fields) => {
                 const state = get();
                 if (!state.user) return;
-                const newUser = { ...state.user, ...fields };
-                set({ user: newUser });
+                const newUser = {...state.user, ...fields};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
 
@@ -165,35 +165,35 @@ export const useAuthStore = create<AuthStore>()(
                 const state = get();
                 if (!state.user) return;
                 const currentBadges = state.user.badges || [];
-                const newBadges = currentBadges.includes("VIP") 
-                    ? currentBadges 
+                const newBadges = currentBadges.includes("VIP")
+                    ? currentBadges
                     : [...currentBadges, "VIP"];
-                const newUser = { ...state.user, badges: newBadges };
-                set({ user: newUser });
+                const newUser = {...state.user, badges: newBadges};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
 
             activateNewBadge: () => {
                 const state = get();
                 if (!state.user) return;
-                const newUser = { ...state.user, isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000 };
-                set({ user: newUser });
+                const newUser = {...state.user, isNewUntil: Date.now() + 2 * 24 * 60 * 60 * 1000};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
 
             activateRainbow: () => {
                 const state = get();
                 if (!state.user) return;
-                const newUser = { ...state.user, rainbowActive: true };
-                set({ user: newUser });
+                const newUser = {...state.user, rainbowActive: true};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
 
             deactivateRainbow: () => {
                 const state = get();
                 if (!state.user) return;
-                const newUser = { ...state.user, rainbowActive: false };
-                set({ user: newUser });
+                const newUser = {...state.user, rainbowActive: false};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
 
@@ -205,8 +205,8 @@ export const useAuthStore = create<AuthStore>()(
                 const newHidden = currentHidden.includes(normalized)
                     ? currentHidden.filter(b => b !== normalized)
                     : [...currentHidden, normalized];
-                const newUser = { ...state.user, hiddenBadges: newHidden };
-                set({ user: newUser });
+                const newUser = {...state.user, hiddenBadges: newHidden};
+                set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
         }),

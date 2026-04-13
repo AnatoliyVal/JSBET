@@ -1,6 +1,6 @@
-import { useState } from "react";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { btnPrimary, btnGhost, btnGhostSm, btnSm } from "./ButtonStyle";
+import {useState} from "react";
+import type {ButtonHTMLAttributes, ReactNode} from "react";
+import {btnPrimary, btnGhost, btnGhostSm, btnSm} from "./ButtonStyle";
 
 export type ButtonVariant = "primary" | "ghost" | "ghost-sm";
 
@@ -10,7 +10,14 @@ export type ButtonProps = {
     small?: boolean;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">;
 
-const Button = ({ children, variant = "primary", small = false, type = "button", style: extraStyle, ...rest }: ButtonProps) => {
+const Button = ({
+                    children,
+                    variant = "primary",
+                    small = false,
+                    type = "button",
+                    style: extraStyle,
+                    ...rest
+                }: ButtonProps) => {
     const [hover, setHover] = useState(false);
 
     const varStyle = variant === "primary"
@@ -20,8 +27,8 @@ const Button = ({ children, variant = "primary", small = false, type = "button",
             : btnGhost(hover);
 
     const combined = small && variant !== "ghost-sm"
-        ? { ...varStyle, ...btnSm, ...extraStyle }
-        : { ...varStyle, ...extraStyle };
+        ? {...varStyle, ...btnSm, ...extraStyle}
+        : {...varStyle, ...extraStyle};
 
     return (
         <button
