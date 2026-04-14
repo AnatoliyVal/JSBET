@@ -1,11 +1,11 @@
 import {useEffect, useState, useRef} from "react";
-import type {GameData} from "../RandomGame";
 import {getUserRating, setUserRating, getAverageRating} from "../../../lib/ratingsService.ts";
 import {getReviews, addReview, type Review} from "../../../lib/reviewsService.ts";
 import {useAuthStore} from "../../../store/authStore.ts";
 import UserDisplay from "../../User/UserDisplay";
 import SlotGame from "../Slots";
 import {S} from "./styles.ts";
+import {GameData} from "../../../interfaces/game";
 
 const CATEGORY_INFO: Record<string, { description: string; rules: string }> = {
     "Фрукти": {
@@ -109,11 +109,13 @@ const GameModal = ({game, onClose}: Props) => {
             document.documentElement.style.overflow = prevHtml;
         };
     }, []);
+
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
     useEffect(() => {
         const h = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
@@ -121,13 +123,16 @@ const GameModal = ({game, onClose}: Props) => {
         window.addEventListener("keydown", h);
         return () => window.removeEventListener("keydown", h);
     }, [onClose]);
+
     useEffect(() => {
         getAverageRating(game.GameName).then(setAvg);
     }, [game.GameName]);
+
     useEffect(() => {
         if (!user) return;
         getUserRating(user.email, game.GameName).then(setUserRatingState);
     }, [user, game.GameName]);
+
     useEffect(() => {
         setReviewsLoading(true);
         getReviews(game.GameName).then(setReviews).finally(() => setReviewsLoading(false));

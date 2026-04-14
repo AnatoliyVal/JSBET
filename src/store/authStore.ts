@@ -51,6 +51,8 @@ export type AuthStore = {
     logout: () => void;
     updateProfile: (fields: Partial<Pick<AuthUser, "phone" | "dob" | "country" | "avatar" | "displayName" | "balance" | "rainbowActive" | "hiddenBadges">>) => void;
     syncFromCloud: (profile: AuthUser) => void;
+    topUpBalance: (amount: number) => void;
+    withdrawBalance: (amount: number) => { ok: boolean; message?: string };
     activateVip: () => void;
     activateNewBadge: () => void;
     activateRainbow: () => void;
@@ -159,6 +161,24 @@ export const useAuthStore = create<AuthStore>()(
                 const newUser = {...state.user, ...fields};
                 set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            topUpBalance: (amount: number) => {
+                const state = get();
+                if (!state.user) return;
+                const newUser = {...state.user, balance: (state.user.balance ?? 0) + amount};
+                set({user: newUser});
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            withdrawBalance: (amount: number) => {
+                const state = get();
+                if (!state.user) return {ok: false, message: "Не авторизовано"};
+                if ((state.user.balance ?? 0) < amount) return {ok: false, message: "Недостатньо коштів"};
+                const newUser = {...state.user, balance: (state.user.balance ?? 0) - amount};
+                set({user: newUser});
+                saveProfile(newUser.email, newUser).catch(console.error);
+                return {ok: true};
             },
 
             activateVip: () => {

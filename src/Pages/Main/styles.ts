@@ -43,8 +43,8 @@ const sectionLink: CSSProperties = {
 
 const gamesGrid = (isMobile?: boolean): CSSProperties => ({
     display: "grid",
-    gridTemplateColumns: isMobile ? "minmax(0, 1fr)" : "repeat(auto-fill, minmax(160px, 1fr))",
-    gap: 16,
+    gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(auto-fill, minmax(160px, 1fr))",
+    gap: isMobile ? 12 : 16,
 });
 
 const hero: CSSProperties = {

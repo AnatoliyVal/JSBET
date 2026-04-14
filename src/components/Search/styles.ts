@@ -32,6 +32,7 @@ export const S = {
         border: "1px solid var(--color-border)",
         borderRadius: "var(--radius-pill)",
         padding: "0 14px", height: 42,
+        minWidth: 0,
     } satisfies CSSProperties,
 
     icon: {
@@ -41,6 +42,7 @@ export const S = {
     input: {
         flex: 1, background: "none", border: "none", outline: "none",
         color: "var(--color-text-primary)", fontSize: 15, fontFamily: "inherit",
+        minWidth: 0,
     } satisfies CSSProperties,
 
     clearBtn: {
@@ -56,6 +58,7 @@ export const S = {
         background: active ? "rgba(255,206,0,0.12)" : "rgba(255,255,255,0.04)",
         color: active ? "var(--color-gold)" : "var(--color-text-secondary)",
         cursor: "pointer", fontFamily: "inherit", whiteSpace: "nowrap",
+        flexShrink: 0,
     }),
 
     closeBtn: {

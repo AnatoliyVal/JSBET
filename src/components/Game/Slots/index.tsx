@@ -1,8 +1,8 @@
 import {useState, useEffect, useRef, useCallback} from "react";
 import {createPortal} from "react-dom";
-import type {GameData} from "../RandomGame";
 import {useAuthStore} from "../../../store/authStore";
 import {S, KEYFRAMES} from "./styles.ts";
+import {GameData} from "../../../interfaces/game";
 
 type Props = {
     game: GameData;
@@ -201,10 +201,10 @@ const SlotGame = ({game, onClose}: Props) => {
             </button>
 
             {/* Layout */}
-            <div style={S.layout}>
+            <div style={S.layout} className="sg-layout">
 
                 {/* ── LEFT PANEL ── */}
-                <div style={S.leftPanel}>
+                <div style={S.leftPanel} className="sg-left-panel">
                     <div style={S.infoBox}>
                         <p style={S.infoLabel}>Баланс</p>
                         <p style={S.infoValue}>₴{balance.toLocaleString()}</p>
@@ -237,7 +237,7 @@ const SlotGame = ({game, onClose}: Props) => {
                 </div>
 
                 {/* ── CENTER ── */}
-                <div style={S.center}>
+                <div style={S.center} className="sg-center">
                     <div style={S.titleRow}>
                         <span style={S.gameTitle}>{game.GameName}</span>
                         <span style={S.provider}>{game.GameOwner}</span>
@@ -280,7 +280,7 @@ const SlotGame = ({game, onClose}: Props) => {
                 </div>
 
                 {/* ── RIGHT PANEL ── */}
-                <div style={S.rightPanel}>
+                <div style={S.rightPanel} className="sg-right-panel">
                     <button
                         onClick={spin}
                         disabled={spinDisabled}

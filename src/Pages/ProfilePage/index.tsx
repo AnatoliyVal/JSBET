@@ -6,7 +6,8 @@ import BonusesTab from "../../components/BonusesTab/BonusesTab";
 import UsersTab from "../../components/BonusesTab/UserTab";
 import UserDisplay from "../../components/User/UserDisplay";
 import {S} from "./styles.ts";
-import AccountTopUpModal from "../../components/ModulePageForAccountTopUp";
+import AccountTopUpModal from "../../components/MonetaryTransactions/ModulePageForAccountTopUp";
+import WithdrawModal from "../../components/MonetaryTransactions/WithdrawModal";
 
 type Tab = "settings" | "visuals" | "history" | "transactions" | "bonuses" | "users";
 
@@ -16,6 +17,7 @@ const ProfilePage = () => {
     const updateProfile = useAuthStore((s) => s.updateProfile);
     const navigate = useNavigate();
     const [isModaleOpen, AccauntTopUp] = useState(false);
+    const [isWithdrawModalOpen, setWithdrawModalOpen] = useState(false);
 
 
     const [activeTab, setActiveTab] = useState<Tab>("settings");
@@ -101,8 +103,9 @@ const ProfilePage = () => {
                                     <p style={S.balanceValue}>₴{(user.balance ?? 0).toFixed(2)}</p>
                                     <div style={S.balanceActions}>
                                         <Button variant="primary" onClick={() => AccauntTopUp(true)} small>Поповнити</Button>
-                                        <Button variant="ghost" small>Вивести</Button>
+                                        <Button variant="ghost" onClick={() => setWithdrawModalOpen(true)} small>Вивести</Button>
                                         {isModaleOpen && <AccountTopUpModal onClose={() => AccauntTopUp(false)}/>}
+                                        {isWithdrawModalOpen && <WithdrawModal onClose={() => setWithdrawModalOpen(false)}/>}
                                     </div>
                                 </div>
 

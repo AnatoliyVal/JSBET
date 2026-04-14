@@ -1,9 +1,8 @@
 import {useState, useEffect, useRef} from "react";
 import {createPortal} from "react-dom";
-import {GAMES_DB} from "../Game/RandomGame";
-import type {GameData} from "../Game/RandomGame";
 import GameModal from "../Game/GameModal";
 import {S} from "./styles.ts";
+import {GameData, GAMES_DB} from "../../interfaces/game";
 
 type SortOrder = "none" | "asc" | "desc";
 type Props = { open: boolean; onClose: () => void };

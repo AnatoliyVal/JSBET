@@ -1,6 +1,3 @@
-import {collection, doc, getDocs, writeBatch} from "firebase/firestore";
-import {db} from "../../lib/firebase.ts";
-import {GAMES_DB} from "../../components/Game/RandomGame";
 
 export type Tournament = {
     id: string; name: string; prize: string; status: string; theme: string;

@@ -1,7 +1,7 @@
 import {collection, writeBatch, doc, getDocs} from "firebase/firestore";
 import {db} from "./firebase";
-import {GAMES_DB} from "../components/Game/RandomGame";
 import {Tournament, TOURNAMENTS_DATA} from "../interfaces/tournament";
+import {GAMES_DB} from "../interfaces/game";
 
 export async function seedDatabase(): Promise<{ games: number; tournaments: number }> {
     const existingSnap = await getDocs(collection(db, "games"));

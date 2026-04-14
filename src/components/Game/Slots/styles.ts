@@ -353,4 +353,47 @@ export const KEYFRAMES = `
         from { transform: scale(.8); opacity: 0; }
         to   { transform: scale(1);  opacity: 1; }
     }
+
+    @media (max-width: 860px) {
+        .sg-layout {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100vh !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            justify-content: flex-start !important;
+            padding-top: 60px !important;
+            padding-bottom: 60px !important;
+            width: 100vw !important;
+            max-width: 100vw !important;
+        }
+        .sg-left-panel, .sg-right-panel {
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+    }
+
+    @media (max-width: 520px) {
+        .sg-center {
+            transform: scale(0.85);
+            transform-origin: top center;
+            margin-bottom: -70px;
+        }
+    }
+
+    @media (max-width: 440px) {
+        .sg-center {
+            transform: scale(0.75);
+            margin-bottom: -120px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        .sg-center {
+            transform: scale(0.65);
+            margin-bottom: -170px;
+        }
+    }
 `;
+

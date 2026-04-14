@@ -85,6 +85,11 @@ export const S = {
         background: "rgba(34,197,93,0.1)", padding: "4px 10px", borderRadius: "9999px",
     } satisfies CSSProperties,
 
+    tagActive: {
+        fontSize: 11, fontWeight: 700, color: "var(--color-gold)",
+        background: "rgba(255,206,0,0.1)", padding: "4px 10px", borderRadius: "9999px",
+    } satisfies CSSProperties,
+
     deposit: {fontSize: 12, color: "var(--color-text-muted)"} satisfies CSSProperties,
 
     name: {
@@ -130,13 +135,13 @@ export const S = {
     } satisfies CSSProperties,
 
     promoWrap: {
-        flex: 1, display: "flex", gap: 8, maxWidth: 400,
+        flex: 1, display: "flex", gap: 8, maxWidth: 400, minWidth: 0,
     } satisfies CSSProperties,
 
     promoInput: {
         flex: 1, height: 44, borderRadius: "var(--radius-lg)", border: "1px solid var(--color-border)",
         background: "var(--color-bg-input)", color: "var(--color-text-primary)", padding: "0 16px",
-        fontSize: 14, outline: "none", fontFamily: "inherit",
+        fontSize: 14, outline: "none", fontFamily: "inherit", minWidth: 0,
     } satisfies CSSProperties,
 
     promoMsg: (ok: boolean): CSSProperties => ({

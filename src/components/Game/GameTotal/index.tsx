@@ -1,8 +1,8 @@
 import {useState} from "react";
 import GameBadge from "../GameBadge";
 import GameModal from "../GameModal";
-import type {GameData} from "../RandomGame";
 import {S} from "./styles.ts";
+import {GameData} from "../../../interfaces/game";
 
 const Game = ({GameName, GameOwner, CategoryName, rating, PlayerNow, badge}: GameData) => {
     const [modalOpen, setModalOpen] = useState(false);
