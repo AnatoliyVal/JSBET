@@ -70,6 +70,7 @@ function checkClusters(grid: typeof SYMBOLS[number][][]) {
 const SlotGame = ({game, onClose}: Props) => {
     const user = useAuthStore(s => s.user);
     const updateProfile = useAuthStore(s => s.updateProfile);
+    const logGameHistory = useAuthStore(s => s.logGameHistory);
     const storeBalance = user?.balance ?? 0;
 
     const [localBalance, setLocalBalance] = useState(5000);
@@ -138,6 +139,9 @@ const SlotGame = ({game, onClose}: Props) => {
                 setWinAmount(rounded);
                 setShowWin(true);
                 setBalance(b => b + rounded);
+                if (user) logGameHistory(game.GameName, totalBet, rounded);
+            } else {
+                if (user) logGameHistory(game.GameName, totalBet, 0);
             }
             setSpinning(false);
         }, 1400 + (COLS - 1) * 80 + 600);

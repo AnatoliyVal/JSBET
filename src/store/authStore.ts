@@ -2,6 +2,7 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 import type {AuthModalTab} from "../components/Auth/AuthModal";
 import {getProfile, saveProfile} from "../lib/profilesService";
+import type {TransactionRecord, GameHistoryRecord} from "../interfaces/records";
 
 export type AuthUser = {
     email: string;
@@ -16,6 +17,8 @@ export type AuthUser = {
     lastSeen?: number;
     rainbowActive?: boolean;
     hiddenBadges?: string[];
+    gameHistory?: GameHistoryRecord[];
+    transactions?: TransactionRecord[];
 };
 
 type DemoUserRecord = {
@@ -57,6 +60,7 @@ export type AuthStore = {
     activateNewBadge: () => void;
     activateRainbow: () => void;
     deactivateRainbow: () => void;
+    logGameHistory: (gameName: string, betAmount: number, winAmount: number) => void;
     toggleBadgeVisibility: (badgeName: string) => void;
     authModalOpen: boolean;
     authModalTab: AuthModalTab;
@@ -166,7 +170,9 @@ export const useAuthStore = create<AuthStore>()(
             topUpBalance: (amount: number) => {
                 const state = get();
                 if (!state.user) return;
-                const newUser = {...state.user, balance: (state.user.balance ?? 0) + amount};
+                const tx: TransactionRecord = { id: Date.now().toString(), type: "topup", amount, date: Date.now(), status: "success" };
+                const newTxs = [tx, ...(state.user.transactions || [])];
+                const newUser = {...state.user, balance: (state.user.balance ?? 0) + amount, transactions: newTxs};
                 set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },
@@ -175,7 +181,9 @@ export const useAuthStore = create<AuthStore>()(
                 const state = get();
                 if (!state.user) return {ok: false, message: "Не авторизовано"};
                 if ((state.user.balance ?? 0) < amount) return {ok: false, message: "Недостатньо коштів"};
-                const newUser = {...state.user, balance: (state.user.balance ?? 0) - amount};
+                const tx: TransactionRecord = { id: Date.now().toString(), type: "withdraw", amount, date: Date.now(), status: "success" };
+                const newTxs = [tx, ...(state.user.transactions || [])];
+                const newUser = {...state.user, balance: (state.user.balance ?? 0) - amount, transactions: newTxs};
                 set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
                 return {ok: true};
@@ -213,6 +221,16 @@ export const useAuthStore = create<AuthStore>()(
                 const state = get();
                 if (!state.user) return;
                 const newUser = {...state.user, rainbowActive: false};
+                set({user: newUser});
+                saveProfile(newUser.email, newUser).catch(console.error);
+            },
+
+            logGameHistory: (gameName, betAmount, winAmount) => {
+                const state = get();
+                if (!state.user) return;
+                const record: GameHistoryRecord = { id: Date.now().toString() + Math.random(), gameName, betAmount, winAmount, date: Date.now() };
+                const newHistory = [record, ...(state.user.gameHistory || [])].slice(0, 100); 
+                const newUser = {...state.user, gameHistory: newHistory};
                 set({user: newUser});
                 saveProfile(newUser.email, newUser).catch(console.error);
             },

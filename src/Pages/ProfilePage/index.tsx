@@ -305,26 +305,104 @@ const ProfilePage = () => {
                                 {activeTab === "history" && (
                                     <div style={S.block}>
                                         <h3 style={S.title}>Історія ігор</h3>
-                                        <p style={S.desc}>Тут відображатиметься твоя Ігрова активність.</p>
-                                        <p style={{
-                                            textAlign: "center",
-                                            color: "var(--color-text-muted)",
-                                            padding: "40px 0"
-                                        }}><i className="fa-solid fa-gamepad" style={{fontSize: 40, marginBottom: 16}}/><br/>Ігор
-                                            ще немає</p>
+                                        <p style={S.desc}>Тут відображається ваша ігрова активність.</p>
+                                        
+                                        {!user.gameHistory || user.gameHistory.length === 0 ? (
+                                            <p style={{
+                                                textAlign: "center",
+                                                color: "var(--color-text-muted)",
+                                                padding: "40px 0"
+                                            }}><i className="fa-solid fa-gamepad" style={{fontSize: 40, marginBottom: 16}}/><br/>Ігор ще немає</p>
+                                        ) : (
+                                            <div style={{display: "flex", flexDirection: "column", gap: 8}}>
+                                                {user.gameHistory.map(record => (
+                                                    <div key={record.id} style={{
+                                                        background: "rgba(255,255,255,0.03)", 
+                                                        border: "1px solid var(--color-border)",
+                                                        padding: "12px 16px", borderRadius: 8,
+                                                        display: "flex", justifyContent: "space-between", alignItems: "center"
+                                                    }}>
+                                                        <div>
+                                                            <div style={{fontWeight: 700, fontSize: 15, marginBottom: 4}}>{record.gameName}</div>
+                                                            <div style={{fontSize: 12, color: "var(--color-text-muted)"}}>
+                                                                {new Date(record.date).toLocaleString()}
+                                                            </div>
+                                                        </div>
+                                                        <div style={{textAlign: "right"}}>
+                                                            <div style={{fontSize: 12, color: "var(--color-text-muted)", marginBottom: 4}}>
+                                                                Ставка: ₴{record.betAmount}
+                                                            </div>
+                                                            {record.winAmount > 0 ? (
+                                                                <div style={{fontWeight: 800, color: "var(--color-gold)", fontSize: 15}}>
+                                                                    +₴{record.winAmount}
+                                                                </div>
+                                                            ) : (
+                                                                <div style={{fontWeight: 700, color: "var(--color-text-muted)", fontSize: 13}}>
+                                                                    Програш
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
                                 {activeTab === "transactions" && (
                                     <div style={S.block}>
                                         <h3 style={S.title}>Транзакції</h3>
-                                        <p style={S.desc}>Тут відображатиметься Твоя фінансова активність.</p>
-                                        <p style={{
-                                            textAlign: "center",
-                                            color: "var(--color-text-muted)",
-                                            padding: "40px 0"
-                                        }}><i className="fa-solid fa-receipt" style={{fontSize: 40, marginBottom: 16}}/><br/>Транзакцій
-                                            ще немає</p>
+                                        <p style={S.desc}>Тут відображається Ваша фінансова активність.</p>
+                                        
+                                        {!user.transactions || user.transactions.length === 0 ? (
+                                            <p style={{
+                                                textAlign: "center",
+                                                color: "var(--color-text-muted)",
+                                                padding: "40px 0"
+                                            }}><i className="fa-solid fa-receipt" style={{fontSize: 40, marginBottom: 16}}/><br/>Транзакцій ще немає</p>
+                                        ) : (
+                                            <div style={{display: "flex", flexDirection: "column", gap: 8}}>
+                                                {user.transactions.map(record => (
+                                                    <div key={record.id} style={{
+                                                        background: "rgba(255,255,255,0.03)", 
+                                                        border: "1px solid var(--color-border)",
+                                                        padding: "12px 16px", borderRadius: 8,
+                                                        display: "flex", justifyContent: "space-between", alignItems: "center"
+                                                    }}>
+                                                        <div style={{display: "flex", alignItems: "center", gap: 12}}>
+                                                            <div style={{
+                                                                width: 40, height: 40, borderRadius: "50%",
+                                                                background: record.type === 'topup' ? "rgba(100,255,150,0.1)" : "rgba(255,100,100,0.1)",
+                                                                color: record.type === 'topup' ? "#64ff96" : "#ff6464",
+                                                                display: "flex", alignItems: "center", justifyContent: "center",
+                                                                fontSize: 16
+                                                            }}>
+                                                                <i className={`fa-solid ${record.type === 'topup' ? 'fa-arrow-down' : 'fa-arrow-up'}`}/>
+                                                            </div>
+                                                            <div>
+                                                                <div style={{fontWeight: 700, fontSize: 15, marginBottom: 4}}>
+                                                                    {record.type === 'topup' ? "Поповнення" : "Виведення"}
+                                                                </div>
+                                                                <div style={{fontSize: 12, color: "var(--color-text-muted)"}}>
+                                                                    {new Date(record.date).toLocaleString()}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style={{textAlign: "right"}}>
+                                                            <div style={{
+                                                                fontWeight: 800, fontSize: 16,
+                                                                color: record.type === 'topup' ? "#64ff96" : "var(--color-text-primary)"
+                                                            }}>
+                                                                {record.type === 'topup' ? "+" : "-"}₴{record.amount.toFixed(2)}
+                                                            </div>
+                                                            <div style={{fontSize: 11, color: "var(--color-gold)", marginTop: 4, textTransform: "uppercase"}}>
+                                                                {record.status === 'success' ? "Успішно" : record.status}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
