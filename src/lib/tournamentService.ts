@@ -21,19 +21,16 @@ export async function registerForTournament(userId: string, tournamentId: string
     });
 }
 
-
 export async function unregisterFromTournament(userId: string, tournamentId: string): Promise<void> {
     const id = `${userId}_${tournamentId}`;
     await deleteDoc(doc(db, "tournament_registrations", id));
 }
-
 
 export async function isUserRegistered(userId: string, tournamentId: string): Promise<boolean> {
     const id = `${userId}_${tournamentId}`;
     const snap = await getDoc(doc(db, "tournament_registrations", id));
     return snap.exists();
 }
-
 
 export async function getUserRegistrations(userId: string): Promise<string[]> {
     const q = query(collection(db, "tournament_registrations"), where("userId", "==", userId));

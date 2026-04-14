@@ -4,12 +4,10 @@ const SERVICE_ID = "service_jsbet";
 const TEMPLATE_ID = "template_aj3wnif";
 const PUBLIC_KEY = "y-bJJAhwgzPJJXaJE";
 
-/** Generate a random 6-digit numeric code */
 export function generateCode(): string {
     return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
-/** Send a verification code to the given email address */
 export async function sendVerificationCode(
     toEmail: string,
     name: string,
@@ -38,7 +36,6 @@ export async function sendVerificationCode(
     }
 }
 
-/** Send a notification about tournament registration/reminder */
 export async function sendTournamentReminder(
     toEmail: string,
     name: string,
@@ -49,11 +46,11 @@ export async function sendTournamentReminder(
         emailjs.init(PUBLIC_KEY);
         await emailjs.send(
             SERVICE_ID,
-            TEMPLATE_ID, // Reusing verification template or using it as a generic notification
+            TEMPLATE_ID,
             {
                 to_email: toEmail,
                 name: name,
-                passcode: "Турнір зареєстровано! 🏆", // Customizing passcode field for visual variety
+                passcode: "Турнір зареєстровано! 🏆",
                 time: `${tournamentName} (${dateRange})`,
             },
             PUBLIC_KEY

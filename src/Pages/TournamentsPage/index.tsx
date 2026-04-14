@@ -1,12 +1,12 @@
 import {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
-import {fetchTournamentsFromDB} from "../lib/seedService";
-import {useAuthStore} from "../store/authStore";
-import {registerForTournament, getUserRegistrations} from "../lib/tournamentService";
-import {sendTournamentReminder} from "../lib/emailService";
-import TournamentRegistrationModal from "../components/Tournaments";
-import {S} from "./TournamentsStyle";
-import {Tournament} from "../interfaces/tournament";
+import {fetchTournamentsFromDB} from "../../lib/seedService.ts";
+import {useAuthStore} from "../../store/authStore.ts";
+import {registerForTournament, getUserRegistrations} from "../../lib/tournamentService.ts";
+import {sendTournamentReminder} from "../../lib/emailService.ts";
+import TournamentRegistrationModal from "../../components/Tournaments";
+import {S} from "./styles.ts";
+import {Tournament} from "../../interfaces/tournament";
 
 const statusLabel: Record<string, string> = {live: "LIVE", upcoming: "Незабаром", finished: "Завершено"};
 

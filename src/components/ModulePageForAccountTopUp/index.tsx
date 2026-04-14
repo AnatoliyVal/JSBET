@@ -1,7 +1,7 @@
 import {useEffect} from "react";
-import {AccauntTopUpStyle} from "./steles.ts";
+import {AccauntTopUpStyle} from "./styles.ts";
 
-const AccauntTopUpModal = ({onClose}) => {
+const AccountTopUpModal = ({onClose}) => {
     useEffect(() => {
         const prevBody = document.body.style.overflow;
         const prevHtml = document.documentElement.style.overflow;
@@ -30,4 +30,4 @@ const AccauntTopUpModal = ({onClose}) => {
     )
 }
     
-export default AccauntTopUpModal;
+export default AccountTopUpModal;

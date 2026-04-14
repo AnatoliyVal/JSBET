@@ -1,11 +1,11 @@
 import {useState, useEffect} from "react";
-import Game from "../components/Game/GameTotal";
-import CategoryButton from "../components/AllButtons/CategoryButton";
-import Button from "../components/AllButtons/Button";
-import {RandomGameList, GAMES_DB} from "../components/Game/RandomGame";
+import Game from "../../components/Game/GameTotal";
+import CategoryButton from "../../components/AllButtons/CategoryButton";
+import Button from "../../components/AllButtons/Button";
+import {RandomGameList, GAMES_DB} from "../../components/Game/RandomGame";
 import {Link} from "react-router-dom";
-import {useAuthStore} from "../store/authStore";
-import {S} from "./MainStyle";
+import {useAuthStore} from "../../store/authStore.ts";
+import {S} from "./styles.ts";
 
 const Section = ({id, heading, count, link, linkText, children, isMobile}: {
     id?: string;

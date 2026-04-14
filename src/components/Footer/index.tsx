@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import {Link} from "react-router-dom";
 import {S} from "./styles.ts";
 
 const linkStyle = S.link;
@@ -6,7 +7,7 @@ const linkStyle = S.link;
 const FooterMenu = ({text, url}: { text: string; url?: string }) => (
     <li>
         {url ? (
-            <a href={url.replace('/JSBET', '') || '/'} style={linkStyle} className="footer-link">{text}</a>
+            <Link to={url} style={linkStyle} className="footer-link">{text}</Link>
         ) : (
             <a href="#" onClick={(e) => e.preventDefault()} style={linkStyle} className="footer-link">{text}</a>
         )}
