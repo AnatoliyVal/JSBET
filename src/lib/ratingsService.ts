@@ -2,7 +2,7 @@ import {collection, doc, getDoc, setDoc, query, where, getDocs, serverTimestamp}
 import {db} from "./firebase";
 
 // API_BASE will be relative on same-origin host, or specific for local test.
-const API_BASE = import.meta.env.DEV ? "http://localhost:5173" : (window.location.hostname === "anatoliyval.github.io" ? "http://localhost:5173" : "");
+const API_BASE = import.meta.env.DEV ? "http://localhost:5173" : (window.location.hostname === "anatoliyval.github.io" ? "https://jsbet.onrender.com" : "");
 
 export async function getUserRating(userId: string, gameId: string): Promise<number | null> {
     try {
