@@ -16,7 +16,7 @@ const distPath = existsSync(join(process.cwd(), "dist"))
     : resolve(__dirname, "../dist");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5173;
 
 app.use(cors());
 app.use(express.json());
@@ -59,6 +59,7 @@ app.get("/api/ratings/:gameId", async (req, res) => {
 
 app.post("/api/ratings/:gameId", async (req, res) => {
     try {
+        console.log('POST');
         if (!db) {
             console.warn("⚠️  Attempting to save rating but Database is not initialized.");
             return res.status(503).json({ error: "Database not initialized" });
