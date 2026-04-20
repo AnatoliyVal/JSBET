@@ -117,6 +117,7 @@ export const S = {
         borderRadius: "var(--radius-lg)",
         padding: "32px", // on mobile it might be tight but we constrain width
         maxWidth: "100%",
+        maxHeight: "100vh",
         overflowX: "hidden",
     } satisfies CSSProperties,
 
